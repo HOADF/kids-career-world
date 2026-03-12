@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Пандочка-художник</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="artist-style.css">
+</head>
+<body>
+
+<div class="main-card">
+    <div class="nav-buttons">
+        <button class="btn-nav">🏠 Домой</button>
+        <button class="btn-nav">🐹 В домик питомца</button>
+    </div>
+
+    <h1>🎨 Раскрась мир</h1>
+
+    <div class="game-board">
+        <div class="pet-side">
+            <div id="speech-bubble" class="bubble hidden"></div> 
+            <img src="../../pets/panda.svg" alt="Panda" class="pet-img">
+            <p class="pet-name">Пандочка</p>
+        </div>
+
+        <div class="canvas-area">
+            <svg viewBox="0 0 400 300" id="paint-svg">
+                <rect id="sky" class="paint-area" data-correct="blue" data-name="Небо" x="0" y="0" width="400" height="200" />
+                
+                <rect id="ground" class="paint-area" data-correct="green" data-name="Травка" x="0" y="200" width="400" height="100" />
+                
+                <g id="sun-group" class="paint-area" data-correct="yellow" data-name="Солнышко">
+                    <circle cx="330" cy="70" r="35" />
+                    <line x1="330" y1="20" x2="330" y2="5" stroke-width="4" stroke-linecap="round" />
+                    <line x1="330" y1="120" x2="330" y2="135" stroke-width="4" stroke-linecap="round" />
+                    <line x1="280" y1="70" x2="265" y2="70" stroke-width="4" stroke-linecap="round" />
+                    <line x1="380" y1="70" x2="395" y2="70" stroke-width="4" stroke-linecap="round" />
+                    
+                    <line x1="295" y1="35" x2="285" y2="25" stroke-width="4" stroke-linecap="round" />
+                    <line x1="365" y1="105" x2="375" y2="115" stroke-width="4" stroke-linecap="round" />
+                    <line x1="365" y1="35" x2="375" y2="25" stroke-width="4" stroke-linecap="round" />
+                    <line x1="295" y1="105" x2="285" y2="115" stroke-width="4" stroke-linecap="round" />
+                </g>
+
+                <rect id="house" class="paint-area" data-correct="brown" data-name="Стены" x="120" y="140" width="160" height="100" rx="10" ry="10" />
+                
+                <path id="roof" class="paint-area" data-correct="red" data-name="Крыша" d="M110 140 L200 60 L290 140 Z" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="palette">
+        <div class="color-item" id="blue" data-color="blue" data-hex="#4A90E2" style="background-color: #4A90E2;"></div>
+        <div class="color-item" id="yellow" data-color="yellow" data-hex="#FFD700" style="background-color: #FFD700;"></div>
+        <div class="color-item" id="green" data-color="green" data-hex="#7ED321" style="background-color: #7ED321;"></div>
+        <div class="color-item" id="brown" data-color="brown" data-hex="#8B4513" style="background-color: #8B4513;"></div>
+        <div class="color-item" id="red" data-color="red" data-hex="#FF595E" style="background-color: #FF595E;"></div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="location.reload()" class="btn-action">🔄 Начать заново</button>
+        <button id="finish-btn" class="btn-action hidden">🏠 На главную</button>
+    </div>
+</div>
+
+<script src="artist-game.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+.main-card {
+    max-width: 950px; /* Немного расширил карточку */
+    margin: 20px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-board {
+    display: flex;
+    width: 100%;
+    height: 480px; /* УВЕЛИЧИЛ ВЫСОТУ, чтобы рисунок был крупным */
+    background: #fdfdfd;
+    border: 3px dashed #cde3d6; /* Сделал рамку чуть заметнее */
+    border-radius: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pet-side {
+    width: 200px; /* Чуть шире для крупной панды */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(240,249,244,0.3);
+    border-right: 1px solid #e0eee6;
+    position: relative;
+}
+
+.pet-img {
+    width: 130px; /* УВЕЛИЧИЛ ПАНДОЧКУ */
+    height: auto;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+.bubble {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 2px solid #4A90E2;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 20;
+    white-space: nowrap;
+}
+
+.canvas-area {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#paint-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.paint-area {
+    fill: #f2f6f4; /* Чуть светлее фон деталей */
+    stroke: #adbdb5; /* Сделал контур чуть четче */
+    stroke-width: 2; /* УВЕЛИЧИЛ ТОЛЩИНУ ЛИНИЙ */
+    stroke-dasharray: 8; /* Длиннее пунктир */
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* Улучшенный пунктир для лучей */
+#sun-group line {
+    stroke: #adbdb5;
+    stroke-dasharray: 4 4; /* Свой пунктир для лучей */
+}
+
+.palette {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+.color-item {
+    width: 70px; /* Крупнее кнопки */
+    height: 70px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.color-item:hover { transform: scale(1.05); }
+.color-item.selected { border: 4px solid #333; transform: translateY(-5px); }
+.color-item.used { opacity: 0.2; pointer-events: none; }
+
+.hidden { display: none; }
+
+.btn-nav, .btn-action {
+    background: #4fc3f7;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}

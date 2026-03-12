@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Выбор питомца</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background: #f9fafb;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 { color: #333; }
+
+    .pets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .pet-card {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pet-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .pet-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .pet-card span {
+      font-size: 14px;
+      margin-top: 4px;
+      color: #333;
+    }
+
+    .vip-label {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: gold;
+      color: #333;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 10px;
+    }
+
+    .lock {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: #888;
+    }
+
+    .selected {
+      outline: 4px solid #4CAF50;
+    }
+
+    button, a.play-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    button:hover, .play-btn:hover {
+      background: #43A047;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Выбери своего питомца 🐾</h1>
+  <input type="file" id="folder" webkitdirectory multiple />
+  <div class="pets-grid" id="petsGrid"></div>
+
+  <button id="saveChoice">Сохранить выбор</button>
+  <a id="playGame" class="play-btn" href="#" style="display:none;">Играть 🎮</a>
+
+  <script>
+    const grid = document.getElementById('petsGrid');
+    const folderInput = document.getElementById('folder');
+    const saveBtn = document.getElementById('saveChoice');
+    const playBtn = document.getElementById('playGame');
+
+    // соответствие питомцев и профессий
+    const petsData = {
+      artist: { file: 'panda.svg', label: '🐼 Пандочка-художник', open: true, game: 'games/artist/artist-game.html' },
+      builder: { file: 'tiger.svg', label: '🐯 Тигрёнок-строитель', open: true, game: 'games/builder/builder-game.html' },
+      creator: { file: 'fox.svg', label: '🦊 Лисёнок-мультипликатор', open: true, game: 'games/creator/creator-game.html' },
+      coder: { file: 'shark.svg', label: '🦈 Акулёнок-гейммейкер', open: false, game: 'games/coder/coder-game.html' },
+      chef: { file: 'penguin.svg', label: '🐧 Пингвинёнок-повар', open: false, game: 'games/chef/chef-game.html' },
+      doctor: { file: 'rabbit.svg', label: '🐰 Зайчонок-доктор', open: false, game: 'games/doctor/doctor-game.html' },
+      police: { file: 'dog.svg', label: '🐶 Щенок-полицейский', open: false, game: 'games/police/police-game.html' },
+      rescuer: { file: 'bear.svg', label: '🐻 Медвежонок-спасатель', open: false, game: 'games/rescuer/rescuer-game.html' },
+      scientist: { file: 'owl.svg', label: '🦉 Совёнок-учёный', open: false, game: 'games/scientist/scientist-game.html' }
+    };
+
+    let selectedPet = localStorage.getItem('selectedPet') || null;
+    let selectedGame = null;
+
+    folderInput.addEventListener('change', e => {
+      grid.innerHTML = '';
+      const files = Array.from(e.target.files).filter(f => f.name.endsWith('.svg'));
+
+      Object.values(petsData).forEach(pet => {
+        const file = files.find(f => f.name === pet.file);
+        if (!file) return; // если svg не найден — пропускаем
+
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const div = document.createElement('div');
+          div.className = 'pet-card';
+          div.innerHTML = `
+            <img src="${ev.target.result}" alt="${pet.label}">
+            <span>${pet.label}</span>
+          `;
+
+          if (!pet.open) {
+            div.innerHTML += `<div class="vip-label">VIP</div><div class="lock">🔒</div>`;
+          }
+
+          div.onclick = () => {
+            if (!pet.open) {
+              alert('🐾 Это VIP-питомец! Откроется при достижении нужного уровня 💎');
+              return;
+            }
+            document.querySelectorAll('.pet-card').forEach(p => p.classList.remove('selected'));
+            div.classList.add('selected');
+            selectedPet = pet.label;
+            selectedGame = pet.game;
+            playBtn.style.display = 'inline-block';
+          };
+
+          grid.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    saveBtn.onclick = () => {
+      if (selectedPet) {
+        localStorage.setItem('selectedPet', selectedPet);
+        alert(`✅ Ты выбрал питомца: ${selectedPet}`);
+      } else {
+        alert('Пожалуйста, выбери питомца 🐾');
+      }
+    };
+
+    playBtn.onclick = (e) => {
+      e.preventDefault();
+      if (!selectedGame) return alert('Сначала выбери питомца 🐾');
+      window.location.href = selectedGame;
+    };
+  </script>
+</body>
+</html>

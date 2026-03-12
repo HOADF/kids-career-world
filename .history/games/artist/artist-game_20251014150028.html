@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Весёлая раскраска</title>
+  <link rel="stylesheet" href="artist-game.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>🎨 Весёлая раскраска</h1>
+    <p class="subtitle">Выбери цвет и раскрась картинку!</p>
+
+    <div class="palette">
+      <div class="color" style="background:#ff6666" data-color="#ff6666"></div>
+      <div class="color" style="background:#ffcc00" data-color="#ffcc00"></div>
+      <div class="color" style="background:#66cc66" data-color="#66cc66"></div>
+      <div class="color" style="background:#66ccff" data-color="#66ccff"></div>
+      <div class="color" style="background:#ff99ff" data-color="#ff99ff"></div>
+      <div class="color" style="background:#ffffff" data-color="#ffffff"></div>
+    </div>
+
+    <div class="scene">
+      <object id="scene-svg" data="images/scene.svg" type="image/svg+xml"></object>
+    </div>
+
+    <div class="message hidden" id="success-message">
+      <h2>Молодец, художник!</h2>
+      <p>Ты прекрасно раскрасил картинку!</p>
+      <a href="../../pets-view.html" class="back-btn">🏠 Вернуться к питомцам</a>
+    </div>
+  </div>
+
+  <script src="artist-game.js"></script>
+</body>
+</html>

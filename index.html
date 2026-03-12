@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kids Career World — знакомство</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+  <link rel="stylesheet" href="games-list.css">
+  <meta name="description" content="Дружелюбный помощник- медуза приглашает ребёнка ответить на вопросы и подобрать питомца и игры.">
+</head>
+<body>
+
+
+  <main class="page-root" role="main" aria-labelledby="welcome-title">
+    <div class="background-decor" aria-hidden="true"></div>
+
+    <!-- Приветственный экран -->
+    <section id="welcome-card" class="welcome-card" role="region" aria-label="Приветствие">
+      <div class="welcome-inner">
+        <div class="pet-visual" aria-hidden="true">
+  <!-- Медуза — спокойная, плавная -->
+  <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" class="jelly-svg" role="img" aria-label="Медуза">
+    <defs>
+      <linearGradient id="j1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#CFEFF6"/>
+        <stop offset="100%" stop-color="#E6F6FF"/>
+      </linearGradient>
+      <linearGradient id="j2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#FFD9B3"/>
+        <stop offset="100%" stop-color="#FFECB8"/>
+      </linearGradient>
+    </defs>
+
+    <!-- колпак медузы -->
+    <path d="M20 70 Q40 18 80 20 Q120 18 140 70 Q120 96 80 96 Q40 96 20 70Z"
+          fill="url(#j1)" stroke="#B6EAF0" stroke-width="2" />
+
+    <!-- узоры на колпаке -->
+    <ellipse cx="55" cy="55" rx="12" ry="6" fill="#FFFFFF" opacity="0.35"/>
+    <ellipse cx="105" cy="58" rx="10" ry="5" fill="#FFFFFF" opacity="0.28"/>
+
+    <!-- тело/нутро -->
+    <ellipse cx="80" cy="80" rx="46" ry="18" fill="url(#j2)" opacity="0.9"/>
+
+    <!-- щупальца -->
+    <path d="M50 96 C46 120, 56 130, 52 148" stroke="#FFD9B3" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M70 96 C68 118, 76 126, 72 148" stroke="#FFECB8" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M90 96 C90 118, 98 126, 94 148" stroke="#FFD9B3" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M110 96 C112 120, 122 130, 118 148" stroke="#FFECB8" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+    <!-- глаза и улыбка -->
+    <circle cx="68" cy="74" r="4" fill="#043737"/>
+    <circle cx="92" cy="74" r="4" fill="#043737"/>
+    <path d="M68 86 Q80 94 92 86" stroke="#E07A3C" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+  </svg>
+</div>
+
+
+        <div class="welcome-text">
+          <h1 id="welcome-title">Привет-привет!</h1>
+
+          <p class="lead">
+            Привет, друг!<br>
+            Я Медуза — твой добрый помощник 🪼<br>
+            Помоги мне ответить на несколько вопросов,<br>
+            чтобы понять, какие игры тебе интереснее и какой питомец тебе подойдёт.</p>
+
+
+          <div class="controls">
+            <button id="start-quiz" class="btn-primary" aria-label="Давай дружить — начать вопросы">
+              Давай дружить
+            </button>
+
+            <button id="learn-more" class="btn-ghost" aria-label="Узнать больше о проекте">
+              Узнать больше
+            </button>
+          </div>
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Опрос — сразу готов и скрыт до нажатия -->
+    <section id="questions-section" class="questions-card hidden" role="region" aria-label="Вопросы-знакомство">
+      <div class="questions-inner">
+        <div id="progress" class="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
+        <h2 id="question-title" class="question-title">Загружаю вопрос...</h2>
+        <div id="answers" class="answers" role="list"></div>
+
+        <div class="nav-row">
+          <button id="btn-back" class="btn-ghost small" aria-label="Назад" disabled>◀ Назад</button>
+          <button id="btn-next" class="btn-primary small" aria-label="Дальше" disabled>Дальше ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Результат -->
+    <section id="result-section" class="result-card hidden" role="region" aria-label="Результат">
+      <div class="result-inner">
+        <h2 id="result-title">Тебе подойдёт...</h2>
+        <div id="result-pet" class="result-pet" aria-live="polite"></div>
+        <div id="result-games" class="result-games"></div>
+        <div class="result-controls">
+          <button id="restart" class="btn-ghost">Пройти снова</button>
+          <button id="continue" class="btn-primary">Пойти в игры</button>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+ </body>
+</html>

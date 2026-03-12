@@ -1,0 +1,97 @@
+.main-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 850px; /* Немного расширил для удобства */
+    margin: 20px auto;
+    text-align: center;
+}
+
+.game-board {
+    border: 2px dashed #a8d5ba;
+    background: #f0f9f4;
+    border-radius: 15px;
+    display: flex;
+    padding: 20px;
+    margin: 20px 0;
+    height: 380px; 
+    position: relative;
+    align-items: center;
+}
+
+.pet-side {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.canvas-area {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paint-svg {
+    width: 100%;
+    max-height: 100%;
+}
+
+.paint-area {
+    fill: #e8edea;
+    stroke: #999;
+    stroke-width: 0.8;
+    stroke-dasharray: 4;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+/* СЕКРЕТ ОБЪЕДИНЕНИЯ: убираем границы при закраске */
+.paint-area[style*="fill"] {
+    stroke: none;
+}
+
+.palette {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* Чтобы на телефонах кнопки не улетали */
+}
+
+.color-item {
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 4px solid transparent;
+    transition: 0.2s;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.color-item.selected {
+    border-color: #333;
+    transform: translateY(-5px);
+}
+
+.color-item.used {
+    background: #ccc !important;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hidden { display: none; }
+
+.btn-nav, .btn-action {
+    background: #5bc0de;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+}

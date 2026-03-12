@@ -1,0 +1,165 @@
+:root{
+  --bg:#eaf9ff;
+  --card:#fff;
+  --accent:#4fc3f7;
+  --good:#2e7d32;
+}
+
+.game-level {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  padding:24px;
+  min-height:100vh;
+}
+
+.game-card{
+  width:680px;
+  max-width:calc(100% - 32px);
+  background:var(--card);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+/* Навигация */
+.navigation{ display:flex; gap:12px; justify-content:center; margin-bottom:12px; }
+.nav-btn{
+  background:var(--accent);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  display:inline-block;
+  border:none;
+  cursor:pointer;
+}
+.nav-btn.small{ padding:8px 12px; font-size:14px; }
+.nav-btn:hover{ transform:translateY(-3px); }
+
+/* Заголовок */
+.game-title{ margin:8px 0 2px; font-size:24px; }
+.subtitle{ color:#444; margin-bottom:16px; }
+
+/* Поле */
+#playground{
+  position:relative;
+  width:560px;
+  max-width:100%;
+  height:360px;
+  margin:0 auto 18px;
+  background:#dff5e5;
+  border:3px dashed #8fc7a3;
+  border-radius:12px;
+  padding:20px;
+  overflow:hidden;
+}
+
+/* Шаблон домика — центруется в playground */
+/* убираем pointer-events: none чтобы зоны работали, или переопределим ниже */
+#house-template{
+  position:absolute;
+  top:40px;
+  left:50%;
+  transform:translateX(-50%);
+  width:240px;
+  height:240px;
+  /* pointer-events: none;  <-- УБРАЛИ/КОММЕНТИРОВАЛИ */
+}
+
+/* Зоны (пунктирные рамки) */
+.dropzone{
+  position:absolute;
+  border:2px dashed rgba(0,0,0,0.18);
+  background:rgba(255,255,255,0);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:border-color .18s, background .18s;
+  pointer-events: auto; /* важная правка — зоны снова интерактивны */
+}
+.dropzone.hover{ border-color:#4caf50; background:rgba(144,238,144,0.12); }
+
+/* когда деталь установлена — контур исчезает */
+.dropzone.filled { border: none; background: transparent; }
+
+/* Зоны сборки домика */
+.dropzone[data-part="roof"] {
+  top: -35px;
+  left: 7px;
+  width: 175px;
+  height: 95px;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  background: rgba(255, 0, 0, 0.08);
+}
+
+.dropzone[data-part="wall"] {
+  top: 60px;
+  left: 15px;
+  width: 160px;
+  height: 135px;
+  background: rgba(255, 165, 0, 0.1);
+}
+
+.dropzone[data-part="door"] {
+  top: 120px;
+  left: 105px;
+  width: 40px;
+  height: 70px;
+  background: rgba(139, 69, 19, 0.1);
+}
+
+.dropzone[data-part="window"] {
+  top: 75px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: rgba(173, 216, 230, 0.1);
+}
+
+/* Индивидуальные размеры деталей (панель) */
+.part-roof { width: 100px; height: 60px; }
+.part-wall { width: 90px; height: 70px; }
+.part-door { width: 50px; height: 75px; }
+.part-window { width: 80px; height: 70px; }
+
+/* Панель деталей */
+#part{ display:flex; justify-content:center; gap:18px; margin-bottom:12px; flex-wrap:wrap; }
+#part img { object-fit:contain; cursor:grab; user-select:none; }
+
+/* Скрытие оригинала когда установлен */
+.hidden{ display:none !important; }
+
+/* Питомец */
+.pet{ position:absolute; bottom:18px; left:18px; text-align:center; }
+.pet img{ width:74px; height:auto; display:block; }
+.pet-name{ font-size:14px; color:#333; margin-top:6px; }
+
+/* Статус и контролы */
+#status{ color:var(--good); font-weight:700; margin-top:8px; }
+.controls-row{ display:flex; justify-content:center; gap:12px; margin-top:10px; }
+
+/* Адаптив */
+@media (max-width:720px){
+  #playground{ height:320px; }
+  #house-template{ width:200px; height:200px; top:30px; }
+}
+@media (max-width:420px){
+  .navigation{ gap:8px; flex-wrap:wrap; }
+  #playground{ height:260px; padding:14px; }
+  #part img{ width:64px; height:64px; }
+}

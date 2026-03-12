@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect id="sky" x="0" y="0" width="300" height="200" fill="white" stroke="#ccc"/>
+  <rect id="ground" x="0" y="150" width="300" height="50" fill="white" stroke="#ccc"/>
+  <rect id="house" x="110" y="90" width="80" height="60" fill="white" stroke="#ccc"/>
+  <polygon id="roof" points="100,90 150,50 200,90" fill="white" stroke="#ccc"/>
+  <circle id="sun" cx="250" cy="40" r="20" fill="white" stroke="#ccc"/>
+  <circle id="tree" cx="60" cy="110" r="25" fill="white" stroke="#ccc"/>
+  <rect id="trunk" x="55" y="130" width="10" height="20" fill="white" stroke="#ccc"/>
+</svg>

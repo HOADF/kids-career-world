@@ -1,0 +1,20 @@
+[
+  {
+    "id": "builder",
+    "title": "Построй домик",
+    "file": "games/builder/builder-game.html",
+    "level": 1,
+    "age": "5–8",
+    "thumbnail": "games/builder/preview.png",
+    "description": "Собери домик из деталей по контуру."
+  },
+  {
+    "id": "feed-pet",
+    "title": "Покорми питомца",
+    "file": "games/feed-pet/feed-game.html",
+    "level": 1,
+    "age": "5–8",
+    "thumbnail": "games/feed-pet/preview.png",
+    "description": "Выбери подходящую еду для зверька."
+  }
+]

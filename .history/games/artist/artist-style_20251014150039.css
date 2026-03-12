@@ -1,0 +1,74 @@
+body {
+  background: #fffbe6;
+  font-family: 'Comic Sans MS', sans-serif;
+  text-align: center;
+}
+
+.game-container {
+  padding: 20px;
+}
+
+h1 {
+  color: #ff6699;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color:hover {
+  transform: scale(1.1);
+}
+
+.scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+object {
+  width: 300px;
+  height: 300px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.message {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.back-btn {
+  display: inline-block;
+  background: #4fc3f7;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}

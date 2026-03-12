@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Пандочка-художник</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="artist-style.css">
+</head>
+<body>
+
+<div class="main-card">
+    <div class="nav-buttons">
+        <button class="btn-nav">🏠 Домой</button>
+        <button class="btn-nav">🐹 В домик питомца</button>
+    </div>
+
+    <h1>🎨 Раскрась мир</h1>
+
+    <div class="game-board">
+        <div class="pet-side">
+            <img src="../../pets/panda.svg" alt="Пандочка" class="pet-img">
+            <p>Пандочка</p>
+        </div>
+
+        <div class="canvas-area">
+            <svg viewBox="0 0 200 150" id="paint-svg">
+                <rect id="sky" class="paint-area" data-correct="blue" x="0" y="0" width="200" height="100" />
+                <rect id="ground" class="paint-area" data-correct="green" x="0" y="100" width="200" height="50" />
+                <circle id="sun" class="paint-area" data-correct="yellow" cx="160" cy="30" r="15" />
+                <rect id="house" class="paint-area" data-correct="brown" x="70" y="60" width="60" height="40" />
+                <path id="roof" class="paint-area" data-correct="red" d="M70 60 L100 30 L130 60 Z" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="palette">
+        <div class="color-item" id="blue" data-color="blue" data-hex="#4A90E2" style="background-color: #4A90E2;"></div>
+        <div class="color-item" id="yellow" data-color="yellow" data-hex="#FFD700" style="background-color: #FFD700;"></div>
+        <div class="color-item" id="green" data-color="green" data-hex="#7ED321" style="background-color: #7ED321;"></div>
+        <div class="color-item" id="brown" data-color="brown" data-hex="#8B4513" style="background-color: #8B4513;"></div>
+        <div class="color-item" id="red" data-color="red" data-hex="#FF595E" style="background-color: #FF595E;"></div>
+    </div>
+
+    <div class="bottom-nav">
+        <button onclick="location.reload()" class="btn-action">🔄 Начать заново</button>
+    </div>
+</div>
+
+    <script src="artist-game.js"></script>
+</body>
+</html>
