@@ -1,12 +1,6 @@
-Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
-Copyright © 2025 [Ваше имя или псевдоним]
+MIT License
 
-Вы можете:
-- Делать копии и делиться работой с другими.
+Copyright (c) 2026 HOADF and sons (9 and 11 years old)
 
-Условия:
-- Attribution — нужно указывать авторство.
-- NonCommercial — нельзя использовать в коммерческих целях.
-- NoDerivatives — нельзя распространять изменения без разрешения.
-
-Ссылка: https://creativecommons.org/licenses/by-nc-nd/4.0/
+Permission is hereby granted, free of charge, to any person obtaining a copy...
+(далее стандартный текст MIT, который я давал выше)
