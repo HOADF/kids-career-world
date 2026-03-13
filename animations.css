@@ -1,15 +1,16 @@
-/* 1. ЖИВОЙ ФОН НА ВЕСЬ ЭКРАН */
+/* 1. ОБЩИЙ ФОН НА ВЕСЬ ЭКРАН */
 .ocean-frame {
-  position: fixed; /* Фиксируем на весь экран */
+  position: fixed; /* Фиксирует фон относительно окна */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1; /* Всегда под контентом */
+  z-index: -1;    /* Всегда в самом низу */
   overflow: hidden;
   background: #004d71;
 }
 
+/* Растягиваем картинки фона на весь экран */
 .layer-bg, .layer-floor {
   position: absolute;
   width: 100%;
@@ -20,90 +21,88 @@
 .layer-floor {
   bottom: 0;
   height: auto;
-  min-height: 20%;
+  min-height: 25%;
   z-index: 2;
 }
 
-/* МЕДУЗА (ПЛАВАЕТ ГДЕ-ТО В ОКЕАНЕ) */
+/* МЕДУЗА (ПЛАВАЕТ В ОКЕАНЕ, А НЕ В КАРТОЧКЕ) */
 .jelly-svg {
   position: absolute;
   left: 10%;
-  top: 30%;
-  width: 200px;
+  top: 25%;
+  width: 220px;
   z-index: 3;
-  animation: petFloat 5s ease-in-out infinite;
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+  animation: petFloat 6s ease-in-out infinite;
 }
 
 @keyframes petFloat {
-  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-  50% { transform: translate(10px, -30px) rotate(3deg); }
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-40px) rotate(3deg); }
 }
 
-/* ПУЗЫРЬКИ ПО ВСЕМУ ЭКРАНУ */
+/* ПУЗЫРЬКИ (ПО ВСЕМУ ЭКРАНУ) */
 .bubble-stream {
   position: absolute;
   bottom: -100px;
-  width: 40px;
-  opacity: 0.3;
+  width: 45px;
+  opacity: 0.4;
   z-index: 4;
 }
-.stream-1 { left: 5%; animation: rise 8s infinite; }
-.stream-2 { left: 85%; animation: rise 12s infinite 2s; }
-.stream-3 { left: 50%; animation: rise 10s infinite 5s; }
+.stream-1 { left: 8%; animation: rise 9s infinite; }
+.stream-2 { left: 88%; animation: rise 13s infinite 2s; }
 
 @keyframes rise {
   0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.6; }
   100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* 2. ИНТЕРФЕЙС (СТЕКЛЯННАЯ КАРТОЧКА) */
+/* 2. ИНТЕРФЕЙС ПОВЕРХ ФОНА */
 .page-root {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
-  position: relative;
-  z-index: 10;
+  padding: 40px;
 }
 
 .welcome-card, .questions-card, .result-card {
-  background: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый */
-  backdrop-filter: blur(10px); /* Эффект матового стекла */
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 50px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.9); /* Полупрозрачное стекло */
+  backdrop-filter: blur(8px);
   border-radius: 40px;
-  max-width: 600px;
+  padding: 60px;
+  max-width: 650px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+  z-index: 10;
 }
 
-h1 { color: #004d71; font-size: 2.5rem; margin-bottom: 20px; }
-.lead { color: #333; font-size: 1.2rem; line-height: 1.6; }
+h1 { color: #004d71; font-size: 2.8rem; margin-bottom: 20px; }
+.lead { color: #333; font-size: 1.3rem; line-height: 1.6; }
 
 /* КНОПКИ */
 .btn-primary {
   background: #ffaa44;
   color: white;
   border: none;
-  padding: 18px 40px;
-  border-radius: 50px;
+  padding: 20px 45px;
+  border-radius: 60px;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(255, 170, 68, 0.3);
+  box-shadow: 0 10px 25px rgba(255, 170, 68, 0.4);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: white;
   color: #004d71;
   border: 2px solid #004d71;
-  padding: 18px 40px;
-  border-radius: 50px;
+  padding: 20px 45px;
+  border-radius: 60px;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .hidden { display: none !important; }
