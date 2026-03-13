@@ -1,4 +1,22 @@
 // script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Проверяем, есть ли запись о регистрации (например, имя ребенка)
+    const isRegistered = localStorage.getItem('childName'); 
+
+    const welcomeCard = document.getElementById('welcome-card');
+    const petRoom = document.getElementById('pet-room');
+
+    if (isRegistered) {
+        // Если зарегистрирован: прячем приветствие, показываем комнату
+        welcomeCard.classList.add('hidden');
+        petRoom.classList.remove('hidden');
+        console.log("Добро пожаловать домой!");
+    } else {
+        // Если новый: ничего не делаем, пусть видит приветствие
+        console.log("Привет, новый друг!");
+    }
+});
+
 import { questions, results, petAssets } from './config.js';
 
 // 1. Находим все элементы
