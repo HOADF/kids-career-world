@@ -1,0 +1,49 @@
+/* ---------- ОБЩИЙ ФОН (На весь экран) ---------- */
+.scene-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  /* Градиент тоже можно менять через переменные, если захочешь */
+  background: #001a2b; 
+}
+
+.scene-bg, .scene-floor {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.scene-bg { top: 0; height: 100%; }
+.scene-floor { bottom: 0; height: auto; min-height: 20vh; z-index: 5; }
+
+/* ---------- УНИВЕРСАЛЬНЫЙ ГЕРОЙ ---------- */
+.main-pet {
+  position: absolute;
+  left: 10%;
+  top: 35%;
+  width: 180px;
+  z-index: 10;
+  animation: petFloat 5s ease-in-out infinite;
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-30px) rotate(2deg); }
+}
+
+/* ---------- ПРОЗРАЧНОЕ СТЕКЛО (Для контента) ---------- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  padding: 40px;
+  color: white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}

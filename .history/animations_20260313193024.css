@@ -1,0 +1,82 @@
+/* ---------- 1. ОКЕАН НА ВЕСЬ ЭКРАН (Фон-подложка) ---------- */
+.ocean-frame {
+  position: fixed; /* Фиксируем на фоне */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;      /* Уходит на самый задний план */
+  overflow: hidden;
+  background: linear-gradient(180deg, #004d71 0%, #002a40 100%);
+}
+
+/* Слой воды */
+.layer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Слой дна — теперь он ВСЕГДА внизу экрана */
+.layer-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 15vh;
+  object-fit: cover;
+  z-index: 5;
+}
+
+/* ---------- 2. МЕДУЗА (Плавающая слева) ---------- */
+.jelly-svg {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  width: 180px; /* Сделаем её чуть солиднее */
+  height: auto;
+  z-index: 10;
+  animation: petFloat 5s ease-in-out infinite;
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(2deg); }
+}
+
+/* ---------- 3. ПУЗЫРЬКИ ---------- */
+.bubble-stream {
+  position: absolute;
+  bottom: -50px;
+  width: 40px;
+  z-index: 8;
+  opacity: 0.3;
+}
+
+.stream-left { left: 15%; animation: bubbleRise 8s linear infinite; }
+.stream-right { left: 85%; animation: bubbleRise 12s linear infinite 2s; }
+
+@keyframes bubbleRise {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* ---------- 4. КАРТОЧКА КОНТЕНТА (Прозрачность) ---------- */
+/* Добавь это, чтобы текст читался на фоне моря */
+.welcome-card, .questions-card, .result-card {
+  background: rgba(255, 255, 255, 0.15) !important; /* Едва заметный белый блик */
+  backdrop-filter: blur(10px); /* Эффект матового стекла */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+h1, .lead, .question-title {
+  color: white !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
