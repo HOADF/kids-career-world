@@ -1,0 +1,68 @@
+/* ---------- 1. АНИМАЦИЯ ПИТОМЦА (Универсальная) ---------- */
+/* Подходит для медузы, пингвина и любого другого героя */
+.pet-visual {
+  flex: 0 0 180px;
+  animation: petBreathe 4s ease-in-out infinite;
+}
+
+@keyframes petBreathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Эффект появления при загрузке */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- 2. ЭФФЕКТЫ (Сердце) ---------- */
+.heart-mark {
+  transform-origin: center;
+  animation: pulse-heart 2s infinite ease-in-out;
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 5px rgba(255,0,0,0.5)); }
+}
+
+/* ---------- 3. ПУЗЫРЬКИ (Две дорожки) ---------- */
+.bubble-stream {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: auto;
+    z-index: 25;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.stream-left {
+    left: 20%;
+    animation: bubbleRise 8s linear infinite;
+}
+
+.stream-right {
+    left: 75%;
+    animation: bubbleRise 12s linear infinite 4s;
+}
+
+@keyframes bubbleRise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-1000px) scale(1.2); opacity: 0; }
+}
+
+/* ---------- 4. ОКЕАНСКОЕ ТЕЧЕНИЕ (Водоросли) ---------- */
+/* Применяется к объектам внутри ocean_floor.svg */
+.layer-floor {
+    transform-origin: bottom;
+    animation: oceanSway 6s ease-in-out infinite;
+}
+
+@keyframes oceanSway {
+    0%, 100% { transform: skewX(0deg); }
+    50% { transform: skewX(2deg); } /* Легкий наклон всей панорамы дна */
+}
