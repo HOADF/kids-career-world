@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kids Career World</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+
+  <img src="backgrounds/ocean_floor.svg" class="ocean-floor-global">
+  <img src="pets/jellyfish.svg" class="jelly-global" id="main-pet-image">
+  <img src="fx/bubbles.svg" class="bubble-stream stream-1">
+  <img src="fx/bubbles.svg" class="bubble-stream stream-2">
+
+  <main class="page-root">
+    
+    <section id="welcome-card" class="welcome-card">
+      <h1>Привет-привет!</h1>
+      <p class="lead">
+        Я Медуза — твой добрый помощник 🪼<br>
+        Давай ответим на вопросы и выберем тебе питомца!
+      </p>
+      <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+        <button id="start-quiz" class="btn-primary">Давай дружить</button>
+        <button id="learn-more" class="btn-ghost">Узнать больше</button>
+      </div>
+    </section>
+
+    <section id="questions-section" class="questions-card hidden">
+      <div id="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
+      <h2 id="question-title" style="margin: 20px 0;">Загрузка...</h2>
+      <div id="answers" style="display: grid; gap: 15px;"></div>
+      <button id="btn-back" class="btn-ghost" style="margin-top: 20px;">◀ Назад</button>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,55 +1,56 @@
-/* 1. ОБЩИЙ ФОН НА ВЕСЬ ЭКРАН */
-.ocean-frame {
-  position: fixed; /* Фиксирует фон относительно окна */
-  top: 0;
-  left: 0;
+/* ОБЩИЙ ФОН ДЛЯ ВСЕГО САЙТА */
+body {
+  margin: 0;
+  padding: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;    /* Всегда в самом низу */
-  overflow: hidden;
-  background: #004d71;
+  overflow: hidden; /* Чтобы не было полос прокрутки */
+  font-family: 'Segoe UI', sans-serif;
+  
+  /* Ставим картинку океана фоном всего документа */
+  background: url('backgrounds/ocean.svg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Растягиваем картинки фона на весь экран */
-.layer-bg, .layer-floor {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.layer-floor {
+/* ДНО ОКЕАНА (фиксируем снизу) */
+.ocean-floor-global {
+  position: fixed;
   bottom: 0;
+  left: 0;
+  width: 100%;
   height: auto;
-  min-height: 25%;
-  z-index: 2;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* МЕДУЗА (ПЛАВАЕТ В ОКЕАНЕ, А НЕ В КАРТОЧКЕ) */
-.jelly-svg {
-  position: absolute;
+/* МЕДУЗА (плавает за карточкой) */
+.jelly-global {
+  position: fixed;
   left: 10%;
-  top: 25%;
-  width: 220px;
-  z-index: 3;
+  top: 20%;
+  width: 200px;
+  z-index: 2;
   animation: petFloat 6s ease-in-out infinite;
 }
 
 @keyframes petFloat {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-40px) rotate(3deg); }
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-30px) rotate(2deg); }
 }
 
-/* ПУЗЫРЬКИ (ПО ВСЕМУ ЭКРАНУ) */
+/* ПУЗЫРЬКИ (на весь экран) */
 .bubble-stream {
-  position: absolute;
+  position: fixed;
   bottom: -100px;
-  width: 45px;
+  width: 40px;
   opacity: 0.4;
-  z-index: 4;
+  z-index: 3;
 }
-.stream-1 { left: 8%; animation: rise 9s infinite; }
-.stream-2 { left: 88%; animation: rise 13s infinite 2s; }
+.stream-1 { left: 5%; animation: rise 10s infinite; }
+.stream-2 { left: 90%; animation: rise 15s infinite 2s; }
 
 @keyframes rise {
   0% { transform: translateY(0); opacity: 0; }
@@ -57,52 +58,46 @@
   100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* 2. ИНТЕРФЕЙС ПОВЕРХ ФОНА */
+/* СТЕКЛЯННАЯ КАРТОЧКА */
 .page-root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 40px;
+  position: relative;
+  z-index: 10; /* Карточка всегда поверх фона */
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
 }
 
 .welcome-card, .questions-card, .result-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.9); /* Полупрозрачное стекло */
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95); /* Почти белая, но чуть прозрачная */
+  backdrop-filter: blur(10px);
   border-radius: 40px;
-  padding: 60px;
-  max-width: 650px;
-  width: 100%;
+  padding: 50px;
   text-align: center;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.4);
-  z-index: 10;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  border: 1px solid white;
 }
 
-h1 { color: #004d71; font-size: 2.8rem; margin-bottom: 20px; }
-.lead { color: #333; font-size: 1.3rem; line-height: 1.6; }
+h1 { color: #004d71; font-size: 2.5rem; margin: 0 0 20px; }
+.lead { color: #333; font-size: 1.2rem; line-height: 1.5; }
 
-/* КНОПКИ */
 .btn-primary {
   background: #ffaa44;
   color: white;
   border: none;
-  padding: 20px 45px;
-  border-radius: 60px;
+  padding: 18px 40px;
+  border-radius: 50px;
   font-weight: bold;
-  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(255, 170, 68, 0.4);
+  font-size: 1.1rem;
 }
 
 .btn-ghost {
-  background: white;
+  background: transparent;
   color: #004d71;
   border: 2px solid #004d71;
-  padding: 20px 45px;
-  border-radius: 60px;
+  padding: 18px 40px;
+  border-radius: 50px;
   font-weight: bold;
-  font-size: 1.2rem;
 }
 
 .hidden { display: none !important; }
