@@ -1,18 +1,16 @@
-/* ---------- 1. ОБЕРТКА ОКЕАНА ---------- */
+/* ---------- 1. ОКЕАН НА ВЕСЬ ЭКРАН (Фон-подложка) ---------- */
 .ocean-frame {
-  position: relative;
-  width: 100%;
-  height: 320px;           /* Увеличили высоту, чтобы влез весь текст */
-  margin-bottom: 2rem;
-  border-radius: 1.5rem;
+  position: fixed; /* Фиксируем на фоне */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;      /* Уходит на самый задний план */
   overflow: hidden;
-  background: #004d71;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;    /* Центрируем содержимое по вертикали */
+  background: linear-gradient(180deg, #004d71 0%, #002a40 100%);
 }
 
-/* Фон */
+/* Слой воды */
 .layer-bg {
   position: absolute;
   top: 0;
@@ -20,50 +18,65 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
 }
 
-/* ---------- 2. ПИТОМЕЦ (Слева) ---------- */
-.jelly-svg {
-  position: absolute !important;
-  left: 5% !important;     /* Прижали к левому краю */
-  top: 20% !important;
-  width: 130px !important; /* Компактный размер */
-  height: auto !important;
-  z-index: 10;
-  animation: petFloat 4s ease-in-out infinite;
-}
-
-@keyframes petFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* ---------- 3. ДНО ---------- */
+/* Слой дна — теперь он ВСЕГДА внизу экрана */
 .layer-floor {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: auto;
+  min-height: 15vh;
   object-fit: cover;
   z-index: 5;
 }
 
-/* ---------- 4. ПУЗЫРЬКИ ---------- */
+/* ---------- 2. МЕДУЗА (Плавающая слева) ---------- */
+.jelly-svg {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  width: 180px; /* Сделаем её чуть солиднее */
+  height: auto;
+  z-index: 10;
+  animation: petFloat 5s ease-in-out infinite;
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(2deg); }
+}
+
+/* ---------- 3. ПУЗЫРЬКИ ---------- */
 .bubble-stream {
   position: absolute;
   bottom: -50px;
-  width: 30px;
-  z-index: 8; /* За медузой и текстом */
-  opacity: 0.4;
+  width: 40px;
+  z-index: 8;
+  opacity: 0.3;
 }
 
-.stream-left { left: 15%; animation: bubbleRise 7s linear infinite; }
-.stream-right { left: 85%; animation: bubbleRise 11s linear infinite 3s; }
+.stream-left { left: 15%; animation: bubbleRise 8s linear infinite; }
+.stream-right { left: 85%; animation: bubbleRise 12s linear infinite 2s; }
 
 @keyframes bubbleRise {
   0% { transform: translateY(0); opacity: 0; }
-  20% { opacity: 0.5; }
-  100% { transform: translateY(-400px); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* ---------- 4. КАРТОЧКА КОНТЕНТА (Прозрачность) ---------- */
+/* Добавь это, чтобы текст читался на фоне моря */
+.welcome-card, .questions-card, .result-card {
+  background: rgba(255, 255, 255, 0.15) !important; /* Едва заметный белый блик */
+  backdrop-filter: blur(10px); /* Эффект матового стекла */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+h1, .lead, .question-title {
+  color: white !important;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }

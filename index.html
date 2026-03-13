@@ -6,40 +6,35 @@
   <title>Kids Career World — знакомство</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="games-list.css">
-  <script type="module" src="script.js"></script>
+  <link rel="stylesheet" href="animations.css"> <script type="module" src="script.js"></script>
 </head>
 <body>
 
+  <div class="ocean-frame" aria-hidden="true">
+    <img src="backgrounds/ocean.svg" class="layer-bg">
+    <img src="backgrounds/ocean_floor.svg" class="layer-floor">
+    
+    <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
+    
+    <img src="fx/bubbles.svg" class="bubble-stream stream-left">
+    <img src="fx/bubbles.svg" class="bubble-stream stream-right">
+  </div>
+
   <main class="page-root">
-    <div class="background-decor" aria-hidden="true"></div>
-
+    
     <section id="welcome-card" class="welcome-card">
-      <div class="welcome-inner">
+      <div class="welcome-inner" style="padding: 40px; text-align: center;">
+        <h1 id="welcome-title">Привет-привет!</h1>
+        <p class="lead">
+          Я Медуза — твой добрый помощник 🪼<br>
+          Помоги мне ответить на вопросы, чтобы понять,<br> 
+          какие игры тебе интереснее и какой питомец тебе подойдёт.
+        </p>
 
-        <div class="ocean-frame">
-          <img src="backgrounds/ocean.svg" class="layer-bg">
-          <img src="backgrounds/ocean_floor.svg" class="layer-floor">
-
-          <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
-
-          <div style="position: relative; z-index: 20; margin-left: 35%; color: white; padding-right: 40px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);">
-            <h1 id="welcome-title" style="margin: 0; font-size: 2rem;">Привет-привет!</h1>
-            
-            <p style="font-size: 1.1rem; line-height: 1.4; margin: 15px 0;">
-              Я Медуза — твой добрый помощник 🪼<br>
-              Помоги мне ответить на вопросы, чтобы понять, какие игры тебе интереснее и какой питомец тебе подойдёт.
-            </p>
-
-            <div class="controls" style="display: flex; gap: 15px; margin-top: 20px;">
-              <button id="start-quiz" class="btn-primary" style="box-shadow: 0 4px 15px rgba(0,0,0,0.3);">Давай дружить</button>
-              <button id="learn-more" class="btn-ghost" style="color: white; border-color: white;">Узнать больше</button>
-            </div>
-          </div>
-          
-          <img src="fx/bubbles.svg" class="bubble-stream stream-left">
-          <img src="fx/bubbles.svg" class="bubble-stream stream-right">
+        <div class="controls" style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+          <button id="start-quiz" class="btn-primary">Давай дружить</button>
+          <button id="learn-more" class="btn-ghost">Узнать больше</button>
         </div>
-
       </div>
     </section>
 
@@ -67,24 +62,6 @@
       </div>
     </section>
 
-    <section id="pet-room" class="room-card hidden">
-      <div class="room-inner">
-        <h2>Твоя уютная комната</h2>
-        <div class="constructor-display">
-          <div class="ocean-frame" id="custom-pet-display" style="height: 200px;">
-            <img src="backgrounds/ocean.svg" class="layer-bg">
-            <img id="pet-body" src="pets/jellyfish.svg" class="jelly-svg" style="left: 10%; width: 100px;">
-            <img id="pet-face" src="assets/faces/default.svg" style="position: absolute; left: 10%; top: 25%; width: 100px; z-index: 11;">
-            <img src="fx/bubbles.svg" class="bubble-stream stream-left">
-          </div>
-        </div>
-        <div class="room-controls">
-          <button id="open-editor" class="btn-primary">Изменить питомца</button>
-          <button id="go-to-games" class="btn-ghost">В игры</button>
-        </div>
-      </div>
-    </section>
-    
   </main>
 </body>
 </html>
