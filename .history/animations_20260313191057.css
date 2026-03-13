@@ -1,0 +1,69 @@
+/* ---------- 1. ОБЕРТКА ОКЕАНА ---------- */
+.ocean-frame {
+  position: relative;
+  width: 100%;
+  height: 320px;           /* Увеличили высоту, чтобы влез весь текст */
+  margin-bottom: 2rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #004d71;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;    /* Центрируем содержимое по вертикали */
+}
+
+/* Фон */
+.layer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* ---------- 2. ПИТОМЕЦ (Слева) ---------- */
+.jelly-svg {
+  position: absolute !important;
+  left: 5% !important;     /* Прижали к левому краю */
+  top: 20% !important;
+  width: 130px !important; /* Компактный размер */
+  height: auto !important;
+  z-index: 10;
+  animation: petFloat 4s ease-in-out infinite;
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ---------- 3. ДНО ---------- */
+.layer-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  z-index: 5;
+}
+
+/* ---------- 4. ПУЗЫРЬКИ ---------- */
+.bubble-stream {
+  position: absolute;
+  bottom: -50px;
+  width: 30px;
+  z-index: 8; /* За медузой и текстом */
+  opacity: 0.4;
+}
+
+.stream-left { left: 15%; animation: bubbleRise 7s linear infinite; }
+.stream-right { left: 85%; animation: bubbleRise 11s linear infinite 3s; }
+
+@keyframes bubbleRise {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 0.5; }
+  100% { transform: translateY(-400px); opacity: 0; }
+}

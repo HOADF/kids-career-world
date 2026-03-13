@@ -4,55 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kids Career World — знакомство</title>
-  
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="games-list.css">
-  
   <script type="module" src="script.js"></script>
-  
-  <meta name="description" content="Дружелюбный помощник-медуза приглашает ребёнка ответить на вопросы и подобрать питомца и игры.">
 </head>
 <body>
 
-  <main class="page-root" role="main" aria-labelledby="welcome-title">
+  <main class="page-root">
     <div class="background-decor" aria-hidden="true"></div>
 
-    <section id="welcome-card" class="welcome-card" role="region" aria-label="Приветствие">
+    <section id="welcome-card" class="welcome-card">
       <div class="welcome-inner">
 
-        <div class="ocean-frame" aria-hidden="true">
+        <div class="ocean-frame">
           <img src="backgrounds/ocean.svg" class="layer-bg">
           <img src="backgrounds/ocean_floor.svg" class="layer-floor">
 
-          <div id="main-pet-container">
-            <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image" alt="Медуза">
-          </div>
+          <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
 
-          <div style="position: relative; z-index: 15; color: white; padding-right: 30px; flex: 1; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
-            <h1 id="welcome-title" style="margin: 0; font-size: 1.8rem;">Привет-привет!</h1>
-            <p style="font-size: 1.1rem; margin-top: 10px; line-height: 1.3;">
-              Я Медуза — твой добрый помощник 🪼
+          <div style="position: relative; z-index: 20; margin-left: 35%; color: white; padding-right: 40px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);">
+            <h1 id="welcome-title" style="margin: 0; font-size: 2rem;">Привет-привет!</h1>
+            
+            <p style="font-size: 1.1rem; line-height: 1.4; margin: 15px 0;">
+              Я Медуза — твой добрый помощник 🪼<br>
+              Помоги мне ответить на вопросы, чтобы понять, какие игры тебе интереснее и какой питомец тебе подойдёт.
             </p>
+
+            <div class="controls" style="display: flex; gap: 15px; margin-top: 20px;">
+              <button id="start-quiz" class="btn-primary" style="box-shadow: 0 4px 15px rgba(0,0,0,0.3);">Давай дружить</button>
+              <button id="learn-more" class="btn-ghost" style="color: white; border-color: white;">Узнать больше</button>
+            </div>
           </div>
           
           <img src="fx/bubbles.svg" class="bubble-stream stream-left">
           <img src="fx/bubbles.svg" class="bubble-stream stream-right">
         </div>
 
-        <div class="welcome-text">
-          <p class="lead" style="margin-top: 0;">
-            Помоги мне ответить на несколько вопросов, чтобы понять, какие игры тебе интереснее и какой питомец тебе подойдёт.
-          </p>
-
-          <div class="controls">
-            <button id="start-quiz" class="btn-primary" aria-label="Начать опрос">
-              Давай дружить
-            </button>
-            <button id="learn-more" class="btn-ghost" aria-label="Узнать больше">
-              Узнать больше
-            </button>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -60,7 +47,7 @@
       <div class="questions-inner">
         <div id="progress" class="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
         <h2 id="question-title" class="question-title">Загружаю вопрос...</h2>
-        <div id="answers" class="answers" role="list"></div>
+        <div id="answers" class="answers"></div>
         <div class="nav-row">
           <button id="btn-back" class="btn-ghost small" disabled>◀ Назад</button>
           <button id="btn-next" class="btn-primary small" disabled>Дальше ▶</button>
@@ -86,8 +73,8 @@
         <div class="constructor-display">
           <div class="ocean-frame" id="custom-pet-display" style="height: 200px;">
             <img src="backgrounds/ocean.svg" class="layer-bg">
-            <img id="pet-body" src="pets/jellyfish.svg" class="jelly-svg" style="left: 25%; width: 100px;">
-            <img id="pet-face" src="assets/faces/default.svg" style="position: absolute; left: 25%; top: 20%; width: 100px; z-index: 11;">
+            <img id="pet-body" src="pets/jellyfish.svg" class="jelly-svg" style="left: 10%; width: 100px;">
+            <img id="pet-face" src="assets/faces/default.svg" style="position: absolute; left: 10%; top: 25%; width: 100px; z-index: 11;">
             <img src="fx/bubbles.svg" class="bubble-stream stream-left">
           </div>
         </div>
