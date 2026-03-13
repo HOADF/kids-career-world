@@ -1,148 +1,142 @@
-/* ---------- 1. ОБЩИЙ ФОН НА ВЕСЬ ЭКРАН (Body) ---------- */
-body, html {
+/* ОБЩИЙ КОНТЕЙНЕР НА ВЕСЬ ЭКРАН */
+html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* Без полос прокрутки */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
-  /* Глубокий градиент океана */
-  background: radial-gradient(circle at center, #005a8a 0%, #001a2b 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  background: #002b44; /* Глубокий синий на случай задержки загрузки */
 }
 
-/* ---------- 2. СЛОИ ГЛУБИНЫ (Параллакс) ---------- */
-.scene-layers {
+/* СЛОИ ФОНА (Абсолютное позиционирование, чтобы не мешать тексту) */
+.ocean-scene {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Под карточкой */
+  z-index: 1;
 }
 
-/* Фон (звезды/свет) - самый дальний */
-.layer-bg {
+.bg-full {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  opacity: 0.3; /* Приглушенный */
+  z-index: 1;
 }
 
-/* Дно океана - с тенью для объема */
-.layer-floor {
+.floor-full {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
-  height: auto;
-  min-height: 25vh;
-  object-fit: cover;
-  z-index: 5;
-  /* Мягкая тень, приподнимающая дно */
-  filter: drop-shadow(0 -15px 30px rgba(0,0,0,0.4));
+  z-index: 2;
+  filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.5)); /* Тень для объема дна */
 }
 
-/* ---------- 3. ПЕРСОНАЖ (Слева по центру) ---------- */
-.main-pet {
+/* МЕДУЗА: Слева по центру, с мощной тенью */
+.character-jelly {
   position: fixed;
-  left: 8%;           /* Прижали к левому краю */
-  top: 40%;           /* По центру высоты (чуть выше) */
-  width: 180px;
-  height: auto;
+  left: 5%;
+  top: 35%;
+  width: 220px;
   z-index: 10;
-  
-  /* Анимация плавного парения */
-  animation: petFloat 6s ease-in-out infinite;
-  
-  /* Глубокая тень для ОБЪЕМА */
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+  animation: floatPet 5s ease-in-out infinite;
+  /* Тройная тень для максимального ОБЪЕМА */
+  filter: 
+    drop-shadow(0 15px 30px rgba(0,0,0,0.4)) 
+    drop-shadow(0 5px 10px rgba(0,0,0,0.3));
 }
 
-@keyframes petFloat {
+@keyframes floatPet {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-35px) rotate(3deg); }
+  50% { transform: translateY(-30px) rotate(2deg); }
 }
 
-/* ---------- 4. ПУЗЫРЬКИ ---------- */
-.bubble-stream {
-  position: absolute;
-  bottom: -100px;
-  width: 40px;
-  opacity: 0.2;
-  z-index: 8; /* За медузой и карточкой */
+/* ПУЗЫРЬКИ (Слои для объема) */
+.bubbles {
+  position: fixed;
+  bottom: -50px;
+  z-index: 3;
+  opacity: 0.3;
 }
-.stream-1 { left: 5%; animation: rise 10s infinite; }
-.stream-2 { left: 90%; animation: rise 15s infinite 3s; }
+.b-1 { left: 10%; animation: rise 8s infinite; }
+.b-2 { left: 80%; animation: rise 12s infinite 2s; }
 
 @keyframes rise {
   0% { transform: translateY(0); opacity: 0; }
-  20% { opacity: 0.4; }
+  50% { opacity: 0.5; }
   100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* ---------- 5. СТЕКЛЯННАЯ ОБЪЕМНАЯ КАРТОЧКА ---------- */
-.page-root {
+/* ЦЕНТРАЛЬНАЯ КАРТОЧКА: Стеклянная и объемная */
+.ui-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  z-index: 20; /* Поверх всего фона */
+  z-index: 20; /* Поверх фона и медузы */
+  pointer-events: none; /* Чтобы можно было кликать сквозь контейнер на кнопки */
 }
 
-/* Общий стиль для объемного стекла */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.05); /* Очень прозрачный */
-  
-  /* Эффект МАТОВОГО СТЕКЛА */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  
-  /* Объемная белая рамка */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 3rem;
-  
-  /* СЛОЖНЫЕ ТЕНИ ДЛЯ ОБЪЕМА И ЛЕГКОСТИ */
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.4),          /* Глубокая тень снизу */
-    0 10px 20px rgba(0, 0, 0, 0.2),          /* Мягкая тень */
-    inset 0 0 30px rgba(255, 255, 255, 0.05); /* Внутренний блик */
-    
+.glass-card {
+  pointer-events: auto; /* Возвращаем кликабельность самой карточке */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px); /* Сильное размытие для эффекта дорогого стекла */
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
   padding: 60px;
-  max-width: 650px;
-  width: 100%;
-  color: white;
+  width: 90%;
+  max-width: 550px;
   text-align: center;
+  /* ОБЪЕМ КАРТОЧКИ: внешняя тень и внутренний блик */
+  box-shadow: 
+    0 40px 100px rgba(0,0,0,0.5), 
+    inset 0 0 20px rgba(255,255,255,0.1);
 }
 
-/* Тексты с тенью для объема */
-h1, .lead {
-  color: white !important;
-  text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+h1 {
+  color: white;
+  font-size: 3rem;
+  margin: 0 0 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.btn-primary {
+p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* КНОПКИ */
+.btn-main {
   background: #ffaa44;
   color: white;
   border: none;
-  padding: 16px 40px;
-  border-radius: 50px;
+  padding: 18px 45px;
+  border-radius: 40px;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255, 170, 68, 0.4);
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(255, 170, 68, 0.4);
+  margin: 10px;
 }
-.btn-primary:hover { transform: scale(1.03); }
 
-.btn-ghost {
-  background: transparent;
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
   color: white;
   border: 2px solid white;
-  padding: 16px 40px;
-  border-radius: 50px;
+  padding: 18px 45px;
+  border-radius: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+.hidden { display: none !important; }
