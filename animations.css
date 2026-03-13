@@ -1,103 +1,148 @@
-/* ОБЩИЙ ФОН ДЛЯ ВСЕГО САЙТА */
-body {
+/* ---------- 1. ОБЩИЙ ФОН НА ВЕСЬ ЭКРАН (Body) ---------- */
+body, html {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow: hidden; /* Чтобы не было полос прокрутки */
-  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden; /* Без полос прокрутки */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
-  /* Ставим картинку океана фоном всего документа */
-  background: url('backgrounds/ocean.svg') no-repeat center center fixed;
-  background-size: cover;
+  /* Глубокий градиент океана */
+  background: radial-gradient(circle at center, #005a8a 0%, #001a2b 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ДНО ОКЕАНА (фиксируем снизу) */
-.ocean-floor-global {
+/* ---------- 2. СЛОИ ГЛУБИНЫ (Параллакс) ---------- */
+.scene-layers {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Под карточкой */
+}
+
+/* Фон (звезды/свет) - самый дальний */
+.layer-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* Приглушенный */
+}
+
+/* Дно океана - с тенью для объема */
+.layer-floor {
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: auto;
-  pointer-events: none;
-  z-index: 1;
+  min-height: 25vh;
+  object-fit: cover;
+  z-index: 5;
+  /* Мягкая тень, приподнимающая дно */
+  filter: drop-shadow(0 -15px 30px rgba(0,0,0,0.4));
 }
 
-/* МЕДУЗА (плавает за карточкой) */
-.jelly-global {
+/* ---------- 3. ПЕРСОНАЖ (Слева по центру) ---------- */
+.main-pet {
   position: fixed;
-  left: 10%;
-  top: 20%;
-  width: 200px;
-  z-index: 2;
+  left: 8%;           /* Прижали к левому краю */
+  top: 40%;           /* По центру высоты (чуть выше) */
+  width: 180px;
+  height: auto;
+  z-index: 10;
+  
+  /* Анимация плавного парения */
   animation: petFloat 6s ease-in-out infinite;
+  
+  /* Глубокая тень для ОБЪЕМА */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 5px 10px rgba(0,0,0,0.3));
 }
 
 @keyframes petFloat {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-30px) rotate(2deg); }
+  50% { transform: translateY(-35px) rotate(3deg); }
 }
 
-/* ПУЗЫРЬКИ (на весь экран) */
+/* ---------- 4. ПУЗЫРЬКИ ---------- */
 .bubble-stream {
-  position: fixed;
+  position: absolute;
   bottom: -100px;
   width: 40px;
-  opacity: 0.4;
-  z-index: 3;
+  opacity: 0.2;
+  z-index: 8; /* За медузой и карточкой */
 }
 .stream-1 { left: 5%; animation: rise 10s infinite; }
-.stream-2 { left: 90%; animation: rise 15s infinite 2s; }
+.stream-2 { left: 90%; animation: rise 15s infinite 3s; }
 
 @keyframes rise {
   0% { transform: translateY(0); opacity: 0; }
-  50% { opacity: 0.6; }
+  20% { opacity: 0.4; }
   100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* СТЕКЛЯННАЯ КАРТОЧКА */
+/* ---------- 5. СТЕКЛЯННАЯ ОБЪЕМНАЯ КАРТОЧКА ---------- */
 .page-root {
-  position: relative;
-  z-index: 10; /* Карточка всегда поверх фона */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  padding: 20px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 20; /* Поверх всего фона */
 }
 
-.welcome-card, .questions-card, .result-card {
-  background: rgba(255, 255, 255, 0.95); /* Почти белая, но чуть прозрачная */
-  backdrop-filter: blur(10px);
-  border-radius: 40px;
-  padding: 50px;
+/* Общий стиль для объемного стекла */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05); /* Очень прозрачный */
+  
+  /* Эффект МАТОВОГО СТЕКЛА */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Объемная белая рамка */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3rem;
+  
+  /* СЛОЖНЫЕ ТЕНИ ДЛЯ ОБЪЕМА И ЛЕГКОСТИ */
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),          /* Глубокая тень снизу */
+    0 10px 20px rgba(0, 0, 0, 0.2),          /* Мягкая тень */
+    inset 0 0 30px rgba(255, 255, 255, 0.05); /* Внутренний блик */
+    
+  padding: 60px;
+  max-width: 650px;
+  width: 100%;
+  color: white;
   text-align: center;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-  border: 1px solid white;
 }
 
-h1 { color: #004d71; font-size: 2.5rem; margin: 0 0 20px; }
-.lead { color: #333; font-size: 1.2rem; line-height: 1.5; }
+/* Тексты с тенью для объема */
+h1, .lead {
+  color: white !important;
+  text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+}
 
 .btn-primary {
   background: #ffaa44;
   color: white;
   border: none;
-  padding: 18px 40px;
+  padding: 16px 40px;
   border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 1.1rem;
+  box-shadow: 0 8px 20px rgba(255, 170, 68, 0.4);
+  transition: transform 0.2s;
 }
+.btn-primary:hover { transform: scale(1.03); }
 
 .btn-ghost {
   background: transparent;
-  color: #004d71;
-  border: 2px solid #004d71;
-  padding: 18px 40px;
+  color: white;
+  border: 2px solid white;
+  padding: 16px 40px;
   border-radius: 50px;
-  font-weight: bold;
 }
-
-.hidden { display: none !important; }

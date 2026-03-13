@@ -1,0 +1,148 @@
+/* ---------- 1. ОБЩИЙ ФОН НА ВЕСЬ ЭКРАН (Body) ---------- */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Без полос прокрутки */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Глубокий градиент океана */
+  background: radial-gradient(circle at center, #005a8a 0%, #001a2b 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- 2. СЛОИ ГЛУБИНЫ (Параллакс) ---------- */
+.scene-layers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Под карточкой */
+}
+
+/* Фон (звезды/свет) - самый дальний */
+.layer-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* Приглушенный */
+}
+
+/* Дно океана - с тенью для объема */
+.layer-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 25vh;
+  object-fit: cover;
+  z-index: 5;
+  /* Мягкая тень, приподнимающая дно */
+  filter: drop-shadow(0 -15px 30px rgba(0,0,0,0.4));
+}
+
+/* ---------- 3. ПЕРСОНАЖ (Слева по центру) ---------- */
+.main-pet {
+  position: fixed;
+  left: 8%;           /* Прижали к левому краю */
+  top: 40%;           /* По центру высоты (чуть выше) */
+  width: 180px;
+  height: auto;
+  z-index: 10;
+  
+  /* Анимация плавного парения */
+  animation: petFloat 6s ease-in-out infinite;
+  
+  /* Глубокая тень для ОБЪЕМА */
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-35px) rotate(3deg); }
+}
+
+/* ---------- 4. ПУЗЫРЬКИ ---------- */
+.bubble-stream {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  opacity: 0.2;
+  z-index: 8; /* За медузой и карточкой */
+}
+.stream-1 { left: 5%; animation: rise 10s infinite; }
+.stream-2 { left: 90%; animation: rise 15s infinite 3s; }
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* ---------- 5. СТЕКЛЯННАЯ ОБЪЕМНАЯ КАРТОЧКА ---------- */
+.page-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 20; /* Поверх всего фона */
+}
+
+/* Общий стиль для объемного стекла */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05); /* Очень прозрачный */
+  
+  /* Эффект МАТОВОГО СТЕКЛА */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Объемная белая рамка */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3rem;
+  
+  /* СЛОЖНЫЕ ТЕНИ ДЛЯ ОБЪЕМА И ЛЕГКОСТИ */
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),          /* Глубокая тень снизу */
+    0 10px 20px rgba(0, 0, 0, 0.2),          /* Мягкая тень */
+    inset 0 0 30px rgba(255, 255, 255, 0.05); /* Внутренний блик */
+    
+  padding: 60px;
+  max-width: 650px;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+/* Тексты с тенью для объема */
+h1, .lead {
+  color: white !important;
+  text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+}
+
+.btn-primary {
+  background: #ffaa44;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 170, 68, 0.4);
+  transition: transform 0.2s;
+}
+.btn-primary:hover { transform: scale(1.03); }
+
+.btn-ghost {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 16px 40px;
+  border-radius: 50px;
+}
