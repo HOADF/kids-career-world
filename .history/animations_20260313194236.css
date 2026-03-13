@@ -1,0 +1,109 @@
+/* 1. ЖИВОЙ ФОН НА ВЕСЬ ЭКРАН */
+.ocean-frame {
+  position: fixed; /* Фиксируем на весь экран */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Всегда под контентом */
+  overflow: hidden;
+  background: #004d71;
+}
+
+.layer-bg, .layer-floor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.layer-floor {
+  bottom: 0;
+  height: auto;
+  min-height: 20%;
+  z-index: 2;
+}
+
+/* МЕДУЗА (ПЛАВАЕТ ГДЕ-ТО В ОКЕАНЕ) */
+.jelly-svg {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  width: 200px;
+  z-index: 3;
+  animation: petFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+}
+
+@keyframes petFloat {
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50% { transform: translate(10px, -30px) rotate(3deg); }
+}
+
+/* ПУЗЫРЬКИ ПО ВСЕМУ ЭКРАНУ */
+.bubble-stream {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  opacity: 0.3;
+  z-index: 4;
+}
+.stream-1 { left: 5%; animation: rise 8s infinite; }
+.stream-2 { left: 85%; animation: rise 12s infinite 2s; }
+.stream-3 { left: 50%; animation: rise 10s infinite 5s; }
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* 2. ИНТЕРФЕЙС (СТЕКЛЯННАЯ КАРТОЧКА) */
+.page-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.welcome-card, .questions-card, .result-card {
+  background: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый */
+  backdrop-filter: blur(10px); /* Эффект матового стекла */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 50px;
+  border-radius: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+h1 { color: #004d71; font-size: 2.5rem; margin-bottom: 20px; }
+.lead { color: #333; font-size: 1.2rem; line-height: 1.6; }
+
+/* КНОПКИ */
+.btn-primary {
+  background: #ffaa44;
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 170, 68, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #004d71;
+  border: 2px solid #004d71;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.hidden { display: none !important; }

@@ -1,111 +1,109 @@
-/* Базовый сброс */
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f0f8ff; /* Светлый фон страницы */
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.page-root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* ГЛАВНАЯ КАРТОЧКА */
-.welcome-card, .questions-card, .result-card {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  min-height: 450px;
-  background: white;
-  border-radius: 30px;
-  overflow: hidden; /* Чтобы фон не вылетал за края */
-  display: flex;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-}
-
-/* ФОН ОКЕАНА ВНУТРИ КАРТОЧКИ */
+/* 1. ЖИВОЙ ФОН НА ВЕСЬ ЭКРАН */
 .ocean-frame {
-  position: absolute;
+  position: fixed; /* Фиксируем на весь экран */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Всегда под контентом */
+  overflow: hidden;
+  background: #004d71;
 }
 
-.layer-bg {
+.layer-bg, .layer-floor {
+  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .layer-floor {
-  position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  height: auto;
+  min-height: 20%;
   z-index: 2;
 }
 
-/* МЕДУЗА (ПЛАВАЕТ СЛЕВА) */
+/* МЕДУЗА (ПЛАВАЕТ ГДЕ-ТО В ОКЕАНЕ) */
 .jelly-svg {
   position: absolute;
-  left: 50px;
-  top: 100px;
-  width: 180px;
-  z-index: 10;
-  animation: petFloat 4s ease-in-out infinite;
+  left: 10%;
+  top: 30%;
+  width: 200px;
+  z-index: 3;
+  animation: petFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
 }
 
 @keyframes petFloat {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50% { transform: translate(10px, -30px) rotate(3deg); }
 }
 
-/* КОНТЕНТ (СПРАВА) */
-.welcome-inner, .questions-inner, .result-inner {
-  position: relative;
-  z-index: 20; /* Поверх фона */
-  width: 50%;
-  margin-left: auto; /* Прижимаем текст вправо */
-  padding: 60px;
+/* ПУЗЫРЬКИ ПО ВСЕМУ ЭКРАНУ */
+.bubble-stream {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  opacity: 0.3;
+  z-index: 4;
+}
+.stream-1 { left: 5%; animation: rise 8s infinite; }
+.stream-2 { left: 85%; animation: rise 12s infinite 2s; }
+.stream-3 { left: 50%; animation: rise 10s infinite 5s; }
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* 2. ИНТЕРФЕЙС (СТЕКЛЯННАЯ КАРТОЧКА) */
+.page-root {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  text-align: left;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
 }
 
-h1 { color: #004d71; font-size: 2.5rem; margin-bottom: 15px; }
-.lead { color: #333; font-size: 1.1rem; line-height: 1.6; }
+.welcome-card, .questions-card, .result-card {
+  background: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый */
+  backdrop-filter: blur(10px); /* Эффект матового стекла */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 50px;
+  border-radius: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+h1 { color: #004d71; font-size: 2.5rem; margin-bottom: 20px; }
+.lead { color: #333; font-size: 1.2rem; line-height: 1.6; }
 
 /* КНОПКИ */
-.controls { display: flex; gap: 15px; margin-top: 30px; }
-
 .btn-primary {
   background: #ffaa44;
   color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 18px 40px;
   border-radius: 50px;
   font-weight: bold;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(255, 170, 68, 0.3);
 }
 
 .btn-ghost {
-  background: rgba(255,255,255,0.8);
+  background: transparent;
   color: #004d71;
   border: 2px solid #004d71;
-  padding: 15px 30px;
+  padding: 18px 40px;
   border-radius: 50px;
-  cursor: pointer;
+  font-weight: bold;
 }
 
-.btn-primary:hover { transform: scale(1.05); }
 .hidden { display: none !important; }

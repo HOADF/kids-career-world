@@ -3,50 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kids Career World — знакомство</title>
+  <title>Kids Career World</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="animations.css">
   <script type="module" src="script.js"></script>
 </head>
 <body>
 
+  <div class="ocean-frame" id="global-ocean" aria-hidden="true">
+    <img src="backgrounds/ocean.svg" class="layer-bg" id="bg-img">
+    <img src="backgrounds/ocean_floor.svg" class="layer-floor" id="floor-img">
+    
+    <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
+    
+    <img src="fx/bubbles.svg" class="bubble-stream stream-1">
+    <img src="fx/bubbles.svg" class="bubble-stream stream-2">
+    <img src="fx/bubbles.svg" class="bubble-stream stream-3">
+  </div>
+
   <main class="page-root">
     
     <section id="welcome-card" class="welcome-card">
-      
-      <div class="ocean-frame" aria-hidden="true">
-        <img src="backgrounds/ocean.svg" class="layer-bg">
-        <img src="backgrounds/ocean_floor.svg" class="layer-floor">
-        <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
+      <h1>Привет-привет!</h1>
+      <p class="lead">
+        Я Медуза — твой добрый помощник 🪼<br>
+        Давай ответим на вопросы и выберем тебе питомца!
+      </p>
+      <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+        <button id="start-quiz" class="btn-primary">Давай дружить</button>
+        <button id="learn-more" class="btn-ghost">Узнать больше</button>
       </div>
-
-      <div class="welcome-inner">
-        <h1>Привет-привет!</h1>
-        <p class="lead">
-          Я Медуза — твой добрый помощник 🪼<br>
-          Ответь на вопросы, и мы узнаем, какой питомец тебе подходит!
-        </p>
-        <div class="controls">
-          <button id="start-quiz" class="btn-primary">Давай дружить</button>
-          <button id="learn-more" class="btn-ghost">Узнать больше</button>
-        </div>
-      </div>
-
     </section>
 
     <section id="questions-section" class="questions-card hidden">
-      <div class="ocean-frame">
-         <img src="backgrounds/ocean.svg" class="layer-bg" style="filter: blur(5px); opacity: 0.5;">
-      </div>
-      <div class="questions-inner" style="width: 100%; margin: 0; text-align: center;">
-        <div id="progress" class="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
-        <h2 id="question-title">Загружаю вопрос...</h2>
-        <div id="answers" class="answers" style="margin: 30px 0;"></div>
-        <button id="btn-back" class="btn-ghost small" disabled>◀ Назад</button>
-      </div>
+      <div id="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
+      <h2 id="question-title" style="margin: 20px 0;">Загружаю...</h2>
+      <div id="answers" style="display: grid; gap: 15px;"></div>
+      <button id="btn-back" class="btn-ghost" style="margin-top: 20px; padding: 10px 20px;">◀ Назад</button>
+    </section>
+
+    <section id="result-section" class="result-card hidden">
+      <h2 id="result-title">Твой итог</h2>
+      <div id="result-pet" style="width: 200px; margin: 20px auto;"></div>
+      <div id="result-games" style="margin-bottom: 30px;"></div>
+      <button id="restart" class="btn-ghost">Сначала</button>
+      <button id="continue" class="btn-primary">В комнату!</button>
     </section>
 
   </main>
-
 </body>
 </html>
