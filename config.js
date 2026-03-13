@@ -1,4 +1,5 @@
 // config.js — Хранилище данных и ассетов
+
 export const questions = [
     {
         text: 'Что тебе больше нравится делать?',
@@ -73,15 +74,87 @@ export const questions = [
 ];
 
 export const results = {
-    artist: { pet: '🐼 Пандочка-художник', games: 'Тебе подойдут игры с рисованием и творчеством!' },
-    builder: { pet: '🐯 Тигрёнок-строитель', games: 'Попробуй игры про строительство и создание домов!' },
-    creator: { pet: '🦊 Лисёнок-мультипликатор', games: 'Создавай мультфильмы и придумывай истории!' },
-    coder: { pet: '🦈 Акулёнок-гейммейкер', games: 'Создавай игровые миры и учись программировать!' },
-    chef: { pet: '🐧 Пингвинёнок-повар', games: 'Готовь вкусные блюда и открывай новые рецепты!' },
-    doctor: { pet: '🐰 Зайчонок-доктор', games: 'Лечи людей и зверят, будь добрым врачом!' },
-    police: { pet: '🐶 Щенок-полицейский', games: 'Следи за порядком и помогай друзьям!' },
-    rescuer: { pet: '🐻 Медвежонок-спасатель', games: 'Спасай, помогай и не бойся трудностей!' },
-    scientist: { pet: '🦉 Совёнок-учёный', games: 'Изучай мир и открывай тайны Вселенной!' }
+    artist: { 
+        pet: '🐼 Пандочка-художник', 
+        games: 'Тебе подойдут игры с рисованием и творчеством!',
+        world: {
+            bg: 'backgrounds/studio_wall.svg',
+            floor: 'backgrounds/studio_floor.svg',
+            fx: 'fx/paint_splatters.svg'
+        }
+    },
+    builder: { 
+        pet: '🐯 Тигрёнок-строитель', 
+        games: 'Попробуй игры про строительство и создание домов!',
+        world: {
+            bg: 'backgrounds/construction_sky.svg',
+            floor: 'backgrounds/construction_ground.svg',
+            fx: 'fx/dust_particles.svg'
+        }
+    },
+    creator: { 
+        pet: '🦊 Лисёнок-мультипликатор', 
+        games: 'Создавай мультфильмы и придумывай истории!',
+        world: {
+            bg: 'backgrounds/cartoon_hills.svg',
+            floor: 'backgrounds/cartoon_grass.svg',
+            fx: 'fx/stars_sparkle.svg'
+        }
+    },
+    coder: { 
+        pet: '🦈 Акулёнок-гейммейкер', 
+        games: 'Создавай игровые миры и учись программировать!',
+        world: {
+            bg: 'backgrounds/cyber_grid.svg',
+            floor: 'backgrounds/cyber_floor.svg',
+            fx: 'fx/code_rain.svg'
+        }
+    },
+    chef: { 
+        pet: '🐧 Пингвинёнок-повар', 
+        games: 'Готовь вкусные блюда и открывай новые рецепты!',
+        world: {
+            bg: 'backgrounds/kitchen_wall.svg',
+            floor: 'backgrounds/kitchen_table.svg',
+            fx: 'fx/steam_bubbles.svg'
+        }
+    },
+    doctor: { 
+        pet: '🐰 Зайчонок-доктор', 
+        games: 'Лечи людей и зверят, будь добрым врачом!',
+        world: {
+            bg: 'backgrounds/clinic_wall.svg',
+            floor: 'backgrounds/clinic_floor.svg',
+            fx: 'fx/clean_sparkle.svg'
+        }
+    },
+    police: { 
+        pet: '🐶 Щенок-полицейский', 
+        games: 'Следи за порядком и помогай друзьям!',
+        world: {
+            bg: 'backgrounds/city_street.svg',
+            floor: 'backgrounds/city_road.svg',
+            fx: 'fx/police_lights.svg'
+        }
+    },
+    rescuer: { 
+        pet: '🐻 Медвежонок-спасатель', 
+        games: 'Спасай, помогай и не бойся трудностей!',
+        world: {
+            bg: 'backgrounds/mountain_peaks.svg',
+            floor: 'backgrounds/mountain_snow.svg',
+            fx: 'fx/snowflakes.svg'
+        }
+    },
+    scientist: { 
+        pet: '🦉 Совёнок-учёный', 
+        games: 'Изучай мир и открывай тайны Вселенной!',
+        world: {
+            bg: 'backgrounds/space_deep.svg',
+            floor: 'backgrounds/moon_surface.svg',
+            fx: 'fx/meteors.svg'
+        }
+    }
 };
 
 export const petAssets = {
