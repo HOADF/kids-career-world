@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kids Career World — знакомство</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+
+  <main class="page-root">
+    
+    <section id="welcome-card" class="welcome-card">
+      <div class="ocean-frame" aria-hidden="true">
+        <img src="backgrounds/ocean.svg" class="layer-bg">
+        <img src="backgrounds/ocean_floor.svg" class="layer-floor">
+        <img src="pets/jellyfish.svg" class="jelly-svg" id="main-pet-image">
+        <img src="fx/bubbles.svg" class="bubble-stream stream-left">
+        <img src="fx/bubbles.svg" class="bubble-stream stream-right">
+      </div>
+
+      <div class="welcome-inner">
+        <h1 id="welcome-title">Привет-привет!</h1>
+        <p class="lead">
+          Я Медуза — твой добрый помощник 🪼<br>
+          Помоги мне ответить на вопросы, чтобы понять, какие игры тебе интереснее и какой питомец тебе подойдёт.
+        </p>
+        <div class="controls" style="display: flex; gap: 15px; margin-top: 20px;">
+          <button id="start-quiz" class="btn-primary">Давай дружить</button>
+          <button id="learn-more" class="btn-ghost">Узнать больше</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions-section" class="questions-card hidden">
+      <div class="ocean-frame" aria-hidden="true">
+        <img src="backgrounds/ocean.svg" class="layer-bg">
+        <img src="backgrounds/ocean_floor.svg" class="layer-floor">
+        <img src="pets/jellyfish.svg" class="jelly-svg" style="opacity: 0.5; left: -50px;"> </div>
+      
+      <div class="questions-inner">
+        <div id="progress" class="progress">Вопрос <span id="q-index">1</span> из <span id="q-total">5</span></div>
+        <h2 id="question-title">Загружаю вопрос...</h2>
+        <div id="answers" class="answers" style="display: grid; gap: 10px; margin: 20px 0;"></div>
+        <div class="nav-row" style="display: flex; justify-content: space-between;">
+          <button id="btn-back" class="btn-ghost small" disabled>◀ Назад</button>
+          <button id="btn-next" class="btn-primary small">Дальше ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result-section" class="result-card hidden">
+      <div class="ocean-frame" aria-hidden="true">
+        <img src="backgrounds/ocean.svg" class="layer-bg">
+        <img src="backgrounds/ocean_floor.svg" class="layer-floor">
+      </div>
+      <div class="result-inner">
+        <h2 id="result-title">Тебе подойдёт...</h2>
+        <div id="result-pet" class="result-pet" style="width: 150px; margin: 0 auto;"></div>
+        <div id="result-games" class="result-games" style="margin: 20px 0; font-weight: bold;"></div>
+        <div class="result-controls" style="display: flex; gap: 10px; justify-content: center;">
+          <button id="restart" class="btn-ghost">Сначала</button>
+          <button id="continue" class="btn-primary">В игры!</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
