@@ -166,12 +166,77 @@ export const games = {
 };
 
 export const petAssets = {
+    // Фоновые сценки конкретного питомца. Рисуются ПЕРВЫМ слоем внутри
+    // того же SVG, что и сам питомец (см. pet-factory.js) — поэтому фон
+    // "приклеен" к питомцу и появляется вместе с ним везде, где он
+    // показан (результат теста, мини-игра и т.д.), а не рисуется
+    // отдельно на каждой странице.
+    backgrounds: {
+        artist: `
+            <defs>
+                <linearGradient id="pandaSkyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#BFEAFB" />
+                    <stop offset="100%" stop-color="#EAF8FD" />
+                </linearGradient>
+                <linearGradient id="pandaGroundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#9ED98B" />
+                    <stop offset="100%" stop-color="#7EC26C" />
+                </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="200" height="200" rx="22" fill="url(#pandaSkyGrad)" />
+            <circle cx="158" cy="38" r="24" fill="#FFE59A" opacity="0.3" />
+            <circle cx="158" cy="38" r="16" fill="#FFE59A" />
+            <g>
+                <rect x="18" y="70" width="10" height="100" rx="5" fill="#BFE37A" />
+                <line x1="18" y1="95" x2="28" y2="95" stroke="#8FBF4E" stroke-width="2" />
+                <line x1="18" y1="120" x2="28" y2="120" stroke="#8FBF4E" stroke-width="2" />
+                <line x1="18" y1="145" x2="28" y2="145" stroke="#8FBF4E" stroke-width="2" />
+                <path d="M23 72 Q5 60 12 42 Q26 52 27 70 Z" fill="#7CB954" />
+                <path d="M23 80 Q40 68 38 50 Q24 58 20 78 Z" fill="#8FCB63" />
+            </g>
+            <g>
+                <rect x="172" y="60" width="10" height="110" rx="5" fill="#BFE37A" />
+                <line x1="172" y1="88" x2="182" y2="88" stroke="#8FBF4E" stroke-width="2" />
+                <line x1="172" y1="113" x2="182" y2="113" stroke="#8FBF4E" stroke-width="2" />
+                <line x1="172" y1="138" x2="182" y2="138" stroke="#8FBF4E" stroke-width="2" />
+                <path d="M177 62 Q195 50 188 32 Q174 42 173 60 Z" fill="#7CB954" />
+                <path d="M177 70 Q160 58 162 40 Q176 48 180 68 Z" fill="#8FCB63" />
+            </g>
+            <path d="M0 168 Q50 152 100 166 T200 162 L200 200 L0 200 Z" fill="url(#pandaGroundGrad)" />
+            <path d="M0 180 Q50 170 100 180 T200 176 L200 200 L0 200 Z" fill="#6AAE58" opacity="0.55" />
+        `
+    },
+
     marks: {
-        heart: `<path class="heart-mark" d="M100 120 C95 110 80 110 80 125 C80 140 100 155 100 155 C100 155 120 140 120 125 C120 110 105 110 100 120" fill="#FF4B2B" />`,
+        // Сердечко теперь на животе питомца (пониже), а не у рта —
+        // раньше накладывалось на мордочку и выглядело как "нос".
+        heart: `<path class="heart-mark" d="M100 158 C94 150 82 150 82 140 C82 130 92 128 100 136 C108 128 118 130 118 140 C118 150 106 150 100 158" fill="#FF4B2B" />`,
         star: `<path class="star-mark" d="M100 110 L105 125 L120 125 L108 135 L112 150 L100 140 L88 150 L92 135 L80 125 L95 125 Z" fill="#FFD700" />`
     },
     bodies: {
-        artist: `<circle cx="100" cy="100" r="80" fill="#FFD1DC"/><circle cx="70" cy="80" r="10" fill="#333"/><circle cx="130" cy="80" r="10" fill="#333"/><path d="M70 130 Q100 160 130 130" stroke="#333" stroke-width="5" fill="none"/>`,
+        // Сидящая панда: белое тело и голова, чёрные уши/лапы/пятна
+        // вокруг глаз — узнаваемая расцветка, а не абстрактный розовый
+        // шар, как было раньше.
+        artist: `
+            <ellipse cx="100" cy="150" rx="48" ry="34" fill="#FFFFFF" />
+            <ellipse cx="55" cy="158" rx="15" ry="20" fill="#2B2B2B" transform="rotate(-18 55 158)" />
+            <ellipse cx="145" cy="158" rx="15" ry="20" fill="#2B2B2B" transform="rotate(18 145 158)" />
+            <ellipse cx="76" cy="180" rx="17" ry="11" fill="#2B2B2B" />
+            <ellipse cx="124" cy="180" rx="17" ry="11" fill="#2B2B2B" />
+            <circle cx="100" cy="92" r="42" fill="#FFFFFF" />
+            <circle cx="66" cy="56" r="16" fill="#2B2B2B" />
+            <circle cx="134" cy="56" r="16" fill="#2B2B2B" />
+            <ellipse cx="80" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(-8 80 92)" />
+            <ellipse cx="120" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(8 120 92)" />
+            <circle cx="81" cy="94" r="4" fill="#FFFFFF" />
+            <circle cx="119" cy="94" r="4" fill="#FFFFFF" />
+            <circle cx="82" cy="95" r="2" fill="#2B2B2B" />
+            <circle cx="118" cy="95" r="2" fill="#2B2B2B" />
+            <circle cx="72" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
+            <circle cx="128" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
+            <ellipse cx="100" cy="110" rx="6" ry="4" fill="#2B2B2B" />
+            <path d="M90 118 Q100 126 110 118" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round" />
+        `,
         builder: `<rect x="40" y="40" width="120" height="120" rx="20" fill="#A2D2FF"/><circle cx="75" cy="85" r="12" fill="#333"/><circle cx="125" cy="85" r="12" fill="#333"/><path d="M80 130 H120" stroke="#333" stroke-width="8"/>`,
         creator: `<ellipse cx="100" cy="100" rx="90" ry="70" fill="#CDB4DB"/><circle cx="70" cy="90" r="10" fill="#333"/><circle cx="130" cy="90" r="10" fill="#333"/><path d="M80 135 Q100 115 120 135" stroke="#333" stroke-width="5" fill="none"/>`,
         coder: `<polygon points="100,20 180,160 20,160" fill="#BDE0FE"/><circle cx="85" cy="110" r="8" fill="#333"/><circle cx="115" cy="110" r="8" fill="#333"/>`,
