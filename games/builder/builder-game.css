@@ -146,7 +146,7 @@ body{
 
 /* Питомец */
 .pet{ position:absolute; bottom:18px; left:18px; text-align:center; }
-.pet img{ width:74px; height:auto; display:block; }
+.pet #pet-visual{ width:74px; height:74px; display:block; margin:0 auto; }
 .pet-name{ font-size:14px; color:#333; margin-top:6px; }
 
 /* Статус и контролы */

@@ -36,8 +36,8 @@
       </div>
 
       <div class="pet" aria-hidden="true">
-        <!-- путь к питомцу из корня: ../../pets/tiger.svg -->
-        <img src="../../pets/tiger.svg" alt="Тигрёнок">
+        <!-- Питомец собирается движком слоёв (pet-factory.js) -->
+        <div id="pet-visual"></div>
         <div class="pet-name">Тигрёнок</div>
       </div>
     </div>
@@ -61,6 +61,6 @@
   </div>
 
   <!-- JS в той же папке -->
-  <script src="builder-game.js"></script>
+  <script type="module" src="builder-game.js"></script>
 </body>
 </html>

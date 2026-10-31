@@ -1,9 +1,18 @@
 // builder-game.js
+import { assemblePet } from '../../pet-factory.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const parts = document.querySelectorAll('#part img');   // панель деталей
   const zones = document.querySelectorAll('.dropzone');   // приёмные зоны
   const status = document.getElementById('status');
   const restart = document.getElementById('restart');
+  const petVisual = document.getElementById('pet-visual');
+
+  // Питомец собирается движком слоёв, а не берётся из файла картинки —
+  // так он есть всегда, даже если SVG-арт зверька ещё не нарисован.
+  if (petVisual) {
+    petVisual.innerHTML = assemblePet('builder');
+  }
 
   let placed = 0;
   let draggedPart = null; // для тача
