@@ -119,6 +119,10 @@ h1 {
   padding: 40px 45px;
   max-height: 88vh;
   overflow-y: auto;
+  /* Без box-sizing:border-box отступы (padding) добавлялись бы ПОВЕРХ
+     max-height, и карточка всё равно вылезала бы за экран ровно на
+     высоту padding. */
+  box-sizing: border-box;
 }
 
 #answers {
