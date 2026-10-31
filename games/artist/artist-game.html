@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Уровень 1 — Пандочка-художник</title>
-    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="artist-style.css">
 </head>
 <body>
 
 <div class="main-card">
     <div class="nav-buttons">
-        <button class="btn-nav">🏠 Домой</button>
-        <button class="btn-nav">🐹 В домик питомца</button>
+        <a href="../../index.html" class="nav-btn">🏠 Домой</a>
+        <a href="../../pets-select.html" class="nav-btn">🐹 В домик питомца</a>
     </div>
 
     <h1>🎨 Раскрась мир</h1>
@@ -21,7 +20,7 @@
         <div class="pet-side">
             <div class="pet-container">
                 <div id="speech-bubble" class="bubble hidden"></div> 
-                <img src="../../pets/panda.svg" alt="Panda" class="pet-img">
+                <div id="pet-visual" class="pet-img"></div>
             </div>
             <p class="pet-name">Пандочка</p>
         </div>
@@ -57,12 +56,14 @@
         <div class="color-item" id="red" data-color="red" data-hex="#FF595E" style="background-color: #FF595E;"></div>
     </div>
 
+    <p id="finish-btn" class="finish-message hidden">🎉 Ты раскрасил весь мир! Ты — настоящий художник!</p>
+
     <div class="controls-row">
       <button id="restart" class="nav-btn small">🔁 Сыграть снова</button>
       <a href="../../index.html" class="nav-btn small">🏠 На главную</a>
     </div>
 </div>
 
-<script src="artist-game.js"></script>
+<script type="module" src="artist-game.js"></script>
 </body>
 </html>
