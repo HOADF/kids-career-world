@@ -50,6 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             qAnswers.appendChild(btn);
         });
+
+        // Если вариантов нечётное число — последний не висит в одиночестве
+        // в левой колонке, а центрируется по ширине всей сетки.
+        if (qAnswers.children.length % 2 !== 0) {
+            qAnswers.lastElementChild.classList.add('answer-btn--centered');
+        }
     }
 
     // 3. Показ результата
