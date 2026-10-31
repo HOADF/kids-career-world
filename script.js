@@ -37,9 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         q.answers.forEach(ans => {
             const btn = document.createElement('button');
-            btn.className = 'btn-main'; // Наш новый стиль
-            btn.style.width = "100%";
-            btn.style.marginBottom = "10px";
+            btn.className = 'answer-btn'; // Компактная кнопка в сетке ответов
             btn.textContent = ans.text;
 
             btn.onclick = () => {
