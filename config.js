@@ -157,6 +157,14 @@ export const results = {
     }
 };
 
+// Карта игр: какая мини-игра соответствует какой профессии.
+// Если для профессии пока нет игры — ключа в этом объекте нет,
+// и экран результата покажет вежливое сообщение вместо битой ссылки.
+export const games = {
+    artist: 'games/artist/artist-game.html',
+    builder: 'games/builder/builder-game.html'
+};
+
 export const petAssets = {
     marks: {
         heart: `<path class="heart-mark" d="M100 120 C95 110 80 110 80 125 C80 140 100 155 100 155 C100 155 120 140 120 125 C120 110 105 110 100 120" fill="#FF4B2B" />`,
