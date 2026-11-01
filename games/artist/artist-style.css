@@ -1,12 +1,26 @@
+/* Сбрасываем дефолтные отступы браузера (margin у body и у h1) —
+   именно из-за них вверху страницы оставался лишний воздух и скролл,
+   даже когда кнопки навигации уже не в потоке карточки. */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .main-card {
     max-width: 950px;
-    margin: 20px auto;
-    padding: 30px;
+    margin: 14px auto;
+    padding: 20px 30px 26px;
     background: #ffffff;
     border-radius: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
+}
+
+.main-card h1 {
+    margin: 4px 0 18px;
+    font-size: 1.8rem;
 }
 
 .game-board {
@@ -63,31 +77,55 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     border: none;
     cursor: pointer;
     transition: transform 0.2s;
     white-space: nowrap;
 }
 
+.nav-icon { font-size: 1.1em; line-height: 1; }
+
 /* Хватает места слева от карточки (950px + поля) — переносим кнопки
-   туда вертикальной колонкой, они больше не часть потока карточки. */
+   туда круглыми значками по центру высоты экрана, слева от карточки.
+   Они фиксированы, поэтому не часть потока карточки и не влияют на
+   её высоту. */
 @media (min-width: 1240px) {
     .nav-buttons {
         position: fixed;
-        top: 28px;
-        left: 24px;
+        top: 50%;
+        left: 30px;
+        transform: translateY(-50%);
         flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
+        align-items: center;
+        gap: 20px;
         margin-bottom: 0;
         z-index: 50;
     }
 
     .nav-buttons .nav-btn {
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        white-space: normal;
         text-align: center;
+    }
+
+    .nav-buttons .nav-icon {
+        font-size: 1.6rem;
+    }
+
+    .nav-buttons .nav-label {
+        font-size: 0.55rem;
+        line-height: 1.1;
+        padding: 0 4px;
     }
 }
 
