@@ -53,6 +53,42 @@ html, body {
   50% { transform: translateY(-30px) rotate(2deg); }
 }
 
+/* ОБЩАЯ СИСТЕМА АНИМАЦИИ ПИТОМЦЕВ ("дышит, моргает")
+   Работает для любого питомца, который вставлен прямо в DOM страницы
+   (как панда через pet-factory.js/innerHTML) — достаточно повесить
+   эти классы на нужные элементы, без отдельного кода под каждого
+   зверька:
+     .character-pet — на внешний контейнер персонажа на странице:
+       лёгкое покачивание/дыхание, тело и аксессуары двигаются
+       одним куском.
+     .pet-eyes — на группу с глазами ВНУТРИ SVG питомца (в
+       config.js/pet-factory.js): периодическое моргание.
+   Для питомца, который подключается через <img src="..."> отдельным
+   файлом (а не вставляется в DOM), внешний CSS до него не достаёт —
+   там та же анимация petBlink продублирована своим <style> прямо
+   в SVG-файле (см. pets/jellyfish.svg). */
+.character-pet {
+  animation: petBreathe 4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes petBreathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.015); }
+}
+
+.pet-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: petBlink 6s ease-in-out infinite;
+}
+
+@keyframes petBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.12); }
+  96% { transform: scaleY(1); }
+}
+
 /* ПУЗЫРЬКИ (Слои для объема) */
 .bubbles {
   position: fixed;
@@ -181,7 +217,8 @@ p {
   text-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* КНОПКИ */
+/* КНОПКИ — используются и как <button>, и как <a> (например "На
+   главную"), поэтому сбрасываем подчёркивание ссылки сразу здесь. */
 .btn-main {
   background: #ffaa44;
   color: white;
@@ -193,6 +230,8 @@ p {
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(255, 170, 68, 0.4);
   margin: 10px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-secondary {
@@ -204,6 +243,8 @@ p {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .hidden { display: none !important; }

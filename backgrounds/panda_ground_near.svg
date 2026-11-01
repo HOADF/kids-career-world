@@ -1,0 +1,59 @@
+<svg width="800" height="280" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+    <!--
+      Слой 3 (ближний) сцены панды: земля с травой плюс крупный
+      бамбук на переднем плане по краям экрана — самый насыщенный по
+      цвету слой, он "ближе всех" к зрителю. Прижат к низу экрана
+      (см. .habitat-layer-ground в artist-style.css), поэтому высота
+      меньше ширины — это полоса вдоль низа, а не вся сцена.
+    -->
+    <defs>
+        <linearGradient id="pandaGroundNear" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9ED98B" />
+            <stop offset="100%" stop-color="#7EC26C" />
+        </linearGradient>
+    </defs>
+
+    <!-- Земля -->
+    <path d="M0 90 Q200 60 400 86 T800 80 L800 280 L0 280 Z" fill="url(#pandaGroundNear)" />
+    <path d="M0 112 Q200 92 400 110 T800 104 L800 280 L0 280 Z" fill="#6AAE58" opacity="0.5" />
+
+    <!-- Травинки вдоль края -->
+    <g stroke="#5FA648" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9">
+        <path d="M60 90 Q65 66 58 48" />
+        <path d="M230 86 Q235 62 242 46" />
+        <path d="M330 92 Q335 68 328 50" />
+        <path d="M470 84 Q475 60 482 44" />
+        <path d="M560 90 Q565 66 558 48" />
+        <path d="M690 86 Q695 62 702 46" />
+    </g>
+
+    <!-- Крупный бамбук слева (передний план) -->
+    <g>
+        <rect x="26" y="20" width="18" height="260" rx="9" fill="#BFE37A" />
+        <line x1="26" y1="78" x2="44" y2="78" stroke="#8FBF4E" stroke-width="3.5" />
+        <line x1="26" y1="136" x2="44" y2="136" stroke="#8FBF4E" stroke-width="3.5" />
+        <line x1="26" y1="194" x2="44" y2="194" stroke="#8FBF4E" stroke-width="3.5" />
+        <path d="M37 24 Q7 2 18 -30 Q42 -14 44 20 Z" fill="#7CB954" />
+        <path d="M37 40 Q68 20 62 -12 Q39 2 33 36 Z" fill="#8FCB63" />
+
+        <rect x="66" y="64" width="14" height="216" rx="7" fill="#AEDB73" />
+        <line x1="66" y1="112" x2="80" y2="112" stroke="#86B84A" stroke-width="3" />
+        <line x1="66" y1="162" x2="80" y2="162" stroke="#86B84A" stroke-width="3" />
+        <path d="M74 68 Q48 50 56 22 Q78 34 79 64 Z" fill="#7CB954" />
+    </g>
+
+    <!-- Крупный бамбук справа (передний план, зеркально) -->
+    <g>
+        <rect x="756" y="4" width="18" height="276" rx="9" fill="#BFE37A" />
+        <line x1="756" y1="64" x2="774" y2="64" stroke="#8FBF4E" stroke-width="3.5" />
+        <line x1="756" y1="124" x2="774" y2="124" stroke="#8FBF4E" stroke-width="3.5" />
+        <line x1="756" y1="184" x2="774" y2="184" stroke="#8FBF4E" stroke-width="3.5" />
+        <path d="M763 8 Q793 -14 782 -46 Q758 -30 756 4 Z" fill="#7CB954" />
+        <path d="M763 24 Q732 4 738 -28 Q761 -14 767 20 Z" fill="#8FCB63" />
+
+        <rect x="720" y="50" width="14" height="230" rx="7" fill="#AEDB73" />
+        <line x1="720" y1="98" x2="734" y2="98" stroke="#86B84A" stroke-width="3" />
+        <line x1="720" y1="148" x2="734" y2="148" stroke="#86B84A" stroke-width="3" />
+        <path d="M726 54 Q752 36 744 8 Q722 20 721 50 Z" fill="#7CB954" />
+    </g>
+</svg>

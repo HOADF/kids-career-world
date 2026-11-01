@@ -190,6 +190,15 @@ export const petAssets = {
         // Сидящая панда: белое тело и голова, чёрные уши/лапы/пятна
         // вокруг глаз — узнаваемая расцветка, а не абстрактный розовый
         // шар, как было раньше.
+        //
+        // Глаза обёрнуты в <g class="pet-eyes"> — это часть общей,
+        // переиспользуемой системы анимации питомцев (см. animations.css,
+        // класс .pet-eyes и анимация petBlink): моргание применяется к
+        // любому питомцу, у которого есть этот класс на глазах, без
+        // отдельного кода под каждого зверька. "Дыхание" (лёгкое покачивание
+        // целиком) вешается не здесь, а на внешний контейнер персонажа
+        // на странице (класс .character-pet) — так тело и аксессуары
+        // (сердечко и т.п.) двигаются вместе, одним куском.
         artist: `
             <ellipse cx="100" cy="150" rx="48" ry="34" fill="#FFFFFF" />
             <ellipse cx="55" cy="158" rx="15" ry="20" fill="#2B2B2B" transform="rotate(-18 55 158)" />
@@ -199,12 +208,14 @@ export const petAssets = {
             <circle cx="100" cy="92" r="42" fill="#FFFFFF" />
             <circle cx="66" cy="56" r="16" fill="#2B2B2B" />
             <circle cx="134" cy="56" r="16" fill="#2B2B2B" />
-            <ellipse cx="80" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(-8 80 92)" />
-            <ellipse cx="120" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(8 120 92)" />
-            <circle cx="81" cy="94" r="4" fill="#FFFFFF" />
-            <circle cx="119" cy="94" r="4" fill="#FFFFFF" />
-            <circle cx="82" cy="95" r="2" fill="#2B2B2B" />
-            <circle cx="118" cy="95" r="2" fill="#2B2B2B" />
+            <g class="pet-eyes">
+                <ellipse cx="80" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(-8 80 92)" />
+                <ellipse cx="120" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(8 120 92)" />
+                <circle cx="81" cy="94" r="4" fill="#FFFFFF" />
+                <circle cx="119" cy="94" r="4" fill="#FFFFFF" />
+                <circle cx="82" cy="95" r="2" fill="#2B2B2B" />
+                <circle cx="118" cy="95" r="2" fill="#2B2B2B" />
+            </g>
             <circle cx="72" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
             <circle cx="128" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
             <ellipse cx="100" cy="110" rx="6" ry="4" fill="#2B2B2B" />

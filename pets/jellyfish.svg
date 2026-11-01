@@ -1,4 +1,27 @@
 <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+    <!--
+      Этот файл подключается через <img src="..."> на странице (не
+      innerHTML, как собранные pet-factory.js питомцы) — а стили
+      страницы (animations.css) внутрь картинки <img> не достают,
+      браузер её рендерит как отдельный, изолированный документ.
+      Поэтому анимация моргания здесь продублирована своим <style>
+      прямо в самом SVG — тот же класс .pet-eyes и та же анимация
+      petBlink, что и в animations.css для питомцев, собранных
+      pet-factory.js (там, наоборот, свой <style> не нужен — они
+      вставляются прямо в DOM страницы и общий CSS их видит).
+    -->
+    <style>
+        .pet-eyes {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: petBlink 6s ease-in-out infinite;
+        }
+        @keyframes petBlink {
+            0%, 92%, 100% { transform: scaleY(1); }
+            94% { transform: scaleY(0.12); }
+            96% { transform: scaleY(1); }
+        }
+    </style>
     <defs>
         <linearGradient id="j1" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stop-color="#CFEFF6"/>
@@ -17,7 +40,9 @@
     <path d="M70 96 C68 118, 76 126, 72 148" stroke="#FFECB8" stroke-width="4" fill="none" stroke-linecap="round"/>
     <path d="M90 96 C90 118, 98 126, 94 148" stroke="#FFD9B3" stroke-width="4" fill="none" stroke-linecap="round"/>
     <path d="M110 96 C112 120, 122 130, 118 148" stroke="#FFECB8" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <circle cx="68" cy="74" r="4" fill="#043737"/>
-    <circle cx="92" cy="74" r="4" fill="#043737"/>
+    <g class="pet-eyes">
+        <circle cx="68" cy="74" r="4" fill="#043737"/>
+        <circle cx="92" cy="74" r="4" fill="#043737"/>
+    </g>
     <path d="M68 86 Q80 94 92 86" stroke="#E07A3C" stroke-width="2.2" fill="none" stroke-linecap="round"/>
 </svg>
