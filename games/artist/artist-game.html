@@ -18,13 +18,20 @@
     <img src="../../backgrounds/panda_ground_near.svg" class="habitat-layer-ground" alt="">
 </div>
 
-<!-- Пенёк и сама панда — отдельные слои поверх сцены, панда живая:
-     дышит (класс .character-pet из animations.css) и моргает
-     (класс .pet-eyes у глаз внутри её SVG, см. config.js). -->
-<img src="../../pets/perch_log.svg" class="character-perch" alt="">
-<div id="pet-visual" class="character-pet"></div>
-<div id="speech-bubble" class="bubble hidden"></div>
-<p class="pet-name-tag">Пандочка</p>
+<!-- Пенёк, сама панда, облачко и подпись — вместе в одной "сцене
+     питомца" (.pet-stage), которая одна закреплена на экране, а
+     всё внутри нее расположено друг относительно друга в одних и
+     тех же пикселях. Раньше у пенька и панды были РАЗНЫЕ независимые
+     fixed-координаты (свои % от экрана) — на разных экранах они
+     расходились, и панда садилась мимо пенька. Теперь это один
+     блок, выравнивание панды относительно пенька посчитано один раз
+     и не "уедет" при изменении размера экрана. -->
+<div class="pet-stage">
+    <img src="../../pets/perch_log.svg" class="character-perch" alt="">
+    <div id="pet-visual" class="character-pet"></div>
+    <div id="speech-bubble" class="bubble hidden"></div>
+    <p class="pet-name-tag">Пандочка</p>
+</div>
 
 <div class="nav-buttons">
     <a href="../../index.html" class="nav-btn" title="Домой">

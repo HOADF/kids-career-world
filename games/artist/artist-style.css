@@ -45,13 +45,28 @@ html, body {
     filter: drop-shadow(0 -8px 16px rgba(0, 0, 0, 0.12));
 }
 
-/* ===== Пенёк и сама панда — отдельные слои поверх сцены ===== */
-.character-perch {
+/* ===== Сцена питомца: пенёк, панда, облачко, подпись =====
+   Один position:fixed контейнер на экране — дальше всё внутри него
+   обычным position:absolute в ОДНИХ пикселях, поэтому пенёк и панда
+   больше не могут разъехаться на разных экранах, как раньше (были
+   две независимые fixed-координаты с разными % — отсюда и "криво").
+   z-index выше, чем у .nav-buttons (50) — поэтому ничто (в т.ч.
+   кнопки навигации) больше не перекрывает облачко с репликами. */
+.pet-stage {
     position: fixed;
     left: 4%;
     bottom: 7%;
+    width: 190px;
+    height: 340px;
+    z-index: 60;
+}
+
+.character-perch {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
     width: 150px;
-    z-index: 8;
+    transform: translateX(-50%);
     filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.18));
 }
 
@@ -61,26 +76,26 @@ html, body {
    не трогая саму анимацию в animations.css: она ещё пригодится для
    персонажей, которым реально подходит такое покачивание (плавающие).
    Моргание (.pet-eyes) не трогаем — оно по кадру и не выглядит как
-   полёт. Идею "панда сидит на дереве и ползает по стволу" вместо
-   дыхания стоит обдумать отдельным разом — это уже не покачивание
-   контейнера, а другая механика (смена положения на стволе). */
+   полёт. Идею "панда сидит на дереве боком и ползает по стволу"
+   вместо дыхания — отдельный разговор, см. сообщение в чате. */
 #pet-visual.character-pet {
-    position: fixed;
-    left: 4%;
-    bottom: 10.5%;
+    position: absolute;
+    left: 50%;
+    bottom: 62px; /* посчитано так, чтобы лапы панды пришлись ровно
+                     на спил пенька — см. комментарий выше про сцену */
     width: 190px;
     height: 190px;
-    z-index: 9;
+    transform: translateX(-50%);
     filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.2));
     animation: none;
 }
 
 .pet-name-tag {
-    position: fixed;
-    left: 4%;
-    bottom: 3%;
+    position: absolute;
+    left: 50%;
+    bottom: -28px;
     width: 190px;
-    z-index: 9;
+    transform: translateX(-50%);
     margin: 0;
     text-align: center;
     font-weight: 700;
@@ -91,15 +106,13 @@ html, body {
     padding: 4px 0;
 }
 
-/* Облачко с репликами панды — раньше было внутри убранного
-   .pet-container и позиционировалось относительно него, теперь
-   закреплено над головой персонажа через fixed. */
+/* Облачко с репликами панды — над её головой. */
 #speech-bubble.bubble {
-    position: fixed;
-    left: 4%;
-    bottom: 45%;
+    position: absolute;
+    left: 50%;
+    bottom: 256px;
     width: 190px;
-    transform: none;
+    transform: translateX(-50%);
     background: white;
     border: 2px solid #4A90E2;
     padding: 12px 15px;
@@ -109,7 +122,6 @@ html, body {
     color: #333;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    z-index: 15;
 }
 
 #speech-bubble.bubble::after {
