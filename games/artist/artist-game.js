@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const bubble = document.getElementById('speech-bubble');
     const colorItems = document.querySelectorAll('.color-item');
     const areas = document.querySelectorAll('.paint-area');
-    const finishBtn = document.getElementById('finish-btn');
     const restartBtn = document.getElementById('restart');
     const petVisual = document.getElementById('pet-visual');
+
+    const GREETING = 'Выбери краску внизу и раскрась картинку! 🎨';
 
     // Питомец собирается движком слоёв (pet-factory.js), а не берётся
     // из файла картинки — так он есть всегда, даже если SVG-арт
@@ -24,10 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalFill = new Map();
     areas.forEach(area => originalFill.set(area, area.style.fill || ''));
 
+    // Облачко теперь постоянно на экране — панда "говорит" всё время,
+    // реплика просто меняется на новую, а не прячется через 3 секунды
+    // (раньше ребёнок мог не успеть дочитать).
     function pandaSay(text) {
         bubble.innerText = text;
-        bubble.classList.remove('hidden');
-        setTimeout(() => bubble.classList.add('hidden'), 3000);
     }
 
     colorItems.forEach(item => {
@@ -75,8 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkWin() {
         const remaining = document.querySelectorAll('.color-item:not(.used)');
         if (remaining.length === 0) {
-            finishBtn?.classList.remove('hidden');
-            pandaSay("Ура! Мы нарисовали шедевр! 🐼✨");
+            // Раньше результат ("Ты раскрасил весь мир!") дублировался
+            // отдельной надписью под игрой — убрали её совсем: теперь
+            // об этом тоже говорит панда, одним и тем же облачком.
+            pandaSay("Ура! Мы нарисовали шедевр! Ты — настоящий художник! 🐼✨");
         }
     }
 
@@ -93,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedColor = null;
         selectedHex = null;
         selectedId = null;
-        finishBtn?.classList.add('hidden');
+        pandaSay(GREETING);
     }
 
     restartBtn?.addEventListener('click', resetGame);

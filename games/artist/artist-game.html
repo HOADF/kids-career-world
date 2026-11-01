@@ -29,7 +29,11 @@
 <div class="pet-stage">
     <img src="../../pets/perch_log.svg" class="character-perch" alt="">
     <div id="pet-visual" class="character-pet"></div>
-    <div id="speech-bubble" class="bubble hidden"></div>
+    <!-- Облачко теперь постоянно на экране (не прячется через 3
+         секунды) — так ребёнок успевает дочитать, а панда говорит
+         ВСЁ, что происходит в игре (см. artist-game.js), поэтому
+         отдельной надписи с результатом под игрой больше нет. -->
+    <div id="speech-bubble" class="bubble">Выбери краску внизу и раскрась картинку! 🎨</div>
     <p class="pet-name-tag">Пандочка</p>
 </div>
 
@@ -37,8 +41,12 @@
     <a href="../../index.html" class="nav-btn" title="Домой">
         <span class="nav-icon">🏠</span><span class="nav-label">Домой</span>
     </a>
+    <!-- Мордочка на кнопке — мордочка ТЕКУЩЕГО питомца этой игры
+         (здесь панда), не произвольная. В других играх на этом месте
+         должна быть мордочка их питомца (тигрёнок, лисёнок и т.д.) —
+         когда будем делать те страницы. -->
     <a href="../../pets-select.html" class="nav-btn" title="В домик питомца">
-        <span class="nav-icon">🐹</span><span class="nav-label">В домик питомца</span>
+        <span class="nav-icon">🐼</span><span class="nav-label">В домик питомца</span>
     </a>
 </div>
 
@@ -80,8 +88,6 @@
                 </div>
             </div>
         </div>
-
-        <p id="finish-btn" class="finish-message hidden">🎉 Ты раскрасил весь мир! Ты — настоящий художник!</p>
 
         <div class="controls-row">
             <button id="restart" class="btn-secondary small">🔁 Сыграть снова</button>
