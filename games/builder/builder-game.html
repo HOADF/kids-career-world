@@ -16,12 +16,6 @@
 
   <div class="game-card">
 
-    <!-- Навигация — пути к корню: ../../ -->
-    <div class="navigation" aria-label="Навигация">
-      <a href="../../index.html" class="nav-btn">🏠 Домой</a>
-      <a href="../../pets-select.html" class="nav-btn">🐯 В домик питомца</a>
-    </div>
-
     <h1 class="game-title">🧱 Построй домик</h1>
     <p class="subtitle">Перетащи детали на нужные места</p>
 
@@ -53,9 +47,13 @@
 
     <p id="status" class="hidden">🎉 Отлично! Дом готов!</p>
 
+    <!-- Все кнопки игры (действие + навигация, пути к корню: ../../)
+         собраны в один ряд внизу карточки, без дублирующей кнопки
+         "На главную" — она вела туда же, куда и "Домой". -->
     <div class="controls-row">
       <button id="restart" class="nav-btn small">🔁 Сыграть снова</button>
-      <a href="../../index.html" class="nav-btn small">🏠 На главную</a>
+      <a href="../../pets-select.html" class="nav-btn small">🐯 Питомец</a>
+      <a href="../../index.html" class="nav-btn small">🏠 Домой</a>
     </div>
 
   </div>

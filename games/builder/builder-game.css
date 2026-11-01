@@ -33,8 +33,7 @@ body{
   text-align:center;
 }
 
-/* Навигация */
-.navigation{ display:flex; gap:12px; justify-content:center; margin-bottom:12px; }
+/* Кнопки действия/навигации — единый ряд внизу карточки (.controls-row) */
 .nav-btn{
   background:var(--accent);
   color:#fff;
@@ -151,7 +150,7 @@ body{
 
 /* Статус и контролы */
 #status{ color:var(--good); font-weight:700; margin-top:8px; }
-.controls-row{ display:flex; justify-content:center; gap:12px; margin-top:10px; }
+.controls-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:10px; }
 
 /* Адаптив */
 @media (max-width:720px){
@@ -159,7 +158,7 @@ body{
   #house-template{ width:200px; height:200px; top:30px; }
 }
 @media (max-width:420px){
-  .navigation{ gap:8px; flex-wrap:wrap; }
+  .controls-row{ gap:8px; }
   #playground{ height:260px; padding:14px; }
   #part img{ width:64px; height:64px; }
 }

@@ -37,25 +37,6 @@
     <p class="pet-name-tag">Пандочка</p>
 </div>
 
-<!-- У каждой кнопки два варианта подписи: полный (.nav-label) — для
-     верхнего ряда, где текста помещается много, и короткий
-     (.nav-label-short) — для овальных кнопок столбиком на широком
-     экране, там слишком длинный текст было не прочитать. CSS сама
-     показывает нужный вариант под текущую раскладку (см.
-     artist-style.css). -->
-<div class="nav-buttons">
-    <a href="../../index.html" class="nav-btn" title="Домой">
-        <span class="nav-icon">🏠</span>
-        <span class="nav-label">Домой</span>
-        <span class="nav-label-short">Домой</span>
-    </a>
-    <a href="../../pets-select.html" class="nav-btn" title="В домик питомца">
-        <span class="nav-icon">🐾</span>
-        <span class="nav-label">В домик питомца</span>
-        <span class="nav-label-short">Питомец</span>
-    </a>
-</div>
-
 <div class="ui-layer">
     <section class="glass-card game-card">
         <h1>🎨 Раскрась мир</h1>
@@ -95,9 +76,14 @@
             </div>
         </div>
 
+        <!-- Все кнопки игры собраны в один ряд внизу карточки: действие
+             игры (рестарт) и навигация (питомец/домой) вместе, без
+             дублирующей кнопки "На главную" — она вела туда же, куда
+             и "Домой". -->
         <div class="controls-row">
-            <button id="restart" class="btn-secondary small">🔁 Сыграть снова</button>
-            <a href="../../index.html" class="btn-main small">🏠 На главную</a>
+            <button id="restart" class="nav-btn small">🔁 Сыграть снова</button>
+            <a href="../../pets-select.html" class="nav-btn small">🐾 Питомец</a>
+            <a href="../../index.html" class="nav-btn small">🏠 Домой</a>
         </div>
     </section>
 </div>

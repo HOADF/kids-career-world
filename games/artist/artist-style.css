@@ -49,9 +49,7 @@ html, body {
    Один position:fixed контейнер на экране — дальше всё внутри него
    обычным position:absolute в ОДНИХ пикселях, поэтому пенёк и панда
    больше не могут разъехаться на разных экранах, как раньше (были
-   две независимые fixed-координаты с разными % — отсюда и "криво").
-   z-index выше, чем у .nav-buttons (50) — поэтому ничто (в т.ч.
-   кнопки навигации) больше не перекрывает облачко с репликами. */
+   две независимые fixed-координаты с разными % — отсюда и "криво"). */
 .pet-stage {
     position: fixed;
     left: 4%;
@@ -137,19 +135,9 @@ html, body {
     border-top-color: #4A90E2;
 }
 
-/* ===== Навигация — круглые значки слева по центру (на широких
-   экранах), компактный ряд сверху на более узких ===== */
-.nav-buttons {
-    position: fixed;
-    top: 14px;
-    left: 0;
-    right: 0;
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    z-index: 50;
-}
-
+/* ===== Кнопки действия/навигации — единый ряд внизу карточки игры
+   (см. .controls-row ниже): и рестарт игры, и переходы на другие
+   страницы оформлены одинаково, одной и той же кнопкой .nav-btn. ===== */
 .nav-btn {
     background: #4fc3f7;
     color: #fff;
@@ -168,57 +156,9 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.nav-icon { font-size: 1.1em; line-height: 1; }
-
-/* Короткая подпись для овальных кнопок (широкий экран) — по
-   умолчанию (верхний ряд, узкий/средний экран) её не видно, там
-   показывается обычная .nav-label, текста вполне хватает места. */
-.nav-label-short { display: none; }
-
-@media (min-width: 1240px) {
-    /* Раньше кнопки стояли по центру высоты экрана — когда облачко
-       с репликами панды стало постоянным (а не прячется через
-       3 секунды), на невысоких экранах оно упиралось в кнопки снизу.
-       Сдвинул кнопки повыше, ближе к верхнему краю — так между ними
-       и облачком всегда есть запас, независимо от высоты окна. */
-    .nav-buttons {
-        top: 60px;
-        left: 30px;
-        right: auto;
-        transform: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-    }
-
-    /* Раньше — круглая кнопка 72×72 с текстом 0.55rem (едва
-       читаемым, да ещё в два слова). Теперь — овал/скруглённый
-       прямоугольник: ширина не фиксирована, подстраивается под
-       короткую подпись, а шрифт заметно крупнее. */
-    .nav-buttons .nav-btn {
-        width: auto;
-        min-width: 86px;
-        height: auto;
-        border-radius: 22px;
-        padding: 12px 18px;
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        white-space: nowrap;
-        text-align: left;
-    }
-
-    .nav-buttons .nav-icon { font-size: 1.3rem; }
-
-    /* Полная подпись в овальной кнопке не помещается — показываем
-       короткую (.nav-label-short из artist-game.html), а не ту же
-       самую, просто увеличенным шрифтом. */
-    .nav-buttons .nav-label { display: none; }
-    .nav-buttons .nav-label-short {
-        display: inline;
-        font-size: 1rem;
-        line-height: 1.1;
-    }
+.nav-btn.small {
+    padding: 8px 14px;
+    font-size: 0.8rem;
 }
 
 .nav-btn:hover { transform: translateY(-3px); }
@@ -343,20 +283,10 @@ html, body {
 
 .controls-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
     margin-top: 18px;
-}
-
-/* Уменьшенные варианты общих .btn-main/.btn-secondary (в
-   animations.css они крупные, рассчитаны на главный экран) — для
-   нижнего ряда кнопок внутри карточки игры. */
-.btn-main.small,
-.btn-secondary.small {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    border-radius: 16px;
-    margin: 0;
 }
 
 @media (max-width: 760px) {
