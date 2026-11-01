@@ -37,16 +37,22 @@
     <p class="pet-name-tag">Пандочка</p>
 </div>
 
+<!-- У каждой кнопки два варианта подписи: полный (.nav-label) — для
+     верхнего ряда, где текста помещается много, и короткий
+     (.nav-label-short) — для овальных кнопок столбиком на широком
+     экране, там слишком длинный текст было не прочитать. CSS сама
+     показывает нужный вариант под текущую раскладку (см.
+     artist-style.css). -->
 <div class="nav-buttons">
     <a href="../../index.html" class="nav-btn" title="Домой">
-        <span class="nav-icon">🏠</span><span class="nav-label">Домой</span>
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Домой</span>
+        <span class="nav-label-short">Домой</span>
     </a>
-    <!-- Мордочка на кнопке — мордочка ТЕКУЩЕГО питомца этой игры
-         (здесь панда), не произвольная. В других играх на этом месте
-         должна быть мордочка их питомца (тигрёнок, лисёнок и т.д.) —
-         когда будем делать те страницы. -->
     <a href="../../pets-select.html" class="nav-btn" title="В домик питомца">
-        <span class="nav-icon">🐼</span><span class="nav-label">В домик питомца</span>
+        <span class="nav-icon">🐾</span>
+        <span class="nav-label">В домик питомца</span>
+        <span class="nav-label-short">Питомец</span>
     </a>
 </div>
 

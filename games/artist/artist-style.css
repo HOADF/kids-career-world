@@ -170,6 +170,11 @@ html, body {
 
 .nav-icon { font-size: 1.1em; line-height: 1; }
 
+/* Короткая подпись для овальных кнопок (широкий экран) — по
+   умолчанию (верхний ряд, узкий/средний экран) её не видно, там
+   показывается обычная .nav-label, текста вполне хватает места. */
+.nav-label-short { display: none; }
+
 @media (min-width: 1240px) {
     /* Раньше кнопки стояли по центру высоты экрана — когда облачко
        с репликами панды стало постоянным (а не прячется через
@@ -182,28 +187,37 @@ html, body {
         right: auto;
         transform: none;
         flex-direction: column;
-        align-items: center;
-        gap: 20px;
+        align-items: stretch;
+        gap: 16px;
     }
 
+    /* Раньше — круглая кнопка 72×72 с текстом 0.55rem (едва
+       читаемым, да ещё в два слова). Теперь — овал/скруглённый
+       прямоугольник: ширина не фиксирована, подстраивается под
+       короткую подпись, а шрифт заметно крупнее. */
     .nav-buttons .nav-btn {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        padding: 0;
-        flex-direction: column;
+        width: auto;
+        min-width: 86px;
+        height: auto;
+        border-radius: 22px;
+        padding: 12px 18px;
+        flex-direction: row;
         justify-content: center;
-        gap: 2px;
-        white-space: normal;
-        text-align: center;
+        gap: 8px;
+        white-space: nowrap;
+        text-align: left;
     }
 
-    .nav-buttons .nav-icon { font-size: 1.6rem; }
+    .nav-buttons .nav-icon { font-size: 1.3rem; }
 
-    .nav-buttons .nav-label {
-        font-size: 0.55rem;
+    /* Полная подпись в овальной кнопке не помещается — показываем
+       короткую (.nav-label-short из artist-game.html), а не ту же
+       самую, просто увеличенным шрифтом. */
+    .nav-buttons .nav-label { display: none; }
+    .nav-buttons .nav-label-short {
+        display: inline;
+        font-size: 1rem;
         line-height: 1.1;
-        padding: 0 4px;
     }
 }
 
@@ -244,7 +258,14 @@ html, body {
    пёстрой сцене за карточкой — но уже без отдельной жёсткой рамки
    вокруг неё, как раньше. */
 .canvas-area {
+    /* max-width не даёт холсту растягиваться на все свободное место
+       в карточке — раньше из-за этого между картинкой и красками
+       оставался большой пустой отступ (картинка "плавала" по центру
+       слишком широкой плашки). Теперь плашка по размеру близка к
+       самой картинке, и вся пара холст+краски смотрится одной
+       группой по центру карточки. */
     flex: 1 1 320px;
+    max-width: 520px;
     min-width: 280px;
     display: flex;
     justify-content: center;
