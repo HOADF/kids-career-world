@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartBtn = document.getElementById('restart');
     const petVisual = document.getElementById('pet-visual');
 
-    const GREETING = 'Выбери краску внизу и раскрась картинку! 🎨';
+    const GREETING = 'Выбери краску справа и раскрась картинку! 🎨';
 
     // Питомец собирается движком слоёв (pet-factory.js), а не берётся
     // из файла картинки — так он есть всегда, даже если SVG-арт
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     areas.forEach(area => {
         area.addEventListener('click', () => {
             if (!selectedColor) {
-                pandaSay("Выбери краску внизу! 🎨");
+                pandaSay("Выбери краску справа! 🎨");
                 return;
             }
 
