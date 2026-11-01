@@ -31,17 +31,25 @@ html, body {
     border: 3px dashed #cde3d6;
     border-radius: 20px;
     position: relative; /* Чтобы облачко не улетало за пределы игры */
+    overflow: hidden; /* чтобы фон питомца не вылезал за скруглённые углы */
 }
 
+/* Фон-биом (небо, солнце, бамбук, трава) на ВСЮ панель с питомцем,
+   а не только маленьким квадратиком вокруг самой панды — так сцена
+   видна в игре целиком, а не белым пустым полем. */
 .pet-side {
     width: 220px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Панда всегда внизу */
+    justify-content: flex-end; /* Панда всегда внизу, на травке */
     align-items: center;
-    padding-bottom: 40px;
+    padding-bottom: 26px;
     border-right: 1px solid #e0eee6;
     position: relative;
+    background-image: url('../../backgrounds/panda_habitat.svg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
 }
 
 .pet-container {
@@ -52,8 +60,8 @@ html, body {
 }
 
 .pet-img {
-    width: 170px;
-    height: 170px;
+    width: 190px;
+    height: 190px;
     z-index: 5;
 }
 

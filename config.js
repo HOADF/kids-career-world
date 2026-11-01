@@ -166,45 +166,18 @@ export const games = {
 };
 
 export const petAssets = {
-    // Фоновые сценки конкретного питомца. Рисуются ПЕРВЫМ слоем внутри
-    // того же SVG, что и сам питомец (см. pet-factory.js) — поэтому фон
-    // "приклеен" к питомцу и появляется вместе с ним везде, где он
-    // показан (результат теста, мини-игра и т.д.), а не рисуется
-    // отдельно на каждой странице.
+    // Фоновые сценки конкретного питомца. Раньше рисовались первым
+    // слоем прямо внутри SVG питомца — получался маленький квадратик
+    // неба/травы вокруг самой панды, а не полноценная сцена. Теперь
+    // полная сцена (небо, солнце, бамбук, трава) — отдельный файл
+    // backgrounds/panda_habitat.svg, подключённый как CSS-фон на всю
+    // панель с питомцем (см. .pet-side в artist-game.html/.css), а
+    // здесь для 'artist' фона больше нет — иначе получится два неба
+    // друг на друге. Когда страница "Домик питомца" станет рабочей,
+    // туда стоит подключить тот же backgrounds/panda_habitat.svg тем
+    // же способом (CSS-фон контейнера), а не возвращать фон сюда.
     backgrounds: {
-        artist: `
-            <defs>
-                <linearGradient id="pandaSkyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#BFEAFB" />
-                    <stop offset="100%" stop-color="#EAF8FD" />
-                </linearGradient>
-                <linearGradient id="pandaGroundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#9ED98B" />
-                    <stop offset="100%" stop-color="#7EC26C" />
-                </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="200" height="200" rx="22" fill="url(#pandaSkyGrad)" />
-            <circle cx="158" cy="38" r="24" fill="#FFE59A" opacity="0.3" />
-            <circle cx="158" cy="38" r="16" fill="#FFE59A" />
-            <g>
-                <rect x="18" y="70" width="10" height="100" rx="5" fill="#BFE37A" />
-                <line x1="18" y1="95" x2="28" y2="95" stroke="#8FBF4E" stroke-width="2" />
-                <line x1="18" y1="120" x2="28" y2="120" stroke="#8FBF4E" stroke-width="2" />
-                <line x1="18" y1="145" x2="28" y2="145" stroke="#8FBF4E" stroke-width="2" />
-                <path d="M23 72 Q5 60 12 42 Q26 52 27 70 Z" fill="#7CB954" />
-                <path d="M23 80 Q40 68 38 50 Q24 58 20 78 Z" fill="#8FCB63" />
-            </g>
-            <g>
-                <rect x="172" y="60" width="10" height="110" rx="5" fill="#BFE37A" />
-                <line x1="172" y1="88" x2="182" y2="88" stroke="#8FBF4E" stroke-width="2" />
-                <line x1="172" y1="113" x2="182" y2="113" stroke="#8FBF4E" stroke-width="2" />
-                <line x1="172" y1="138" x2="182" y2="138" stroke="#8FBF4E" stroke-width="2" />
-                <path d="M177 62 Q195 50 188 32 Q174 42 173 60 Z" fill="#7CB954" />
-                <path d="M177 70 Q160 58 162 40 Q176 48 180 68 Z" fill="#8FCB63" />
-            </g>
-            <path d="M0 168 Q50 152 100 166 T200 162 L200 200 L0 200 Z" fill="url(#pandaGroundGrad)" />
-            <path d="M0 180 Q50 170 100 180 T200 176 L200 200 L0 200 Z" fill="#6AAE58" opacity="0.55" />
-        `
+        artist: ``
     },
 
     marks: {

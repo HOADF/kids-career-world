@@ -1,0 +1,75 @@
+<svg viewBox="0 0 220 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+    <!--
+      Сценка-биом для пандочки: небо, солнце, бамбук и трава,
+      разными слоями снизу вверх по z-порядку в самом SVG.
+      Используется как CSS background-image на всю колонку питомца
+      (.pet-side), а не только вокруг самой панды — см. artist-style.css.
+    -->
+    <defs>
+        <linearGradient id="habitatSky" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#BFEAFB" />
+            <stop offset="100%" stop-color="#EAF8FD" />
+        </linearGradient>
+        <linearGradient id="habitatGround" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9ED98B" />
+            <stop offset="100%" stop-color="#7EC26C" />
+        </linearGradient>
+    </defs>
+
+    <!-- Слой 1: небо -->
+    <rect x="0" y="0" width="220" height="480" fill="url(#habitatSky)" />
+
+    <!-- Слой 2: солнце -->
+    <circle cx="172" cy="66" r="30" fill="#FFE59A" opacity="0.35" />
+    <circle cx="172" cy="66" r="19" fill="#FFE59A" />
+
+    <!-- Слой 3: бамбук слева (два стебля разной высоты) -->
+    <g>
+        <rect x="18" y="188" width="11" height="232" rx="5" fill="#BFE37A" />
+        <line x1="18" y1="228" x2="29" y2="228" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="18" y1="268" x2="29" y2="268" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="18" y1="308" x2="29" y2="308" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="18" y1="348" x2="29" y2="348" stroke="#8FBF4E" stroke-width="2" />
+        <path d="M24 190 Q4 176 12 154 Q28 166 29 188 Z" fill="#7CB954" />
+        <path d="M24 200 Q44 186 40 164 Q24 174 20 198 Z" fill="#8FCB63" />
+
+        <rect x="42" y="238" width="9" height="182" rx="4" fill="#AEDB73" />
+        <line x1="42" y1="268" x2="51" y2="268" stroke="#86B84A" stroke-width="2" />
+        <line x1="42" y1="303" x2="51" y2="303" stroke="#86B84A" stroke-width="2" />
+        <line x1="42" y1="338" x2="51" y2="338" stroke="#86B84A" stroke-width="2" />
+        <path d="M47 240 Q30 228 36 210 Q50 218 50 238 Z" fill="#7CB954" />
+    </g>
+
+    <!-- Слой 4: бамбук справа (зеркально) -->
+    <g>
+        <rect x="191" y="168" width="11" height="252" rx="5" fill="#BFE37A" />
+        <line x1="191" y1="208" x2="202" y2="208" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="191" y1="248" x2="202" y2="248" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="191" y1="288" x2="202" y2="288" stroke="#8FBF4E" stroke-width="2" />
+        <line x1="191" y1="328" x2="202" y2="328" stroke="#8FBF4E" stroke-width="2" />
+        <path d="M196 170 Q216 156 208 134 Q194 144 193 168 Z" fill="#7CB954" />
+        <path d="M196 180 Q176 166 180 144 Q194 154 198 178 Z" fill="#8FCB63" />
+
+        <rect x="169" y="228" width="9" height="192" rx="4" fill="#AEDB73" />
+        <line x1="169" y1="258" x2="178" y2="258" stroke="#86B84A" stroke-width="2" />
+        <line x1="169" y1="293" x2="178" y2="293" stroke="#86B84A" stroke-width="2" />
+        <line x1="169" y1="328" x2="178" y2="328" stroke="#86B84A" stroke-width="2" />
+        <path d="M174 230 Q190 218 184 200 Q170 208 170 228 Z" fill="#7CB954" />
+    </g>
+
+    <!-- Слой 5: земля (волнистый край + тень-нахлёст для объёма) -->
+    <path d="M0 410 Q55 394 110 408 T220 404 L220 480 L0 480 Z" fill="url(#habitatGround)" />
+    <path d="M0 424 Q55 414 110 424 T220 420 L220 480 L0 480 Z" fill="#6AAE58" opacity="0.55" />
+
+    <!-- Слой 6: травинки вдоль края земли -->
+    <g stroke="#5FA648" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.9">
+        <path d="M26 410 Q29 394 24 382" />
+        <path d="M34 413 Q38 399 43 387" />
+        <path d="M66 415 Q70 399 66 385" />
+        <path d="M100 409 Q104 393 109 381" />
+        <path d="M134 415 Q138 400 134 386" />
+        <path d="M150 412 Q154 396 159 384" />
+        <path d="M182 416 Q186 401 191 389" />
+        <path d="M198 412 Q202 397 198 383" />
+    </g>
+</svg>
