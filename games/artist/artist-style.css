@@ -43,25 +43,52 @@
     z-index: 5;
 }
 
-/* Навигация сверху — ссылки вместо нерабочих кнопок */
+/* Навигация — ссылки вместо нерабочих кнопок.
+   На узких экранах — компактный ряд сверху (меньше отступа, меньше
+   высоты карточки). На широких, где у .main-card остаются свободные
+   поля по бокам, кнопки уходят в это свободное место слева — тогда
+   они не отнимают высоту у карточки и страница не скроллится. */
 .nav-buttons {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .nav-btn {
     background: #4fc3f7;
     color: #fff;
-    padding: 10px 14px;
+    padding: 8px 12px;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 700;
+    font-size: 0.85rem;
     display: inline-block;
     border: none;
     cursor: pointer;
     transition: transform 0.2s;
+    white-space: nowrap;
+}
+
+/* Хватает места слева от карточки (950px + поля) — переносим кнопки
+   туда вертикальной колонкой, они больше не часть потока карточки. */
+@media (min-width: 1240px) {
+    .nav-buttons {
+        position: fixed;
+        top: 28px;
+        left: 24px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 0;
+        z-index: 50;
+    }
+
+    .nav-buttons .nav-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        text-align: center;
+    }
 }
 
 .nav-btn:hover {
