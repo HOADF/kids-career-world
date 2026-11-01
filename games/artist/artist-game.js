@@ -10,17 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const areas = document.querySelectorAll('.paint-area');
     const restartBtn = document.getElementById('restart');
     const petVisual = document.getElementById('pet-visual');
+    const canvasArea = document.querySelector('.canvas-area');
+    const paletteBox = document.querySelector('.palette');
 
-    // Палитра на широком экране стоит СПРАВА от картинки, а на узком
-    // (≤760px) CSS переносит её под картинку — см. artist-style.css,
-    // .palette внутри "@media (max-width: 760px)". Брейкпоинт здесь
-    // должен быть ТЕМ ЖЕ числом, что и в CSS: если его там поменяют,
-    // надо поменять и тут, иначе подсказка разойдётся с реальным
-    // расположением красок.
-    const paletteQuery = window.matchMedia('(max-width: 760px)');
-
+    // Было: число брейкпоинта (760px) хранилось ОДНОВРЕМЕННО в CSS
+    // (artist-style.css) и тут в JS — если поправить одно и забыть
+    // другое, подсказка начинает врать. Теперь никакого числа в JS
+    // нет вообще: смотрим на РЕАЛЬНЫЕ координаты палитры и картинки
+    // на странице (getBoundingClientRect). Если палитра оказалась
+    // ниже картинки — значит её перенесло вниз, какой бы брейкпоинт
+    // или логику раскладки ни задавали в CSS. Один источник правды —
+    // сама страница, а не повторённая в двух местах константа.
     function paletteSide() {
-        return paletteQuery.matches ? 'снизу' : 'справа';
+        if (!canvasArea || !paletteBox) return 'справа';
+        const canvasRect = canvasArea.getBoundingClientRect();
+        const paletteRect = paletteBox.getBoundingClientRect();
+        // "-1" — защита от пограничного случая, когда из-за
+        // субпиксельного округления низ картинки и верх палитры
+        // совпадают почти точно, но не идеально.
+        const isBelow = paletteRect.top >= canvasRect.bottom - 1;
+        return isBelow ? 'снизу' : 'справа';
     }
 
     function greetingText() {
@@ -44,11 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
         bubble.innerText = kind === 'greeting' ? greetingText() : noColorChosenText();
     }
 
-    paletteQuery.addEventListener('change', () => {
-        if (activeLocationBubble) {
-            pandaSayLocationAware(activeLocationBubble);
-        }
-    });
+    // ResizeObserver реагирует на ЛЮБОЕ изменение размеров карточки
+    // игры: ресайз окна, поворот телефона, смену масштаба — без
+    // привязки к конкретному числу пикселей.
+    if (canvasArea && 'ResizeObserver' in window) {
+        const resizeObserver = new ResizeObserver(() => {
+            if (activeLocationBubble) {
+                pandaSayLocationAware(activeLocationBubble);
+            }
+        });
+        resizeObserver.observe(canvasArea);
+        if (paletteBox) resizeObserver.observe(paletteBox);
+    } else {
+        // Подстраховка для совсем старых браузеров без ResizeObserver.
+        window.addEventListener('resize', () => {
+            if (activeLocationBubble) {
+                pandaSayLocationAware(activeLocationBubble);
+            }
+        });
+    }
 
     // Питомец собирается движком слоёв (pet-factory.js), а не берётся
     // из файла картинки — так он есть всегда, даже если SVG-арт
