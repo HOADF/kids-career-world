@@ -11,7 +11,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartBtn = document.getElementById('restart');
     const petVisual = document.getElementById('pet-visual');
 
-    const GREETING = 'Выбери краску справа и раскрась картинку! 🎨';
+    // Палитра на широком экране стоит СПРАВА от картинки, а на узком
+    // (≤760px) CSS переносит её под картинку — см. artist-style.css,
+    // .palette внутри "@media (max-width: 760px)". Брейкпоинт здесь
+    // должен быть ТЕМ ЖЕ числом, что и в CSS: если его там поменяют,
+    // надо поменять и тут, иначе подсказка разойдётся с реальным
+    // расположением красок.
+    const paletteQuery = window.matchMedia('(max-width: 760px)');
+
+    function paletteSide() {
+        return paletteQuery.matches ? 'снизу' : 'справа';
+    }
+
+    function greetingText() {
+        return `Выбери краску ${paletteSide()} и раскрась картинку! 🎨`;
+    }
+
+    function noColorChosenText() {
+        return `Выбери краску ${paletteSide()}! 🎨`;
+    }
+
+    // Запоминаем, какую "ролевую" реплику панда говорит сейчас
+    // (greeting / noColor), чтобы при смене расположения палитры
+    // (поворот телефона, изменение размера окна) можно было тут же
+    // перерисовать именно её с актуальной стороной — остальные
+    // реплики (про цвет, про победу) к расположению красок не
+    // привязаны и трогать их не нужно.
+    let activeLocationBubble = null;
+
+    function pandaSayLocationAware(kind) {
+        activeLocationBubble = kind;
+        bubble.innerText = kind === 'greeting' ? greetingText() : noColorChosenText();
+    }
+
+    paletteQuery.addEventListener('change', () => {
+        if (activeLocationBubble) {
+            pandaSayLocationAware(activeLocationBubble);
+        }
+    });
 
     // Питомец собирается движком слоёв (pet-factory.js), а не берётся
     // из файла картинки — так он есть всегда, даже если SVG-арт
@@ -19,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (petVisual) {
         petVisual.innerHTML = assemblePet('artist');
     }
+
+    // Приветствие сразу выставляем из JS с учётом реальной ширины
+    // экрана — в HTML лежит просто заглушка-текст на случай, пока JS
+    // не выполнился, её сторону ("справа") мы здесь не используем.
+    pandaSayLocationAware('greeting');
 
     // Запоминаем исходный цвет каждой зоны, чтобы можно было
     // аккуратно вернуть её в начальное состояние при рестарте.
@@ -29,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // реплика просто меняется на новую, а не прячется через 3 секунды
     // (раньше ребёнок мог не успеть дочитать).
     function pandaSay(text) {
+        // Эта реплика не привязана к расположению палитры — выходим
+        // из "location-aware" режима, чтобы ресайз окна её больше не
+        // переписывал.
+        activeLocationBubble = null;
         bubble.innerText = text;
     }
 
@@ -46,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     areas.forEach(area => {
         area.addEventListener('click', () => {
             if (!selectedColor) {
-                pandaSay("Выбери краску справа! 🎨");
+                pandaSayLocationAware('noColor');
                 return;
             }
 
@@ -97,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedColor = null;
         selectedHex = null;
         selectedId = null;
-        pandaSay(GREETING);
+        pandaSayLocationAware('greeting');
     }
 
     restartBtn?.addEventListener('click', resetGame);
