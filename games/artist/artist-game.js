@@ -171,3 +171,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     restartBtn?.addEventListener('click', resetGame);
 });
+
+// (деплой-триггер)
