@@ -83,7 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetGame() {
         areas.forEach(area => {
             area.style.fill = originalFill.get(area) || '';
-            area.style.strokeDasharray = '8';
+            // Контур теперь сплошной (см. artist-style.css, .paint-area) —
+            // раньше здесь возвращался пунктир ('8'), из-за чего после
+            // рестарта контур опять становился пунктирным.
+            area.style.strokeDasharray = '';
             area.style.stroke = '';
         });
         colorItems.forEach(item => item.classList.remove('selected', 'used'));
