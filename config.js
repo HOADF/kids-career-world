@@ -311,34 +311,36 @@ export const petAssets = {
             <path d="M94 104 L100 112 L106 104 Z" fill="#2B2B2B" />
             <path d="M88 119 Q100 127 112 119" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round" />
         `,
-        // Акулёнок-гейммейкер: по образцу присланной картинки —
-        // смотрит в другую сторону (голова слева, хвост справа, в
-        // отличие от прошлой версии), хвост теперь изогнутый/
-        // раздвоенный, а не простой треугольник, и пара крупных
-        // круглых "гугли"-глаз у самой мордочки, как на референсе,
-        // а не один маленький глаз сбоку.
+        // Акулёнок-гейммейкер (в стиле Baby Shark / Пинкфонг — дружелюбный,
+        // без зубов): смотрит влево, тело слегка наклонено (не "по
+        // линейке"), хвост не растопырен веером вправо, а закручен
+        // влево, обратно к телу — динамичная поза "на плаву", а не
+        // прямая торпеда.
         coder: `
-            <path d="M148 100 Q176 78 186 92 Q168 108 174 112 Q168 116 186 132 Q176 146 148 124 Z" fill="#6E7F91" />
-            <ellipse cx="95" cy="115" rx="68" ry="36" fill="#6E7F91" />
-            <path d="M35 128 Q95 152 145 124 Q130 140 95 143 Q52 141 35 128 Z" fill="#DCE6EA" />
-            <path d="M110 80 Q96 46 74 78 Q90 73 110 80 Z" fill="#6E7F91" />
-            <path d="M100 134 Q84 152 60 142 Q80 136 100 134 Z" fill="#6E7F91" />
-            <path d="M90 94 Q86 108 90 122" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <path d="M100 96 Q96 108 100 120" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <g class="pet-eyes">
-                <circle cx="42" cy="90" r="14" fill="#FFFFFF" />
-                <circle cx="62" cy="96" r="13" fill="#FFFFFF" />
-                <circle cx="38" cy="90" r="7" fill="#2B2B2B" />
-                <circle cx="58" cy="96" r="6.5" fill="#2B2B2B" />
-                <circle cx="35" cy="87" r="2" fill="#FFFFFF" />
-                <circle cx="55" cy="93" r="2" fill="#FFFFFF" />
+            <g transform="rotate(-6 100 115)">
+                <path d="M135 100 Q180 95 185 70 Q170 85 150 75 Q145 95 135 128 Z" fill="#6E7F91" />
+                <ellipse cx="95" cy="115" rx="66" ry="35" fill="#6E7F91" />
+                <path d="M35 128 Q95 152 145 124 Q130 140 95 143 Q52 141 35 128 Z" fill="#DCE6EA" />
+                <path d="M110 80 Q96 46 74 78 Q90 73 110 80 Z" fill="#6E7F91" />
+                <path d="M100 134 Q84 152 60 142 Q80 136 100 134 Z" fill="#6E7F91" />
+                <path d="M90 94 Q86 108 90 122" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                <path d="M100 96 Q96 108 100 120" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                <g class="pet-eyes">
+                    <circle cx="42" cy="90" r="14" fill="#FFFFFF" />
+                    <circle cx="62" cy="96" r="13" fill="#FFFFFF" />
+                    <circle cx="38" cy="90" r="7" fill="#2B2B2B" />
+                    <circle cx="58" cy="96" r="6.5" fill="#2B2B2B" />
+                    <circle cx="35" cy="87" r="2" fill="#FFFFFF" />
+                    <circle cx="55" cy="93" r="2" fill="#FFFFFF" />
+                </g>
+                <circle cx="52" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
+                <path d="M52 120 Q37 128 24 116" stroke="#3B4A58" stroke-width="3" fill="none" stroke-linecap="round" />
             </g>
-            <circle cx="52" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
-            <path d="M52 120 Q37 128 24 116" stroke="#3B4A58" stroke-width="3" fill="none" stroke-linecap="round" />
-            <path d="M42 123 L40 127 M32 120 L30 124" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
         `,
         // Пингвинёнок-повар: тело вытянуто вверх (было похоже на шар) —
-        // уже и выше, ближе к силуэту настоящего пингвина.
+        // уже и выше, ближе к силуэту настоящего пингвина. На голове —
+        // расколотая скорлупа яйца, как будто вылупился только что:
+        // неровный зубчатый край поверх макушки плюс трещинка через лоб.
         chef: `
             <ellipse cx="100" cy="156" rx="39" ry="44" fill="#263238" />
             <ellipse cx="100" cy="168" rx="23" ry="32" fill="#FFFFFF" />
@@ -348,6 +350,8 @@ export const petAssets = {
             <ellipse cx="120" cy="192" rx="13" ry="7" fill="#FFA726" />
             <circle cx="100" cy="90" r="37" fill="#263238" />
             <ellipse cx="100" cy="98" rx="23" ry="21" fill="#FFFFFF" />
+            <path d="M56 66 Q52 38 80 32 Q100 22 120 32 Q148 38 144 66 L133 57 L121 69 L109 55 L100 70 L91 55 L79 69 L67 57 Z" fill="#FFF7E6" stroke="#E6D7B4" stroke-width="1.5" stroke-linejoin="round" />
+            <path d="M98 69 L103 77 L97 83 L102 90" stroke="#D9CBA3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
             <g class="pet-eyes">
                 <circle cx="84" cy="88" r="10" fill="#FFFFFF" />
                 <circle cx="116" cy="88" r="10" fill="#FFFFFF" />
