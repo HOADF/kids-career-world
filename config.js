@@ -300,30 +300,25 @@ export const petAssets = {
             <path d="M94 104 L100 112 L106 104 Z" fill="#2B2B2B" />
             <path d="M88 119 Q100 127 112 119" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round" />
         `,
-        // Акулёнок-гейммейкер: светлее и мягче прежнего (было похоже на
-        // настоящую акулу и пугало) — округлое тело, маленький плавник
-        // с мягкими краями (не треугольник-нож), закрытая улыбка всего
-        // с двумя едва заметными зубками, никакой тёмной пасти.
+        // Акулёнок-гейммейкер: у акулы нет рук и ног, поэтому вместо
+        // того же "сидячего" силуэта, что у остальных питомцев, теперь
+        // это акулёнок боком, плывущий вправо — тело-торпеда, хвостовой
+        // и спинной плавники, жабры, один глаз (т.к. вид сбоку).
         coder: `
-            <ellipse cx="100" cy="150" rx="48" ry="33" fill="#7FCBE8" />
-            <ellipse cx="100" cy="160" rx="27" ry="18" fill="#EDFAFF" />
-            <ellipse cx="55" cy="158" rx="15" ry="19" fill="#7FCBE8" transform="rotate(-20 55 158)" />
-            <ellipse cx="145" cy="158" rx="15" ry="19" fill="#7FCBE8" transform="rotate(20 145 158)" />
-            <ellipse cx="76" cy="180" rx="17" ry="10" fill="#7FCBE8" />
-            <ellipse cx="124" cy="180" rx="17" ry="10" fill="#7FCBE8" />
-            <circle cx="100" cy="94" r="42" fill="#7FCBE8" />
-            <ellipse cx="100" cy="112" rx="27" ry="17" fill="#EDFAFF" />
-            <path d="M86 46 Q100 28 114 46 Q104 38 100 40 Q96 38 86 46 Z" fill="#7FCBE8" />
+            <path d="M38 112 L10 90 L18 112 L10 136 Z" fill="#7FCBE8" />
+            <ellipse cx="105" cy="115" rx="68" ry="36" fill="#7FCBE8" />
+            <path d="M55 128 Q105 152 165 124 Q150 140 105 143 Q62 141 55 128 Z" fill="#EDFAFF" />
+            <path d="M90 80 Q104 46 126 78 Q110 73 90 80 Z" fill="#7FCBE8" />
+            <path d="M100 134 Q116 152 140 142 Q120 136 100 134 Z" fill="#7FCBE8" />
+            <path d="M148 98 Q152 108 148 118" stroke="#4E9CBF" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <path d="M156 100 Q160 108 156 116" stroke="#4E9CBF" stroke-width="2.5" fill="none" stroke-linecap="round" />
             <g class="pet-eyes">
-                <circle cx="80" cy="88" r="13" fill="#2B2B2B" />
-                <circle cx="120" cy="88" r="13" fill="#2B2B2B" />
-                <circle cx="83" cy="85" r="4" fill="#FFFFFF" />
-                <circle cx="123" cy="85" r="4" fill="#FFFFFF" />
+                <circle cx="160" cy="102" r="8" fill="#2B2B2B" />
+                <circle cx="163" cy="99" r="2.5" fill="#FFFFFF" />
             </g>
-            <circle cx="70" cy="108" r="5" fill="#FFC9C9" opacity="0.6" />
-            <circle cx="130" cy="108" r="5" fill="#FFC9C9" opacity="0.6" />
-            <path d="M84 118 Q100 128 116 118" stroke="#1F5A73" stroke-width="3" fill="none" stroke-linecap="round" />
-            <path d="M93 121 L96 125 M107 121 L104 125" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+            <circle cx="148" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
+            <path d="M148 120 Q163 128 176 116" stroke="#1F5A73" stroke-width="3" fill="none" stroke-linecap="round" />
+            <path d="M158 123 L160 127 M168 120 L170 124" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
         `,
         // Пингвинёнок-повар: тело вытянуто вверх (было похоже на шар) —
         // уже и выше, ближе к силуэту настоящего пингвина.
@@ -346,19 +341,22 @@ export const petAssets = {
             <circle cx="123" cy="104" r="5" fill="#FFC9C9" opacity="0.5" />
             <path d="M91 101 L100 110 L109 101 Z" fill="#FFA726" />
         `,
-        // Зайчонок-доктор: белое тело, длинные розовые внутри уши,
-        // розовый носик.
+        // Зайчонок-доктор: раньше было чисто-белое тело — на белой/
+        // светлой карточке результата резало глаз даже с розовой
+        // подложкой. Теперь тело мягкого серого цвета (сам зайчик
+        // неброский), а розовый остался только внутри ушей, на носу
+        // и щеках — так он не сливается с фоном, но и не кричит.
         doctor: `
-            <ellipse cx="100" cy="150" rx="46" ry="34" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" />
-            <ellipse cx="55" cy="158" rx="14" ry="19" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" transform="rotate(-18 55 158)" />
-            <ellipse cx="145" cy="158" rx="14" ry="19" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" transform="rotate(18 145 158)" />
-            <ellipse cx="76" cy="180" rx="17" ry="10" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" />
-            <ellipse cx="124" cy="180" rx="17" ry="10" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" />
-            <ellipse cx="67" cy="36" rx="14" ry="36" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" transform="rotate(-12 67 36)" />
-            <ellipse cx="133" cy="36" rx="14" ry="36" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" transform="rotate(12 133 36)" />
+            <ellipse cx="100" cy="150" rx="46" ry="34" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" />
+            <ellipse cx="55" cy="158" rx="14" ry="19" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" transform="rotate(-18 55 158)" />
+            <ellipse cx="145" cy="158" rx="14" ry="19" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" transform="rotate(18 145 158)" />
+            <ellipse cx="76" cy="180" rx="17" ry="10" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" />
+            <ellipse cx="124" cy="180" rx="17" ry="10" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" />
+            <ellipse cx="67" cy="36" rx="14" ry="36" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" transform="rotate(-12 67 36)" />
+            <ellipse cx="133" cy="36" rx="14" ry="36" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" transform="rotate(12 133 36)" />
             <ellipse cx="67" cy="40" rx="7" ry="26" fill="#FFC9D6" transform="rotate(-12 67 40)" />
             <ellipse cx="133" cy="40" rx="7" ry="26" fill="#FFC9D6" transform="rotate(12 133 40)" />
-            <circle cx="100" cy="94" r="40" fill="#FFFFFF" stroke="#E9DEDE" stroke-width="1" />
+            <circle cx="100" cy="94" r="40" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" />
             <g class="pet-eyes">
                 <ellipse cx="80" cy="92" rx="8" ry="11" fill="#8B5E3C" />
                 <ellipse cx="120" cy="92" rx="8" ry="11" fill="#8B5E3C" />
