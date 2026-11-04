@@ -228,10 +228,12 @@ export const petAssets = {
             <g class="pet-eyes">
                 <ellipse cx="80" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(-8 80 92)" />
                 <ellipse cx="120" cy="92" rx="14" ry="18" fill="#2B2B2B" transform="rotate(8 120 92)" />
-                <circle cx="81" cy="94" r="4" fill="#FFFFFF" />
-                <circle cx="119" cy="94" r="4" fill="#FFFFFF" />
-                <circle cx="82" cy="95" r="2" fill="#2B2B2B" />
-                <circle cx="118" cy="95" r="2" fill="#2B2B2B" />
+                <circle cx="81" cy="93" r="7" fill="#FFFFFF" />
+                <circle cx="119" cy="93" r="7" fill="#FFFFFF" />
+                <circle cx="83" cy="95" r="4" fill="#2B2B2B" />
+                <circle cx="121" cy="95" r="4" fill="#2B2B2B" />
+                <circle cx="84.5" cy="93" r="1.4" fill="#FFFFFF" />
+                <circle cx="122.5" cy="93" r="1.4" fill="#FFFFFF" />
             </g>
             <circle cx="72" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
             <circle cx="128" cy="108" r="6" fill="#FFC9C9" opacity="0.7" />
@@ -262,10 +264,12 @@ export const petAssets = {
             <g class="pet-eyes">
                 <ellipse cx="80" cy="92" rx="13" ry="16" fill="#2B2B2B" transform="rotate(-8 80 92)" />
                 <ellipse cx="120" cy="92" rx="13" ry="16" fill="#2B2B2B" transform="rotate(8 120 92)" />
-                <circle cx="81" cy="89" r="4" fill="#FFFFFF" />
-                <circle cx="119" cy="89" r="4" fill="#FFFFFF" />
-                <circle cx="82" cy="90" r="2" fill="#2B2B2B" />
-                <circle cx="118" cy="90" r="2" fill="#2B2B2B" />
+                <circle cx="81" cy="90" r="6.5" fill="#FFFFFF" />
+                <circle cx="119" cy="90" r="6.5" fill="#FFFFFF" />
+                <circle cx="83" cy="91" r="3.5" fill="#2B2B2B" />
+                <circle cx="121" cy="91" r="3.5" fill="#2B2B2B" />
+                <circle cx="84.5" cy="89" r="1.3" fill="#FFFFFF" />
+                <circle cx="122.5" cy="89" r="1.3" fill="#FFFFFF" />
             </g>
             <circle cx="70" cy="112" r="6" fill="#FFC9C9" opacity="0.6" />
             <circle cx="130" cy="112" r="6" fill="#FFC9C9" opacity="0.6" />
@@ -273,7 +277,12 @@ export const petAssets = {
             <path d="M88 118 Q100 126 112 118" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round" />
         `,
         // Лисёнок-мультипликатор: рыжее тело, белая "манишка", острые
-        // чёрно-рыжие уши-треугольники.
+        // чёрно-рыжие уши-треугольники. Раньше у треугольников ушей
+        // обе ближние к голове вершины лежали ЗА пределами круга головы
+        // (дальше его радиуса) — отсюда "уши летают" отдельно от головы.
+        // Теперь у каждого уха две вершины заведомо внутри круга головы
+        // (как и у совёнка), и ухо гарантированно "прорастает" из неё
+        // без зазора, а наружу торчит только острый кончик.
         creator: `
             <ellipse cx="100" cy="150" rx="46" ry="33" fill="#FF8C42" />
             <ellipse cx="100" cy="160" rx="26" ry="18" fill="#FFF6EC" />
@@ -283,42 +292,50 @@ export const petAssets = {
             <ellipse cx="124" cy="180" rx="16" ry="10" fill="#2B2B2B" />
             <circle cx="100" cy="92" r="41" fill="#FF8C42" />
             <ellipse cx="100" cy="110" rx="26" ry="21" fill="#FFF6EC" />
-            <polygon points="58,62 42,22 76,46" fill="#FF8C42" />
-            <polygon points="142,62 158,22 124,46" fill="#FF8C42" />
-            <polygon points="60,56 50,30 70,46" fill="#2B2B2B" />
-            <polygon points="140,56 150,30 130,46" fill="#2B2B2B" />
+            <polygon points="85,62 68,66 50,15" fill="#FF8C42" />
+            <polygon points="115,62 132,66 150,15" fill="#FF8C42" />
+            <polygon points="83,60 72,62 56,24" fill="#2B2B2B" />
+            <polygon points="117,60 128,62 144,24" fill="#2B2B2B" />
             <g class="pet-eyes">
                 <ellipse cx="80" cy="90" rx="12" ry="15" fill="#2B2B2B" transform="rotate(-8 80 90)" />
                 <ellipse cx="120" cy="90" rx="12" ry="15" fill="#2B2B2B" transform="rotate(8 120 90)" />
-                <circle cx="81" cy="87" r="4" fill="#FFFFFF" />
-                <circle cx="119" cy="87" r="4" fill="#FFFFFF" />
-                <circle cx="82" cy="88" r="2" fill="#2B2B2B" />
-                <circle cx="118" cy="88" r="2" fill="#2B2B2B" />
+                <circle cx="81" cy="89" r="6.5" fill="#FFFFFF" />
+                <circle cx="119" cy="89" r="6.5" fill="#FFFFFF" />
+                <circle cx="83" cy="91" r="3.5" fill="#2B2B2B" />
+                <circle cx="121" cy="91" r="3.5" fill="#2B2B2B" />
+                <circle cx="84.5" cy="89" r="1.3" fill="#FFFFFF" />
+                <circle cx="122.5" cy="89" r="1.3" fill="#FFFFFF" />
             </g>
             <circle cx="70" cy="110" r="6" fill="#FFC9C9" opacity="0.6" />
             <circle cx="130" cy="110" r="6" fill="#FFC9C9" opacity="0.6" />
             <path d="M94 104 L100 112 L106 104 Z" fill="#2B2B2B" />
             <path d="M88 119 Q100 127 112 119" stroke="#2B2B2B" stroke-width="3" fill="none" stroke-linecap="round" />
         `,
-        // Акулёнок-гейммейкер: у акулы нет рук и ног, поэтому вместо
-        // того же "сидячего" силуэта, что у остальных питомцев, теперь
-        // это акулёнок боком, плывущий вправо — тело-торпеда, хвостовой
-        // и спинной плавники, жабры, один глаз (т.к. вид сбоку).
+        // Акулёнок-гейммейкер: по образцу присланной картинки —
+        // смотрит в другую сторону (голова слева, хвост справа, в
+        // отличие от прошлой версии), хвост теперь изогнутый/
+        // раздвоенный, а не простой треугольник, и пара крупных
+        // круглых "гугли"-глаз у самой мордочки, как на референсе,
+        // а не один маленький глаз сбоку.
         coder: `
-            <path d="M38 112 L10 90 L18 112 L10 136 Z" fill="#7FCBE8" />
-            <ellipse cx="105" cy="115" rx="68" ry="36" fill="#7FCBE8" />
-            <path d="M55 128 Q105 152 165 124 Q150 140 105 143 Q62 141 55 128 Z" fill="#EDFAFF" />
-            <path d="M90 80 Q104 46 126 78 Q110 73 90 80 Z" fill="#7FCBE8" />
-            <path d="M100 134 Q116 152 140 142 Q120 136 100 134 Z" fill="#7FCBE8" />
-            <path d="M148 98 Q152 108 148 118" stroke="#4E9CBF" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <path d="M156 100 Q160 108 156 116" stroke="#4E9CBF" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <path d="M148 100 Q176 78 186 92 Q168 108 174 112 Q168 116 186 132 Q176 146 148 124 Z" fill="#6E7F91" />
+            <ellipse cx="95" cy="115" rx="68" ry="36" fill="#6E7F91" />
+            <path d="M35 128 Q95 152 145 124 Q130 140 95 143 Q52 141 35 128 Z" fill="#DCE6EA" />
+            <path d="M110 80 Q96 46 74 78 Q90 73 110 80 Z" fill="#6E7F91" />
+            <path d="M100 134 Q84 152 60 142 Q80 136 100 134 Z" fill="#6E7F91" />
+            <path d="M90 94 Q86 108 90 122" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <path d="M100 96 Q96 108 100 120" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
             <g class="pet-eyes">
-                <circle cx="160" cy="102" r="8" fill="#2B2B2B" />
-                <circle cx="163" cy="99" r="2.5" fill="#FFFFFF" />
+                <circle cx="42" cy="90" r="14" fill="#FFFFFF" />
+                <circle cx="62" cy="96" r="13" fill="#FFFFFF" />
+                <circle cx="38" cy="90" r="7" fill="#2B2B2B" />
+                <circle cx="58" cy="96" r="6.5" fill="#2B2B2B" />
+                <circle cx="35" cy="87" r="2" fill="#FFFFFF" />
+                <circle cx="55" cy="93" r="2" fill="#FFFFFF" />
             </g>
-            <circle cx="148" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
-            <path d="M148 120 Q163 128 176 116" stroke="#1F5A73" stroke-width="3" fill="none" stroke-linecap="round" />
-            <path d="M158 123 L160 127 M168 120 L170 124" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+            <circle cx="52" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
+            <path d="M52 120 Q37 128 24 116" stroke="#3B4A58" stroke-width="3" fill="none" stroke-linecap="round" />
+            <path d="M42 123 L40 127 M32 120 L30 124" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
         `,
         // Пингвинёнок-повар: тело вытянуто вверх (было похоже на шар) —
         // уже и выше, ближе к силуэту настоящего пингвина.
@@ -332,10 +349,12 @@ export const petAssets = {
             <circle cx="100" cy="90" r="37" fill="#263238" />
             <ellipse cx="100" cy="98" rx="23" ry="21" fill="#FFFFFF" />
             <g class="pet-eyes">
-                <circle cx="84" cy="88" r="8" fill="#2B2B2B" />
-                <circle cx="116" cy="88" r="8" fill="#2B2B2B" />
-                <circle cx="86" cy="85" r="3" fill="#FFFFFF" />
-                <circle cx="118" cy="85" r="3" fill="#FFFFFF" />
+                <circle cx="84" cy="88" r="10" fill="#FFFFFF" />
+                <circle cx="116" cy="88" r="10" fill="#FFFFFF" />
+                <circle cx="86" cy="90" r="5.5" fill="#2B2B2B" />
+                <circle cx="118" cy="90" r="5.5" fill="#2B2B2B" />
+                <circle cx="88" cy="87" r="1.6" fill="#FFFFFF" />
+                <circle cx="120" cy="87" r="1.6" fill="#FFFFFF" />
             </g>
             <circle cx="77" cy="104" r="5" fill="#FFC9C9" opacity="0.5" />
             <circle cx="123" cy="104" r="5" fill="#FFC9C9" opacity="0.5" />
@@ -358,10 +377,14 @@ export const petAssets = {
             <ellipse cx="133" cy="40" rx="7" ry="26" fill="#FFC9D6" transform="rotate(12 133 40)" />
             <circle cx="100" cy="94" r="40" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="1" />
             <g class="pet-eyes">
-                <ellipse cx="80" cy="92" rx="8" ry="11" fill="#8B5E3C" />
-                <ellipse cx="120" cy="92" rx="8" ry="11" fill="#8B5E3C" />
-                <circle cx="82" cy="89" r="3" fill="#FFFFFF" />
-                <circle cx="118" cy="89" r="3" fill="#FFFFFF" />
+                <ellipse cx="80" cy="92" rx="9" ry="12" fill="#8B5E3C" />
+                <ellipse cx="120" cy="92" rx="9" ry="12" fill="#8B5E3C" />
+                <circle cx="81" cy="91" r="4.5" fill="#FFFFFF" />
+                <circle cx="119" cy="91" r="4.5" fill="#FFFFFF" />
+                <circle cx="82.5" cy="92" r="2.3" fill="#2B2B2B" />
+                <circle cx="120.5" cy="92" r="2.3" fill="#2B2B2B" />
+                <circle cx="83.5" cy="90.5" r="1" fill="#FFFFFF" />
+                <circle cx="121.5" cy="90.5" r="1" fill="#FFFFFF" />
             </g>
             <circle cx="72" cy="110" r="6" fill="#FFC9C9" opacity="0.6" />
             <circle cx="128" cy="110" r="6" fill="#FFC9C9" opacity="0.6" />
@@ -388,8 +411,12 @@ export const petAssets = {
             <g class="pet-eyes">
                 <ellipse cx="80" cy="90" rx="10" ry="13" fill="#2B2B2B" />
                 <ellipse cx="120" cy="90" rx="10" ry="13" fill="#2B2B2B" />
-                <circle cx="82" cy="87" r="3" fill="#FFFFFF" />
-                <circle cx="118" cy="87" r="3" fill="#FFFFFF" />
+                <circle cx="81" cy="89" r="5.5" fill="#FFFFFF" />
+                <circle cx="119" cy="89" r="5.5" fill="#FFFFFF" />
+                <circle cx="83" cy="90" r="3" fill="#2B2B2B" />
+                <circle cx="121" cy="90" r="3" fill="#2B2B2B" />
+                <circle cx="84.5" cy="88" r="1.2" fill="#FFFFFF" />
+                <circle cx="122.5" cy="88" r="1.2" fill="#FFFFFF" />
             </g>
             <circle cx="72" cy="110" r="5" fill="#FFC9C9" opacity="0.6" />
             <circle cx="128" cy="110" r="5" fill="#FFC9C9" opacity="0.6" />
@@ -413,8 +440,12 @@ export const petAssets = {
             <g class="pet-eyes">
                 <ellipse cx="78" cy="90" rx="9" ry="12" fill="#2B2B2B" />
                 <ellipse cx="122" cy="90" rx="9" ry="12" fill="#2B2B2B" />
-                <circle cx="80" cy="87" r="3" fill="#FFFFFF" />
-                <circle cx="120" cy="87" r="3" fill="#FFFFFF" />
+                <circle cx="79" cy="89" r="5" fill="#FFFFFF" />
+                <circle cx="121" cy="89" r="5" fill="#FFFFFF" />
+                <circle cx="81" cy="90" r="2.7" fill="#2B2B2B" />
+                <circle cx="123" cy="90" r="2.7" fill="#2B2B2B" />
+                <circle cx="82.3" cy="88" r="1.1" fill="#FFFFFF" />
+                <circle cx="124.3" cy="88" r="1.1" fill="#FFFFFF" />
             </g>
             <circle cx="70" cy="112" r="5" fill="#FFC9C9" opacity="0.5" />
             <circle cx="130" cy="112" r="5" fill="#FFC9C9" opacity="0.5" />
