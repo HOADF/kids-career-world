@@ -247,12 +247,20 @@ export const petAssets = {
         builder: `
             <ellipse cx="100" cy="150" rx="48" ry="34" fill="#FF9A3C" />
             <ellipse cx="100" cy="160" rx="28" ry="20" fill="#FFF3E0" />
+            <path d="M60 126 Q68 144 58 160" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M66 162 Q72 174 64 184" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
+            <path d="M140 126 Q132 144 142 160" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M134 162 Q128 174 136 184" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
             <ellipse cx="55" cy="158" rx="15" ry="20" fill="#FF9A3C" transform="rotate(-18 55 158)" />
             <ellipse cx="145" cy="158" rx="15" ry="20" fill="#FF9A3C" transform="rotate(18 145 158)" />
+            <path d="M48 148 L58 168" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M152 148 L142 168" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
             <ellipse cx="76" cy="180" rx="17" ry="11" fill="#FF9A3C" />
             <ellipse cx="124" cy="180" rx="17" ry="11" fill="#FF9A3C" />
+            <path d="M68 176 L72 186" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M132 176 L128 186" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
             <path d="M50 150 L60 168" stroke="#2B2B2B" stroke-width="4" stroke-linecap="round" />
-            <path d="M140 150 L150 168" stroke="#2B2B2B" stroke-width="4" stroke-linecap="round" />
+            <path d="M150 150 L140 168" stroke="#2B2B2B" stroke-width="4" stroke-linecap="round" />
             <circle cx="100" cy="92" r="42" fill="#FF9A3C" />
             <ellipse cx="100" cy="110" rx="24" ry="19" fill="#FFF3E0" />
             <circle cx="64" cy="54" r="17" fill="#FF9A3C" />
@@ -261,6 +269,9 @@ export const petAssets = {
             <circle cx="136" cy="54" r="9" fill="#FFD9B3" />
             <path d="M68 60 Q74 52 82 48" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
             <path d="M132 60 Q126 52 118 48" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
+            <path d="M88 58 Q100 50 112 58" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
+            <path d="M66 86 Q58 98 66 110" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
+            <path d="M134 86 Q142 98 134 110" stroke="#2B2B2B" stroke-width="4" fill="none" stroke-linecap="round" />
             <g class="pet-eyes">
                 <ellipse cx="80" cy="92" rx="13" ry="16" fill="#2B2B2B" transform="rotate(-8 80 92)" />
                 <ellipse cx="120" cy="92" rx="13" ry="16" fill="#2B2B2B" transform="rotate(8 120 92)" />
@@ -317,8 +328,8 @@ export const petAssets = {
         // влево, обратно к телу — динамичная поза "на плаву", а не
         // прямая торпеда.
         coder: `
-            <g transform="rotate(-6 100 115)">
-                <path d="M135 100 Q180 95 185 70 Q170 85 150 75 Q145 95 135 128 Z" fill="#6E7F91" />
+            <g transform="rotate(6 100 115)">
+                <path d="M135 100 Q180 105 185 130 Q170 115 150 125 Q145 105 135 72 Z" fill="#6E7F91" />
                 <ellipse cx="95" cy="115" rx="66" ry="35" fill="#6E7F91" />
                 <path d="M35 128 Q95 152 145 124 Q130 140 95 143 Q52 141 35 128 Z" fill="#DCE6EA" />
                 <path d="M110 80 Q96 46 74 78 Q90 73 110 80 Z" fill="#6E7F91" />
@@ -344,8 +355,8 @@ export const petAssets = {
         chef: `
             <ellipse cx="100" cy="156" rx="39" ry="44" fill="#263238" />
             <ellipse cx="100" cy="168" rx="23" ry="32" fill="#FFFFFF" />
-            <ellipse cx="60" cy="160" rx="12" ry="25" fill="#263238" transform="rotate(-16 60 160)" />
-            <ellipse cx="140" cy="160" rx="12" ry="25" fill="#263238" transform="rotate(16 140 160)" />
+            <ellipse cx="64" cy="160" rx="12" ry="25" fill="#263238" transform="rotate(22 64 160)" />
+            <ellipse cx="136" cy="160" rx="12" ry="25" fill="#263238" transform="rotate(-22 136 160)" />
             <ellipse cx="80" cy="192" rx="13" ry="7" fill="#FFA726" />
             <ellipse cx="120" cy="192" rx="13" ry="7" fill="#FFA726" />
             <circle cx="100" cy="90" r="37" fill="#263238" />
