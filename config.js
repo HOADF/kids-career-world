@@ -247,16 +247,22 @@ export const petAssets = {
         builder: `
             <ellipse cx="100" cy="150" rx="48" ry="34" fill="#FF9A3C" />
             <ellipse cx="100" cy="160" rx="28" ry="20" fill="#FFF3E0" />
-            <path d="M66 130 Q62 152 74 174" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
-            <path d="M134 130 Q138 152 126 174" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M72 130 Q80 135 72 140" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M57 143 Q67 148 57 153" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M63 158 Q68 163 63 168" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M128 130 Q120 135 128 140" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M143 143 Q133 148 143 153" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M137 158 Q132 163 137 168" stroke="#2B2B2B" stroke-width="5" fill="none" stroke-linecap="round" />
             <ellipse cx="64" cy="160" rx="11" ry="15" fill="#FF9A3C" transform="rotate(-16 64 160)" />
             <ellipse cx="136" cy="160" rx="11" ry="15" fill="#FF9A3C" transform="rotate(16 136 160)" />
-            <path d="M60 150 L68 172" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
-            <path d="M140 150 L132 172" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M58 154 L70 158" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M58 166 L70 170" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M142 154 L130 158" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M142 166 L130 170" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
             <ellipse cx="80" cy="180" rx="13" ry="9" fill="#FF9A3C" />
             <ellipse cx="120" cy="180" rx="13" ry="9" fill="#FF9A3C" />
-            <path d="M58 172 L66 184" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
-            <path d="M142 172 L134 184" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M75 179 L85 179" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
+            <path d="M125 179 L115 179" stroke="#2B2B2B" stroke-width="3" stroke-linecap="round" />
             <circle cx="100" cy="92" r="42" fill="#FF9A3C" />
             <ellipse cx="100" cy="110" rx="24" ry="19" fill="#FFF3E0" />
             <circle cx="64" cy="54" r="17" fill="#FF9A3C" />
@@ -324,24 +330,24 @@ export const petAssets = {
         // влево, обратно к телу — динамичная поза "на плаву", а не
         // прямая торпеда.
         coder: `
-            <g transform="rotate(-2 95 110)">
-                <path d="M152 100 Q188 90 192 60 Q174 78 158 72 Q150 86 152 100 Z" fill="#6E7F91" />
-                <path d="M30 100 Q95 40 162 95 L162 130 Q95 90 30 130 Z" fill="#6E7F91" />
-                <path d="M40 120 Q95 98 155 120 Q130 108 95 108 Q60 108 40 120 Z" fill="#DCE6EA" />
-                <path d="M83 62 Q98 24 115 58 Q99 55 83 62 Z" fill="#6E7F91" />
-                <path d="M88 124 Q70 142 44 132 Q66 126 88 124 Z" fill="#6E7F91" />
-                <path d="M80 74 Q76 90 80 104" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
-                <path d="M90 76 Q86 92 90 106" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <g transform="rotate(-6 100 115)">
+                <path d="M135 100 Q180 95 185 70 Q170 85 150 75 Q145 95 135 128 Z" fill="#6E7F91" />
+                <ellipse cx="95" cy="115" rx="66" ry="35" fill="#6E7F91" />
+                <path d="M35 128 Q95 152 145 124 Q130 140 95 143 Q52 141 35 128 Z" fill="#FFFFFF" />
+                <path d="M110 80 Q96 46 74 78 Q90 73 110 80 Z" fill="#6E7F91" />
+                <path d="M100 134 Q84 152 60 142 Q80 136 100 134 Z" fill="#6E7F91" />
+                <path d="M90 94 Q86 108 90 122" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                <path d="M100 96 Q96 108 100 120" stroke="#50606F" stroke-width="2.5" fill="none" stroke-linecap="round" />
                 <g class="pet-eyes">
-                    <circle cx="48" cy="86" r="14" fill="#FFFFFF" />
-                    <circle cx="68" cy="92" r="13" fill="#FFFFFF" />
-                    <circle cx="44" cy="86" r="7" fill="#2B2B2B" />
-                    <circle cx="64" cy="92" r="6.5" fill="#2B2B2B" />
-                    <circle cx="41" cy="83" r="2" fill="#FFFFFF" />
-                    <circle cx="61" cy="89" r="2" fill="#FFFFFF" />
+                    <circle cx="42" cy="90" r="14" fill="#FFFFFF" />
+                    <circle cx="62" cy="96" r="13" fill="#FFFFFF" />
+                    <circle cx="38" cy="90" r="7" fill="#2B2B2B" />
+                    <circle cx="58" cy="96" r="6.5" fill="#2B2B2B" />
+                    <circle cx="35" cy="87" r="2" fill="#FFFFFF" />
+                    <circle cx="55" cy="93" r="2" fill="#FFFFFF" />
                 </g>
-                <circle cx="58" cy="110" r="5" fill="#FFC9C9" opacity="0.6" />
-                <path d="M52 108 Q36 114 22 100" stroke="#3B4A58" stroke-width="3" fill="none" stroke-linecap="round" />
+                <circle cx="52" cy="116" r="5" fill="#FFC9C9" opacity="0.6" />
+                <path d="M52 120 Q37 128 24 116" stroke="#3B4A58" stroke-width="3" fill="none" stroke-linecap="round" />
             </g>
         `,
         // Пингвинёнок-повар: тело вытянуто вверх (было похоже на шар) —
