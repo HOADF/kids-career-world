@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта профессий — Kids Career World</title>
+    <link rel="stylesheet" href="city-map.css">
+    <link rel="stylesheet" href="games/engine/map-dialog.css">
+</head>
+<body>
+
+    <header class="city-map-header">
+        <h1>Город профессий 🏙️</h1>
+        <p>Кто-то на карте просит о помощи — нажми на домик и узнай, кто это!</p>
+    </header>
+
+    <div id="city-map-wrap">
+        <div id="city-map"></div>
+    </div>
+
+    <div id="map-dialog-root"></div>
+
+    <script type="module">
+        import { initCityMap } from './games/engine/map-dialog.js';
+
+        initCityMap({
+            dataUrl: 'games-map.json',
+            mapSelector: '#city-map',
+            dialogSelector: '#map-dialog-root'
+        });
+    </script>
+</body>
+</html>
