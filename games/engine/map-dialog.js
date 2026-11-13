@@ -145,11 +145,8 @@ function renderDialog(dialogRoot, point, solvedCount) {
             window.location.href = point.gameUrl;
             return;
         }
-        if (point.type === 'sea' && point.gameUrl) {
-            window.location.href = point.gameUrl;
-            return;
-        }
-        // Игра ещё не готова — ведём на честную страницу-заглушку,
+        // Игра ещё не готова (в том числе у Медузы в порту) — ведём на
+        // честную страницу-заглушку,
         // а не оставляем ребёнка на мёртвой кнопке.
         const params = new URLSearchParams({
             pet: point.petName,
