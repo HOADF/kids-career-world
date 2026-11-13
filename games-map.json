@@ -13,7 +13,7 @@
       "requestText": "Ой-ой! Пока я патрулировал улицу, кто-то украл мою любимую косточку! Воришка в маске убежал — помоги мне его поймать!",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 2, "top": 6, "width": 10, "height": 16 }
+      "layout": { "left": 4.5, "top": 10, "width": 5, "height": 8 }
     },
     {
       "id": "rescuer",
@@ -26,7 +26,7 @@
       "requestText": "Пожар! В домике на окраине загорелась крыша! Возьми шланг и помоги мне потушить огонь!",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 20, "top": 6, "width": 10, "height": 16 }
+      "layout": { "left": 22.5, "top": 10, "width": 5, "height": 8 }
     },
     {
       "id": "scientist",
@@ -39,7 +39,7 @@
       "requestText": "Ой, кажется, я перепутал все пробирки с зельем! Поможешь расставить их в правильном порядке, пока не случилось ничего странного?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 38, "top": 6, "width": 10, "height": 16 }
+      "layout": { "left": 40.5, "top": 10, "width": 5, "height": 8 }
     },
     {
       "id": "robot",
@@ -52,7 +52,7 @@
       "requestText": "Привет, друг! Помоги мне собраться, а то я упал и развалился!",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 56, "top": 6, "width": 10, "height": 16 }
+      "layout": { "left": 58.5, "top": 10, "width": 5, "height": 8 }
     },
     {
       "id": "artist",
@@ -65,7 +65,7 @@
       "requestText": "У меня есть замечательный рисунок, но он совсем без красок! Поможешь мне его раскрасить?",
       "status": "ready",
       "gameUrl": "games/artist/artist-game.html",
-      "layout": { "left": 2, "top": 38, "width": 10, "height": 16 }
+      "layout": { "left": 4.5, "top": 42, "width": 5, "height": 8 }
     },
     {
       "id": "creator",
@@ -78,7 +78,7 @@
       "requestText": "Я потерял свой любимый мультик-подарок! Поможешь собрать кадры снова по порядку?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 20, "top": 38, "width": 10, "height": 16 }
+      "layout": { "left": 22.5, "top": 42, "width": 5, "height": 8 }
     },
     {
       "id": "repairman",
@@ -91,7 +91,7 @@
       "requestText": "Моя машина сломалась прямо посреди дороги! Поможешь снять сломанную деталь и поставить новую?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 38, "top": 38, "width": 10, "height": 16 }
+      "layout": { "left": 40.5, "top": 42, "width": 5, "height": 8 }
     },
     {
       "id": "chef",
@@ -104,7 +104,7 @@
       "requestText": "Я так проголодался, но не знаю, как собрать вкусное блюдо! Поможешь мне с готовкой?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 56, "top": 38, "width": 10, "height": 16 }
+      "layout": { "left": 58.5, "top": 42, "width": 5, "height": 8 }
     },
     {
       "id": "builder",
@@ -117,7 +117,7 @@
       "requestText": "У меня совсем нет дома! Поможешь мне его построить из деталей?",
       "status": "ready",
       "gameUrl": "games/builder/builder-game.html",
-      "layout": { "left": 2, "top": 70, "width": 10, "height": 16 }
+      "layout": { "left": 4.5, "top": 74, "width": 5, "height": 8 }
     },
     {
       "id": "farmer",
@@ -130,7 +130,7 @@
       "requestText": "Мои грядки совсем засохли без дождя! Поможешь их полить и посадить семена?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 20, "top": 70, "width": 10, "height": 16 }
+      "layout": { "left": 22.5, "top": 74, "width": 5, "height": 8 }
     },
     {
       "id": "doctor",
@@ -143,7 +143,7 @@
       "requestText": "Ой, я поранил лапку, когда прыгал по камушкам! Поможешь мне вылечиться?",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 38, "top": 70, "width": 10, "height": 16 }
+      "layout": { "left": 40.5, "top": 74, "width": 5, "height": 8 }
     },
     {
       "id": "sea",
@@ -156,7 +156,7 @@
       "requestText": "Привет-привет! Я Медуза, плаваю в море рядом с корабликом у пристани. У меня скоро будет своя игра — приходи чуть позже!",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 85, "top": 30, "width": 10, "height": 16 }
+      "layout": { "left": 87.5, "top": 34, "width": 5, "height": 8 }
     }
   ]
 }

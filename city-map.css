@@ -104,7 +104,7 @@ body {
 .map-building {
     position: absolute;
     border: none;
-    border-radius: 16px;
+    border-radius: 10px;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -168,30 +168,30 @@ body {
 .map-building__icon {
     position: relative;
     z-index: 2;
-    font-size: clamp(13px, 2.6vw, 22px);
+    font-size: clamp(9px, 1.4vw, 14px);
     line-height: 1;
 }
 
 .map-building__label {
     position: relative;
     z-index: 2;
-    font-size: clamp(0.42rem, 0.85vw, 0.6rem);
+    font-size: clamp(0.28rem, 0.46vw, 0.38rem);
     font-weight: 700;
     text-align: center;
-    padding: 0 4px;
+    padding: 0 2px;
 }
 
 /* ---------- Значок состояния + счётчик ---------- */
 .map-badge {
     position: absolute;
-    top: -7px;
-    right: -5px;
+    top: -5px;
+    right: -4px;
     z-index: 3;
     border-radius: 999px;
-    padding: 1px 5px;
-    font-size: 0.6rem;
+    padding: 1px 4px;
+    font-size: 0.42rem;
     font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     text-shadow: none;
 }
 
@@ -235,11 +235,11 @@ body {
 }
 
 .map-building--sea .map-building__icon {
-    font-size: clamp(16px, 3vw, 26px);
+    font-size: clamp(10px, 1.6vw, 16px);
 }
 
 .map-building--sea .map-building__label {
-    font-size: clamp(0.38rem, 0.7vw, 0.52rem);
+    font-size: clamp(0.24rem, 0.4vw, 0.32rem);
 }
 
 @media (max-width: 760px) {
