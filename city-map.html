@@ -15,7 +15,196 @@
     </header>
 
     <div id="city-map-wrap">
-        <div id="city-map"></div>
+        <div id="city-map">
+            <!--
+                Фоновый город: улицы, река с портом и декоративная
+                застройка (деревья, непрокликиваемые домики, парк).
+                Это чистая декорация — всё кликабельное рисует JS
+                (games/engine/map-dialog.js) в слое #city-map-buildings
+                поверх этого SVG.
+
+                Система координат: viewBox 1600×920 — то же
+                соотношение сторон, что и у #city-map (1600/920), и
+                сетка улиц согласована с процентными координатами
+                зданий в games-map.json (1 svg-единица по X = 1/16 от
+                процента ширины, по Y = 1/9.2 от процента высоты —
+                то есть сетку можно мысленно читать как проценты,
+                умноженные на 16 и 9.2 соответственно). Если меняете
+                расположение улиц здесь — сверяйтесь с layout-полями
+                в games-map.json, чтобы здания не перекрывали дорогу
+                и не "висели в воздухе" между участками.
+            -->
+            <svg id="city-bg" viewBox="0 0 1600 920" preserveAspectRatio="xMidYMid slice"
+                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 aria-hidden="true" focusable="false">
+                <defs>
+                    <linearGradient id="ground-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#eef6da"/>
+                        <stop offset="100%" stop-color="#d7ecbb"/>
+                    </linearGradient>
+                    <linearGradient id="river-grad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#9fdfeb"/>
+                        <stop offset="100%" stop-color="#3fb0d4"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- ===== Земля (трава) ===== -->
+                <rect x="0" y="0" width="1600" height="920" fill="url(#ground-grad)"/>
+
+                <!-- ===== Река и порт (правая часть карты) ===== -->
+                <path d="M1190,0 C1120,110 1270,210 1195,330 C1120,450 1270,560 1200,680 C1150,770 1250,850 1205,920
+                         L1600,920 L1600,0 Z"
+                      fill="url(#river-grad)"/>
+                <path d="M1190,0 C1120,110 1270,210 1195,330 C1120,450 1270,560 1200,680 C1150,770 1250,850 1205,920"
+                      fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="8"/>
+                <!-- лёгкая рябь на воде -->
+                <path d="M1320,120 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1360,260 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1340,760 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1380,840 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- пристань (причал) в верхней части реки -->
+                <g>
+                    <rect x="1340" y="150" width="150" height="24" rx="6" fill="#b08a5a"/>
+                    <rect x="1358" y="174" width="10" height="36" fill="#9b764a"/>
+                    <rect x="1400" y="174" width="10" height="36" fill="#9b764a"/>
+                    <rect x="1442" y="174" width="10" height="36" fill="#9b764a"/>
+                </g>
+
+                <!-- кораблик в нижней части реки -->
+                <g transform="translate(1450,760)">
+                    <path d="M-42,0 L42,0 L30,24 L-30,24 Z" fill="#e8dcc2"/>
+                    <rect x="-6" y="-48" width="8" height="48" fill="#8a6d46"/>
+                    <path d="M2,-48 L2,-10 L46,-18 Z" fill="#f2a6a0"/>
+                </g>
+
+                <!-- ===== Кольцевая улица вокруг квартала домов ===== -->
+                <path id="ring-road"
+                      d="M 96,55 H 1040 A40,40 0 0 1 1080,95 V 790 A40,40 0 0 1 1040,830 H 96
+                         A40,40 0 0 1 56,790 V 95 A40,40 0 0 1 96,55 Z"
+                      fill="none" stroke="#c7c2b4" stroke-width="54" stroke-linejoin="round"/>
+                <path d="M 96,55 H 1040 A40,40 0 0 1 1080,95 V 790 A40,40 0 0 1 1040,830 H 96
+                         A40,40 0 0 1 56,790 V 95 A40,40 0 0 1 96,55 Z"
+                      fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="26 22" opacity="0.8"/>
+
+                <!-- ===== Внутренние улицы: вертикальные (между колонками участков) ===== -->
+                <rect x="224" y="20" width="96" height="860" fill="#c7c2b4"/>
+                <rect x="512" y="20" width="96" height="860" fill="#c7c2b4"/>
+                <rect x="800" y="20" width="96" height="860" fill="#c7c2b4"/>
+                <line x1="272" y1="20" x2="272" y2="880" stroke="#ffffff" stroke-width="6" stroke-dasharray="30 24" opacity="0.8"/>
+                <line x1="560" y1="20" x2="560" y2="880" stroke="#ffffff" stroke-width="6" stroke-dasharray="30 24" opacity="0.8"/>
+                <line x1="848" y1="20" x2="848" y2="880" stroke="#ffffff" stroke-width="6" stroke-dasharray="30 24" opacity="0.8"/>
+
+                <!-- ===== Внутренние улицы: горизонтальные (между рядами участков) ===== -->
+                <rect x="0" y="239" width="1120" height="111" fill="#c7c2b4"/>
+                <rect x="0" y="534" width="1120" height="110" fill="#c7c2b4"/>
+                <line x1="20" y1="294.5" x2="1100" y2="294.5" stroke="#ffffff" stroke-width="6" stroke-dasharray="30 24" opacity="0.8"/>
+                <line x1="20" y1="589" x2="1100" y2="589" stroke="#ffffff" stroke-width="6" stroke-dasharray="30 24" opacity="0.8"/>
+
+                <!-- ===== Перекрёстки-площади ===== -->
+                <circle cx="272" cy="294.5" r="58" fill="#cfc9b8"/>
+                <circle cx="560" cy="294.5" r="58" fill="#cfc9b8"/>
+                <circle cx="848" cy="294.5" r="58" fill="#cfc9b8"/>
+                <circle cx="272" cy="589" r="58" fill="#cfc9b8"/>
+                <circle cx="560" cy="589" r="58" fill="#cfc9b8"/>
+                <circle cx="848" cy="589" r="58" fill="#cfc9b8"/>
+
+                <!-- ===== Парк на пустом участке (4-я колонка, 3-й ряд) ===== -->
+                <g transform="translate(896,644)">
+                    <rect width="192" height="184" rx="24" fill="#bfe3a0"/>
+                    <path d="M20,150 Q96,90 172,150" fill="none" stroke="#e8e0c4" stroke-width="10" stroke-linecap="round"/>
+                    <g transform="translate(60,70)">
+                        <rect x="-4" y="0" width="8" height="20" fill="#8a5a2b"/>
+                        <circle cx="0" cy="-16" r="24" fill="#6fae56"/>
+                    </g>
+                    <g transform="translate(130,100)">
+                        <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                        <circle cx="0" cy="-15" r="22" fill="#7cbf60"/>
+                    </g>
+                    <g transform="translate(96,46)">
+                        <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                        <circle cx="0" cy="-15" r="20" fill="#6fae56"/>
+                    </g>
+                </g>
+
+                <!-- ===== Декоративные домики и деревья по краям (не кликаются,
+                     просто делают город живее, как в примерах с детской
+                     картой города) ===== -->
+                <!-- верхняя обочина -->
+                <g transform="translate(400,30)">
+                    <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                    <circle cx="0" cy="-16" r="20" fill="#6fae56"/>
+                </g>
+                <g transform="translate(700,26) scale(0.8)">
+                    <rect x="-26" y="-14" width="52" height="34" rx="6" fill="#f2b705"/>
+                    <path d="M-32,-14 L0,-44 L32,-14 Z" fill="#c0392b"/>
+                    <rect x="-8" y="2" width="16" height="16" fill="#8a5a2b"/>
+                </g>
+                <g transform="translate(980,30)">
+                    <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                    <circle cx="0" cy="-16" r="20" fill="#7cbf60"/>
+                </g>
+
+                <!-- левая обочина -->
+                <g transform="translate(28,200) scale(0.65)">
+                    <rect x="-26" y="-14" width="52" height="34" rx="6" fill="#8fb8de"/>
+                    <path d="M-32,-14 L0,-44 L32,-14 Z" fill="#5c7a89"/>
+                    <rect x="-8" y="2" width="16" height="16" fill="#8a5a2b"/>
+                </g>
+                <g transform="translate(26,500)">
+                    <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                    <circle cx="0" cy="-16" r="18" fill="#6fae56"/>
+                </g>
+                <g transform="translate(30,700) scale(0.65)">
+                    <rect x="-26" y="-14" width="52" height="34" rx="6" fill="#e8a0c4"/>
+                    <path d="M-32,-14 L0,-44 L32,-14 Z" fill="#b86a93"/>
+                    <rect x="-8" y="2" width="16" height="16" fill="#8a5a2b"/>
+                </g>
+
+                <!-- нижняя обочина -->
+                <g transform="translate(150,878) scale(0.75)">
+                    <rect x="-26" y="-14" width="52" height="34" rx="6" fill="#c6e39a"/>
+                    <path d="M-32,-14 L0,-44 L32,-14 Z" fill="#6fae56"/>
+                    <rect x="-8" y="2" width="16" height="16" fill="#8a5a2b"/>
+                </g>
+                <g transform="translate(430,882)">
+                    <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                    <circle cx="0" cy="-16" r="20" fill="#6fae56"/>
+                </g>
+                <g transform="translate(700,878) scale(0.75)">
+                    <rect x="-26" y="-14" width="52" height="34" rx="6" fill="#f2b705"/>
+                    <path d="M-32,-14 L0,-44 L32,-14 Z" fill="#c0392b"/>
+                    <rect x="-8" y="2" width="16" height="16" fill="#8a5a2b"/>
+                </g>
+                <g transform="translate(980,882)">
+                    <rect x="-4" y="0" width="8" height="18" fill="#8a5a2b"/>
+                    <circle cx="0" cy="-16" r="20" fill="#7cbf60"/>
+                </g>
+
+                <!-- ===== Машинки, едущие по кольцевой улице (по просьбе —
+                     лёгкая анимация без JS, через SMIL animateMotion) ===== -->
+                <g>
+                    <rect x="-16" y="-9" width="32" height="18" rx="5" fill="#e5533d"/>
+                    <rect x="-9" y="-15" width="18" height="10" rx="3" fill="#ffe9b0"/>
+                    <circle cx="-9" cy="9" r="5" fill="#333333"/>
+                    <circle cx="9" cy="9" r="5" fill="#333333"/>
+                    <animateMotion dur="20s" repeatCount="indefinite" rotate="auto">
+                        <mpath href="#ring-road" xlink:href="#ring-road"/>
+                    </animateMotion>
+                </g>
+                <g>
+                    <rect x="-16" y="-9" width="32" height="18" rx="5" fill="#4a78c9"/>
+                    <rect x="-9" y="-15" width="18" height="10" rx="3" fill="#dcedff"/>
+                    <circle cx="-9" cy="9" r="5" fill="#333333"/>
+                    <circle cx="9" cy="9" r="5" fill="#333333"/>
+                    <animateMotion dur="20s" begin="-10s" repeatCount="indefinite" rotate="auto">
+                        <mpath href="#ring-road" xlink:href="#ring-road"/>
+                    </animateMotion>
+                </g>
+            </svg>
+
+            <div id="city-map-buildings"></div>
+        </div>
     </div>
 
     <div id="map-dialog-root"></div>
@@ -25,7 +214,7 @@
 
         initCityMap({
             dataUrl: 'games-map.json',
-            mapSelector: '#city-map',
+            mapSelector: '#city-map-buildings',
             dialogSelector: '#map-dialog-root'
         });
     </script>
