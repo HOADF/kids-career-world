@@ -59,20 +59,26 @@
                       fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="8"/>
                 <!-- лёгкая рябь на воде -->
                 <path d="M1320,120 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
-                <path d="M1360,260 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
-                <path d="M1340,760 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
-                <path d="M1380,840 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1360,560 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1340,660 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
+                <path d="M1380,800 q40,18 80,0" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6" stroke-linecap="round"/>
 
-                <!-- пристань (причал) в верхней части реки -->
+                <!-- ===== Пристань: деревянный настил идёт прямо от берега в
+                     воду (а не висит отдельно посреди реки), у края
+                     пришвартован кораблик, рядом в воде плавает Медуза
+                     (кликабельная точка рисуется JS поверх, см.
+                     games-map.json → id "sea"). ===== -->
                 <g>
-                    <rect x="1340" y="150" width="150" height="24" rx="6" fill="#b08a5a"/>
-                    <rect x="1358" y="174" width="10" height="36" fill="#9b764a"/>
-                    <rect x="1400" y="174" width="10" height="36" fill="#9b764a"/>
-                    <rect x="1442" y="174" width="10" height="36" fill="#9b764a"/>
+                    <!-- настил от берега в воду -->
+                    <rect x="1104" y="286" width="170" height="28" rx="6" fill="#b08a5a"/>
+                    <!-- сваи под настилом -->
+                    <rect x="1126" y="314" width="10" height="34" fill="#9b764a"/>
+                    <rect x="1178" y="314" width="10" height="34" fill="#9b764a"/>
+                    <rect x="1230" y="314" width="10" height="34" fill="#9b764a"/>
                 </g>
 
-                <!-- кораблик в нижней части реки -->
-                <g transform="translate(1450,760)">
+                <!-- кораблик, пришвартованный у края пристани (побольше) -->
+                <g transform="translate(1300,300) scale(1.55)">
                     <path d="M-42,0 L42,0 L30,24 L-30,24 Z" fill="#e8dcc2"/>
                     <rect x="-6" y="-48" width="8" height="48" fill="#8a6d46"/>
                     <path d="M2,-48 L2,-10 L46,-18 Z" fill="#f2a6a0"/>
