@@ -91,8 +91,10 @@ function renderBuildings(container, points, progress, onOpen) {
         }
 
         el.innerHTML = `
-            ${buildingBadge(point, solvedCount)}
-            <span class="map-building__icon" aria-hidden="true">${point.petEmoji}</span>
+            <span class="map-building__house">
+                ${buildingBadge(point, solvedCount)}
+                <span class="map-building__icon" aria-hidden="true">${point.petEmoji}</span>
+            </span>
             <span class="map-building__label">${point.buildingName}</span>
         `;
         el.setAttribute('aria-label', `${point.buildingName} — ${point.petName}`);

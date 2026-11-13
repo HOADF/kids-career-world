@@ -101,30 +101,56 @@ body {
 }
 
 /* ---------- Здание ---------- */
+/* .map-building — это сама кнопка-участок: прозрачный контейнер без
+   фона, в котором друг под другом расположены домик (.map-building__house,
+   цветная коробочка с крышей и иконкой) и подпись
+   (.map-building__label) — подпись специально вынесена НИЖЕ домика,
+   на газон участка, а не поверх цветной коробки, чтобы текст не
+   сливался с цветом стен и не наезжал на крышу. */
 .map-building {
     position: absolute;
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
     padding: 0;
+    cursor: pointer;
+    background: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 3px;
+    justify-content: flex-start;
+    gap: 2%;
+    color: #27422f;
+    transition: transform 0.15s ease;
+}
+
+.map-building:hover,
+.map-building:focus-visible {
+    transform: translateY(-3px);
+}
+
+/* ---------- Домик (цветная коробочка с крышей) ---------- */
+.map-building__house {
+    position: relative;
+    width: 100%;
+    flex: 0 0 68%;
+    border-radius: 10px;
     background: var(--bld-color, #cccccc);
-    color: #2b2b2b;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
     box-shadow:
         0 10px 0 rgba(0,0,0,0.06) inset,
         0 8px 16px rgba(0,0,0,0.22);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: box-shadow 0.15s ease;
+}
+
+.map-building:hover .map-building__house,
+.map-building:focus-visible .map-building__house {
+    box-shadow:
+        0 10px 0 rgba(0,0,0,0.06) inset,
+        0 14px 22px rgba(0,0,0,0.28);
 }
 
 /* Слой объёма — светлый верх / тёмный низ — поверх цвета здания, но
    не заменяя его: тот же приём, что в сцене Океана (Этап 1 общего
    плана). Один и тот же ::before подходит для любого --bld-color. */
-.map-building::before {
+.map-building__house::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -141,15 +167,15 @@ body {
 
 /* Двускатная "крыша" домика поверх верхнего края здания — делает
    карточку профессии похожей на домик в городе (см. скриншоты-
-   образцы с карты в стиле детской книжки), а не на абстрактную
+   образцы с картой в стиле детской книжки), а не на абстрактную
    плашку. Цвет чуть темнее стен того же --bld-color. */
-.map-building::after {
+.map-building__house::after {
     content: "";
     position: absolute;
     left: 0;
-    top: -16%;
+    top: -22%;
     width: 100%;
-    height: 28%;
+    height: 38%;
     background: var(--bld-color, #cccccc);
     filter: brightness(0.82);
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
@@ -157,27 +183,39 @@ body {
     pointer-events: none;
 }
 
-.map-building:hover,
-.map-building:focus-visible {
-    transform: translateY(-3px);
-    box-shadow:
-        0 10px 0 rgba(0,0,0,0.06) inset,
-        0 14px 22px rgba(0,0,0,0.28);
-}
-
 .map-building__icon {
     position: relative;
     z-index: 2;
-    font-size: clamp(9px, 1.4vw, 14px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(11px, 1.7vw, 17px);
     line-height: 1;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
 }
 
+/* Подпись — под домиком, на газоне участка: без своего фона, текст
+   чуть крупнее иконки-подсказки и с лёгкой белой обводкой, чтобы
+   читаться на любом фоне (трава, дорога, вода). */
 .map-building__label {
     position: relative;
     z-index: 2;
-    font-size: clamp(0.28rem, 0.46vw, 0.38rem);
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    font-size: clamp(0.5rem, 0.95vw, 0.72rem);
     font-weight: 700;
+    line-height: 1.1;
     text-align: center;
+    color: #27422f;
+    text-shadow:
+        0 0 3px #ffffff,
+        0 0 3px #ffffff,
+        0 1px 1px rgba(255,255,255,0.8);
     padding: 0 2px;
 }
 
@@ -210,7 +248,7 @@ body {
    того же размера, что и обычные здания (см. games-map.json), но
    без крыши и без прямых углов. Пристань, кораблик и сама река
    рисуются фоновым SVG отдельно, независимо от этой кнопки. */
-.map-building--sea {
+.map-building--sea .map-building__house {
     border-radius: 50%;
     background: radial-gradient(circle at 34% 28%, rgba(255,255,255,0.65), transparent 55%), var(--bld-color, #2ec4b6);
     box-shadow:
@@ -218,28 +256,28 @@ body {
         0 0 0 4px rgba(255,255,255,0.55);
 }
 
-.map-building--sea:hover,
-.map-building--sea:focus-visible {
+.map-building--sea:hover .map-building__house,
+.map-building--sea:focus-visible .map-building__house {
     box-shadow:
         0 10px 18px rgba(0,0,0,0.3),
         0 0 0 4px rgba(255,255,255,0.7);
 }
 
-.map-building--sea::before {
+.map-building--sea .map-building__house::before {
     display: none;
 }
 
 /* У медузы нет домика-крыши — она плавает в воде. */
-.map-building--sea::after {
+.map-building--sea .map-building__house::after {
     display: none;
 }
 
 .map-building--sea .map-building__icon {
-    font-size: clamp(10px, 1.6vw, 16px);
+    font-size: clamp(13px, 2vw, 20px);
 }
 
 .map-building--sea .map-building__label {
-    font-size: clamp(0.24rem, 0.4vw, 0.32rem);
+    color: #0f5c66;
 }
 
 @media (max-width: 760px) {
