@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 HOADF and sons (9 and 11 years old)
+Copyright (c) 2026 HOADF
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

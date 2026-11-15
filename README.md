@@ -6,18 +6,18 @@
 
 ## Русский
 ### О проекте
-Это семейный образовательный проект, созданный папой и двумя сыновьями (9 и 11 лет). Мы учимся веб-разработке, создавая интерактивный квест, который помогает детям найти свое призвание и получить уникального цифрового питомца в формате SVG.
+Это учебный проект: я (Павел) придумываю концепцию, геймдизайн и визуальный стиль, а код пишу в связке с ИИ-помощником (Claude от Anthropic) — и сам всё разворачиваю и дорабатываю. Цель — интерактивный квест, который помогает детям найти своё призвание и получить уникального цифрового питомца в формате SVG.
 
-**Наша команда:**
-* **Папа:** Архитектор кода и наставник.
-* **Сыновья:** Ведущие дизайнеры персонажей и мастера SVG-графики.
+**Команда:**
+* **Павел** — автор идеи, геймдизайнер и арт-директор.
+* **ИИ-помощник (Claude)** — пишет код по моим задачам и правкам.
 
 ---
 
 ## English
 ### About the Project
-This is a family educational project created by a father and his two sons (ages 9 and 11). We are learning web development by building an interactive quest that helps children find their calling and receive a unique digital pet in SVG format.
+This is a learning project: I (Pavel) come up with the concept, game design and visual style, and write the code together with an AI assistant (Claude by Anthropic) — then deploy and refine everything myself. The goal is an interactive quest that helps children find their calling and get a unique digital pet in SVG format.
 
-**Our Team:**
-* **Dad:** Code Architect & Mentor.
-* **Sons:** Lead Character Designers & SVG Graphics Masters.
+**Team:**
+* **Pavel** — idea, game design & art direction.
+* **AI assistant (Claude)** — writes the code from my specs and edits.
