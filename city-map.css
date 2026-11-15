@@ -280,6 +280,126 @@ body {
     color: #0f5c66;
 }
 
+/* ---------- Здания похожи на то, чем являются (15.11.2026) ---------- */
+/* У каждого здания — свой силуэт крыши и/или деталь на стене поверх
+   общего цвета (--bld-color), а не только цвет и иконка питомца, как
+   было раньше. Все детали — чистый CSS (градиенты/clip-path), без
+   новых картинок — см. claude/ПЛАН_2, п.1.2, обновление 15.11.2026.
+   Полная детальная версия построек (вертолётная площадка у клиники,
+   свалка машин у завода и т.п.) — задел на будущие фоны самих
+   мини-игр, см. claude/АРХИВ_ Идеи и этапы на будущее.md; здесь —
+   упрощённый, но узнаваемый намёк на карте. */
+
+/* Длинная тень для самого крупного здания (завод/мастерская). */
+.map-building--long-shadow .map-building__house {
+    box-shadow:
+        0 10px 0 rgba(0,0,0,0.06) inset,
+        0 14px 26px rgba(0,0,0,0.32);
+}
+.map-building--long-shadow:hover .map-building__house,
+.map-building--long-shadow:focus-visible .map-building__house {
+    box-shadow:
+        0 10px 0 rgba(0,0,0,0.06) inset,
+        0 20px 32px rgba(0,0,0,0.38);
+}
+
+/* Полицейский участок — белая полоса-"мигалка" и огонёк сверху. */
+.map-building--police .map-building__house {
+    background:
+        linear-gradient(180deg, transparent 0% 42%, rgba(255,255,255,0.85) 42% 54%, transparent 54% 100%),
+        radial-gradient(circle at 50% 16%, #ffffff 0 20%, transparent 55%),
+        var(--bld-color, #cccccc);
+}
+
+/* Пожарная часть — тёмная арка гаражных ворот внизу. */
+.map-building--rescuer .map-building__house {
+    background:
+        radial-gradient(ellipse 46% 60% at 50% 100%, rgba(0,0,0,0.32) 0 98%, transparent 100%),
+        var(--bld-color, #cccccc);
+}
+
+/* Обсерватория и лаборатория — купол вместо треугольной крыши. */
+.map-building--scientist .map-building__house::after {
+    clip-path: none;
+    top: -32%;
+    height: 48%;
+    border-radius: 50% 50% 4% 4% / 70% 70% 10% 10%;
+    background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.55), var(--bld-color, #cccccc) 65%);
+    filter: brightness(0.95);
+}
+
+/* Завод и мастерская (Робот) — плоская промышленная "крыша" и намёк
+   на кучку деталей/колёс у стены (задел на идею "свалки машин" —
+   полную сцену делаем позже на фоне самой мини-игры). */
+.map-building--robot .map-building__house::after {
+    clip-path: none;
+    top: -14%;
+    height: 20%;
+    border-radius: 3px 3px 0 0;
+}
+.map-building--robot .map-building__house {
+    background:
+        linear-gradient(180deg, transparent 0% 70%, rgba(0,0,0,0.22) 70% 100%),
+        radial-gradient(ellipse 9% 12% at 14% 106%, #5b5f66 0 90%, transparent 100%),
+        radial-gradient(ellipse 9% 12% at 30% 110%, #5b5f66 0 90%, transparent 100%),
+        radial-gradient(ellipse 9% 12% at 88% 106%, #5b5f66 0 90%, transparent 100%),
+        var(--bld-color, #cccccc);
+}
+
+/* Студия художника — круглый мансардный световой люк на стене. */
+.map-building--artist .map-building__house {
+    background:
+        radial-gradient(circle at 50% 38%, rgba(255,255,255,0.85) 0 18%, transparent 20%),
+        var(--bld-color, #cccccc);
+}
+
+/* Мультстудия — полосатая "хлопушка" вместо обычной крыши. */
+.map-building--creator .map-building__house::after {
+    background:
+        repeating-linear-gradient(135deg, #2b2b2b 0% 14%, #ffffff 14% 28%);
+}
+
+/* Автомастерская — арка ворот поменьше и пара колёс у стены. */
+.map-building--repairman .map-building__house {
+    background:
+        radial-gradient(ellipse 38% 50% at 50% 100%, rgba(0,0,0,0.3) 0 98%, transparent 100%),
+        radial-gradient(ellipse 9% 14% at 86% 92%, #2f3336 0 90%, transparent 100%),
+        var(--bld-color, #cccccc);
+}
+
+/* Кухня — тёмный дымоход и пар над крышей. */
+.map-building--chef .map-building__house::after {
+    background:
+        radial-gradient(ellipse 14% 20% at 78% 2%, rgba(255,255,255,0.8) 0 90%, transparent 100%),
+        radial-gradient(ellipse 10% 16% at 70% -10%, rgba(255,255,255,0.55) 0 90%, transparent 100%),
+        var(--bld-color, #cccccc);
+}
+.map-building--chef .map-building__house {
+    background:
+        linear-gradient(180deg, transparent 0% 86%, rgba(0,0,0,0.18) 86% 100%),
+        var(--bld-color, #cccccc);
+}
+
+/* Стройка — предупреждающие полосы по низу здания. */
+.map-building--builder .map-building__house {
+    background:
+        repeating-linear-gradient(135deg, rgba(43,43,43,0.55) 0% 10%, rgba(255,214,0,0.55) 10% 20%) bottom / 100% 22% no-repeat,
+        var(--bld-color, #cccccc);
+}
+
+/* Ферма — двускатная "амбарная" крыша вместо обычного треугольника. */
+.map-building--farmer .map-building__house::after {
+    clip-path: polygon(50% 0%, 78% 34%, 100% 100%, 0% 100%, 22% 34%);
+}
+
+/* Клиника — красный крест на стене. */
+.map-building--doctor .map-building__house {
+    background:
+        linear-gradient(180deg, transparent 0% 40%, #e0536b 40% 60%, transparent 60% 100%),
+        linear-gradient(90deg, transparent 0% 40%, #e0536b 40% 60%, transparent 60% 100%),
+        var(--bld-color, #cccccc);
+}
+
 @media (max-width: 760px) {
     :root { --header-h: 74px; }
     .city-map-header h1 { font-size: 1.3rem; }

@@ -80,7 +80,12 @@ function renderBuildings(container, points, progress, onOpen) {
 
         const el = document.createElement('button');
         el.type = 'button';
-        el.className = `map-building map-building--${point.type}`;
+        // Класс по id (map-building--police, --rescuer, --robot и т.д.)
+        // отвечает за "форму домика" — крышу/детали конкретного здания
+        // в city-map.css (раздел «здания похожи на то, чем являются» —
+        // см. claude/ПЛАН_2, п.1.2, обновление 15.11.2026). Класс по
+        // type остаётся для общей логики (sea/profession).
+        el.className = `map-building map-building--${point.type} map-building--${point.id}`;
         el.style.setProperty('--bld-color', point.color);
         el.style.left = `${point.layout.left}%`;
         el.style.top = `${point.layout.top}%`;

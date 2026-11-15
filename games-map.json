@@ -52,7 +52,8 @@
       "requestText": "Привет, друг! Помоги мне собраться, а то я упал и развалился!",
       "status": "soon",
       "gameUrl": null,
-      "layout": { "left": 58.4, "top": 13.4, "width": 5, "height": 8 }
+      "shadowLength": "long",
+      "layout": { "left": 57, "top": 12, "width": 7.5, "height": 9.5 }
     },
     {
       "id": "artist",
