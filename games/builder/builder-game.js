@@ -105,9 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const clone = orig.cloneNode(true);
         clone.removeAttribute('draggable');
         clone.setAttribute('data-part-clone', partType);
+        // object-fit: contain, а не cover — иначе картинка обрезается
+        // под размер зоны и меняет пропорции (особенно заметно было на
+        // окне: его решётка искажалась под квадратную зону вместо
+        // исходных пропорций детали из подноса).
         clone.style.width = '100%';
         clone.style.height = '100%';
-        clone.style.objectFit = 'cover';
+        clone.style.objectFit = 'contain';
 
         zone.innerHTML = '';
         zone.appendChild(clone);

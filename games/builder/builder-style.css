@@ -89,13 +89,32 @@ html, body {
 .dropzone.filled { border: none; background: transparent; }
 .dropzone.wrong { border-color: #c94c4c; background: rgba(201, 76, 76, 0.2); }
 
+/* У крыши рамка — треугольник: обычный dashed-border вместе с
+   clip-path почти не виден (браузер режет сам пунктир по контуру,
+   остаётся только точка на вершине). Поэтому контур крыши рисуется
+   отдельным SVG-фоном (гарантированно виден), а clip-path оставлен
+   только для подсветки hover/wrong/filled. */
 .dropzone[data-part="roof"] {
     top: -35px; left: 7px; width: 175px; height: 95px;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    border: none;
 }
+.dropzone[data-part="roof"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 175 95'%3E%3Cpolygon points='87.5,3 172,92 3,92' fill='none' stroke='rgba(120,80,30,0.6)' stroke-width='3' stroke-dasharray='9 7'/%3E%3C/svg%3E");
+}
+.dropzone[data-part="roof"].filled::after { display: none; }
 .dropzone[data-part="wall"] { top: 60px; left: 15px; width: 160px; height: 135px; }
 .dropzone[data-part="door"] { top: 120px; left: 105px; width: 40px; height: 70px; }
-.dropzone[data-part="window"] { top: 75px; left: 30px; width: 60px; height: 60px; }
+/* Пропорции зоны окна (8:7) подогнаны под пропорции самой детали
+   (80×70 в подносе) — раньше зона была квадратной 60×60, и даже
+   с contain оставались заметные пустые поля по бокам. */
+.dropzone[data-part="window"] { top: 77px; left: 28px; width: 64px; height: 56px; }
 
 .part-roof { width: 100px; height: 60px; }
 .part-wall { width: 90px; height: 70px; }
