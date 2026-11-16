@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Зайчонок-пациент</title>
+    <meta name="game-level" content="1">
+    <meta name="age-range" content="5–8">
+    <meta name="game-title" content="Вылечи лапку">
+    <meta name="game-description" content="Помоги Зайчонку вылечить поцарапанную лапку: по порядку — вата, зелёнка, марля, бинт.">
+    <link rel="stylesheet" href="../../animations.css">
+    <link rel="stylesheet" href="../engine/game-shell.css">
+    <link rel="stylesheet" href="doctor-style.css">
+</head>
+<body>
+
+<div class="habitat-scene">
+    <div class="habitat-layer habitat-layer-sky"></div>
+    <div class="habitat-ground"></div>
+</div>
+
+<div class="pet-stage no-perch">
+    <div id="pet-visual" class="character-pet"></div>
+    <div id="speech-bubble" class="bubble">Ой, я поранил лапку, когда прыгал по камушкам! Помоги мне! 🐰</div>
+    <p class="pet-name-tag">Зайчонок</p>
+</div>
+
+<div class="ui-layer">
+    <section class="glass-card game-card">
+        <h1>🩹 Вылечи лапку</h1>
+
+        <div class="game-content">
+            <div class="clinic-area">
+                <div class="paw-area">
+                    <svg id="paw-svg" viewBox="0 0 200 200">
+                        <ellipse cx="100" cy="120" rx="70" ry="60" fill="#F6DCE4" />
+                        <circle cx="55" cy="60" r="22" fill="#F6DCE4" />
+                        <circle cx="100" cy="42" r="22" fill="#F6DCE4" />
+                        <circle cx="145" cy="60" r="22" fill="#F6DCE4" />
+
+                        <!-- Шаг 0: грязь и царапина (видны изначально) -->
+                        <g id="step-dirty">
+                            <ellipse cx="88" cy="112" rx="6" ry="4" fill="#9c7a5a" opacity="0.6" />
+                            <ellipse cx="108" cy="128" rx="5" ry="3" fill="#9c7a5a" opacity="0.6" />
+                            <path d="M78 100 L118 140" stroke="#C94C4C" stroke-width="4" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Шаг 1: промыто ватой (царапина чище, грязь исчезла) -->
+                        <g id="step-clean" class="hidden">
+                            <path d="M78 100 L118 140" stroke="#E6837F" stroke-width="4" stroke-linecap="round" />
+                        </g>
+
+                        <!-- Шаг 2: зелёнка -->
+                        <g id="step-antiseptic" class="hidden">
+                            <path d="M78 100 L118 140" stroke="#2E8B57" stroke-width="7" stroke-linecap="round" opacity="0.85" />
+                        </g>
+
+                        <!-- Шаг 3: марля -->
+                        <g id="step-gauze" class="hidden">
+                            <rect x="75" y="98" width="50" height="44" rx="6" fill="#FFFFFF" stroke="#D8D8D8" stroke-width="2" transform="rotate(28 100 120)" />
+                        </g>
+
+                        <!-- Шаг 4: бинт обмотан сверху -->
+                        <g id="step-bandage" class="hidden">
+                            <path d="M60 95 Q100 80 140 95 L142 145 Q100 162 58 145 Z" fill="#F2E7D8" stroke="#D8C8A8" stroke-width="2" />
+                            <path d="M62 112 L138 112 M62 128 L138 128" stroke="#D8C8A8" stroke-width="2" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="tray-area">
+                    <p class="tray-label">Выбери по порядку 👇</p>
+                    <div class="tray-box" id="tray-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-row">
+            <button id="restart" class="nav-btn small">🔁 Новая царапина</button>
+            <a href="../../pets-select.html" class="nav-btn small">🐾 Питомец</a>
+            <a href="../../city-map.html?done=doctor" class="nav-btn small">🏠 Домой</a>
+        </div>
+    </section>
+</div>
+
+<script type="module" src="doctor-game.js"></script>
+</body>
+</html>

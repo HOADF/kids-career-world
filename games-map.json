@@ -142,8 +142,8 @@
       "petName": "Зайчонок",
       "color": "#F6C4D6",
       "requestText": "Ой, я поранил лапку, когда прыгал по камушкам! Поможешь мне вылечиться?",
-      "status": "soon",
-      "gameUrl": null,
+      "status": "ready",
+      "gameUrl": "games/doctor/doctor-game.html",
       "layout": { "left": 41.5, "top": 74.6, "width": 5, "height": 8 }
     },
     {
