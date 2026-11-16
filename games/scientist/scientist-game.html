@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Совёнок-учёный</title>
+    <meta name="game-level" content="1">
+    <meta name="age-range" content="5–8">
+    <meta name="game-title" content="Разложи пробирки">
+    <meta name="game-description" content="Помоги Совёнку расставить перепутанные пробирки с зельем по гнёздам в правильном порядке.">
+    <link rel="stylesheet" href="../../animations.css">
+    <link rel="stylesheet" href="../engine/game-shell.css">
+    <link rel="stylesheet" href="scientist-style.css">
+</head>
+<body>
+
+<div class="habitat-scene">
+    <div class="habitat-layer habitat-layer-sky"></div>
+    <div class="habitat-ground"></div>
+</div>
+
+<div class="pet-stage no-perch">
+    <div id="pet-visual" class="character-pet"></div>
+    <div id="speech-bubble" class="bubble">Ой, кажется, я перепутал все пробирки с зельем! Поможешь? 🦉</div>
+    <p class="pet-name-tag">Совёнок</p>
+</div>
+
+<div class="ui-layer">
+    <section class="glass-card game-card">
+        <h1>🧪 Разложи пробирки</h1>
+
+        <div class="game-content">
+            <div class="lab-area" id="lab-area">
+                <div class="nests-row" id="nests-row"></div>
+                <div class="tubes-row" id="tubes-row"></div>
+            </div>
+        </div>
+
+        <div class="controls-row">
+            <button id="restart" class="nav-btn small">🔁 Новое зелье</button>
+            <a href="../../pets-select.html" class="nav-btn small">🐾 Питомец</a>
+            <a href="../../city-map.html?done=scientist" class="nav-btn small">🏠 Домой</a>
+        </div>
+    </section>
+</div>
+
+<script type="module" src="scientist-game.js"></script>
+</body>
+</html>

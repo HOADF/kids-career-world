@@ -1,0 +1,113 @@
+/* Игра "Разложи пробирки" — Совёнок в лаборатории.
+   Общий каркас страницы подключён из ../engine/game-shell.css. */
+
+html, body {
+    background: #E6DFF5;
+}
+
+.habitat-layer-sky {
+    background: linear-gradient(180deg, #D6C7F0 0%, #B9A3E0 60%, #8C72C2 100%);
+}
+
+/* Ночное "звёздное" небо лаборатории — несколько точек через
+   repeating-radial-gradient, без отдельных картинок. */
+.habitat-layer-sky::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 10% 20%, #fff 0 100%, transparent 100%),
+        radial-gradient(2px 2px at 80% 15%, #fff 0 100%, transparent 100%),
+        radial-gradient(2px 2px at 60% 35%, #fff 0 100%, transparent 100%),
+        radial-gradient(2px 2px at 30% 45%, #fff 0 100%, transparent 100%),
+        radial-gradient(2px 2px at 90% 50%, #fff 0 100%, transparent 100%);
+    opacity: 0.8;
+}
+
+.habitat-ground {
+    background: linear-gradient(180deg, #5B4A8A 0%, #463A6E 100%);
+    border-top: 6px solid #7A5FBF;
+}
+
+.lab-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    flex: 1 1 100%;
+    min-width: 280px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.nests-row,
+.tubes-row {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nest-slot {
+    position: relative;
+    width: 72px;
+    height: 96px;
+    border-radius: 0 0 30px 30px;
+    border: 3px dashed var(--nest-color, #999);
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+}
+
+.nest-slot.filled {
+    border-style: solid;
+    background: var(--nest-color, #999);
+}
+
+.nest-slot .nest-tube {
+    width: 85%;
+    height: 85%;
+}
+
+.tube-item {
+    width: 64px;
+    height: 88px;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+.tube-item:hover { transform: translateY(-4px) scale(1.05); }
+.tube-item:active { transform: scale(0.95); }
+
+.tube-item.used {
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.tube-item.wrong-shake {
+    animation: tubeShake 0.4s ease;
+}
+
+@keyframes tubeShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px) rotate(-6deg); }
+    75% { transform: translateX(6px) rotate(6deg); }
+}
+
+.lab-area.oops .nest-slot,
+.lab-area.oops .tube-item {
+    animation: labOops 0.5s ease;
+}
+
+@keyframes labOops {
+    0%, 100% { filter: none; }
+    50% { filter: brightness(1.4) saturate(1.6); }
+}
+
+@media (max-width: 760px) {
+    .nest-slot, .tube-item { width: 54px; }
+}

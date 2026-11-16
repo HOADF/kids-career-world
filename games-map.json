@@ -37,8 +37,8 @@
       "petName": "Совёнок",
       "color": "#7A5FBF",
       "requestText": "Ой, кажется, я перепутал все пробирки с зельем! Поможешь расставить их в правильном порядке, пока не случилось ничего странного?",
-      "status": "soon",
-      "gameUrl": null,
+      "status": "ready",
+      "gameUrl": "games/scientist/scientist-game.html",
       "layout": { "left": 41.5, "top": 13.4, "width": 5, "height": 8 }
     },
     {
