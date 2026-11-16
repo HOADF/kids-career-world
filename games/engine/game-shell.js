@@ -25,8 +25,13 @@ export function createPetStage(petType, options = {}) {
     const petVisual = document.getElementById(petVisualId);
     const bubble = document.getElementById(bubbleId);
 
+    // includeBackdrop:false — убирает цветную "медаль"-подложку позади
+    // питомца (см. комментарий в pet-factory.js): она задумана для
+    // старой плоской карточки результата теста без своей сцены, а
+    // здесь, внутри полноценной сцены-биома, с ней питомец выглядел бы
+    // как сидящий в кружке поверх фона, а не стоящий в сцене.
     if (petVisual) {
-        petVisual.innerHTML = assemblePet(petType, options.markType || null);
+        petVisual.innerHTML = assemblePet(petType, options.markType || null, { includeBackdrop: false });
     }
 
     function say(text) {

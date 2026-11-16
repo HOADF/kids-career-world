@@ -1,64 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Построй домик</title>
-  <link rel="stylesheet" href="builder-game.css">
-  <meta name="game-level" content="1">
-  <meta name="age-range" content="5–8">
-  <meta name="game-title" content="Построй домик">
-  <meta name="game-description" content="Собери домик из деталей — игра для малышей.">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Тигрёнок-строитель</title>
+    <meta name="game-level" content="1">
+    <meta name="age-range" content="5–8">
+    <meta name="game-title" content="Построй домик">
+    <meta name="game-description" content="Перетащи детали (крыша, стена, дверь, окно) на нужные места — построй домик для Тигрёнка.">
+    <link rel="stylesheet" href="../../animations.css">
+    <link rel="stylesheet" href="../engine/game-shell.css">
+    <link rel="stylesheet" href="builder-style.css">
 </head>
 <body>
-  <h2 class="game-level">Уровень 1 (5–8 лет)</h2>
 
-  <div class="game-card">
+<div class="habitat-scene">
+    <div class="habitat-layer habitat-layer-sky"></div>
+    <div class="habitat-ground"></div>
+</div>
 
-    <h1 class="game-title">🧱 Построй домик</h1>
-    <p class="subtitle">Перетащи детали на нужные места</p>
+<div class="pet-stage no-perch">
+    <div id="pet-visual" class="character-pet"></div>
+    <div id="speech-bubble" class="bubble">У меня совсем нет дома! Поможешь мне его построить? 🐯</div>
+    <p class="pet-name-tag">Тигрёнок</p>
+</div>
 
-    <!-- Игровая площадка -->
-    <div id="playground" aria-label="Площадка для сборки">
-      <div id="house-template" aria-hidden="true">
-        <!-- зоны принимают только свою деталь по data-part -->
-        <div class="dropzone" data-part="roof"></div>
-        <div class="dropzone" data-part="wall"></div>
-        <div class="dropzone" data-part="door"></div>
-        <div class="dropzone" data-part="window"></div>
-      </div>
+<div class="ui-layer">
+    <section class="glass-card game-card">
+        <h1>🧱 Построй домик</h1>
+        <p style="margin: -8px 0 18px; color: #6b4a1e; font-weight: 600;">Перетащи детали на нужные места</p>
 
-      <div class="pet" aria-hidden="true">
-        <!-- Питомец собирается движком слоёв (pet-factory.js) -->
-        <div id="pet-visual"></div>
-        <div class="pet-name">Тигрёнок</div>
-      </div>
-    </div>
+        <div class="game-content">
+            <div class="build-area">
+                <div id="playground" aria-label="Площадка для сборки">
+                    <div id="house-template" aria-hidden="true">
+                        <div class="dropzone" data-part="roof"></div>
+                        <div class="dropzone" data-part="wall"></div>
+                        <div class="dropzone" data-part="door"></div>
+                        <div class="dropzone" data-part="window"></div>
+                    </div>
+                </div>
 
-    <!-- Панель деталей: используем файлы из папки images в games/builder/images/ -->
-    <div id="part">
-      <img src="images/roof.svg" data-part="roof" draggable="true" alt="Крыша" class="part-roof">
-      <img src="images/wall.svg" data-part="wall" draggable="true" alt="Стена" class="part-wall">
-      <img src="images/door.svg" data-part="door" draggable="true" alt="Дверь" class="part-door">
-      <img src="images/window.svg" data-part="window" draggable="true" alt="Окно" class="part-window">
-    </div>
+                <div class="tray-row" id="part">
+                    <img src="images/roof.svg" data-part="roof" draggable="true" alt="Крыша" class="part-roof">
+                    <img src="images/wall.svg" data-part="wall" draggable="true" alt="Стена" class="part-wall">
+                    <img src="images/door.svg" data-part="door" draggable="true" alt="Дверь" class="part-door">
+                    <img src="images/window.svg" data-part="window" draggable="true" alt="Окно" class="part-window">
+                </div>
+            </div>
+        </div>
 
+        <div class="controls-row">
+            <button id="restart" class="nav-btn small">🔁 Сыграть снова</button>
+            <a href="../../pets-select.html" class="nav-btn small">🐯 Питомец</a>
+            <a href="../../city-map.html?done=builder" class="nav-btn small">🏠 Домой</a>
+        </div>
+    </section>
+</div>
 
-    <p id="status" class="hidden">🎉 Отлично! Дом готов!</p>
-
-    <!-- Все кнопки игры (действие + навигация, пути к корню: ../../)
-         собраны в один ряд внизу карточки, без дублирующей кнопки
-         "На главную" — она вела туда же, куда и "Домой". -->
-    <div class="controls-row">
-      <button id="restart" class="nav-btn small">🔁 Сыграть снова</button>
-      <a href="../../pets-select.html" class="nav-btn small">🐯 Питомец</a>
-      <a href="../../city-map.html?done=builder" class="nav-btn small">🏠 Домой</a>
-    </div>
-
-  </div>
-
-  <!-- JS в той же папке -->
-  <script type="module" src="builder-game.js"></script>
+<script type="module" src="builder-game.js"></script>
 </body>
 </html>

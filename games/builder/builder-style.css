@@ -1,0 +1,127 @@
+/* Игра "Построй домик" — Тигрёнок на стройке.
+   Общий каркас страницы подключён из ../engine/game-shell.css.
+   Раньше у этой игры не было полноэкранной сцены вообще (просто
+   белая страница с маленькой карточкой) — теперь она приведена к
+   тому же стандарту, что и остальные игры: сцена-стройка на весь
+   экран + Тигрёнок в ней комментирует каждый ход, а не молчит до
+   самого конца. */
+
+html, body {
+    background: #FBE9D0;
+}
+
+.habitat-layer-sky {
+    background: linear-gradient(180deg, #BFE3FB 0%, #E8F3FB 70%);
+}
+
+/* Силуэт стройки на горизонте — кран и штабель кирпичей, чистым CSS. */
+.habitat-layer-sky::before {
+    content: '';
+    position: absolute;
+    left: 6%;
+    bottom: 0;
+    width: 10px;
+    height: 46%;
+    background: #8a8f98;
+}
+
+.habitat-layer-sky::after {
+    content: '';
+    position: absolute;
+    left: 6%;
+    bottom: 44%;
+    width: 180px;
+    height: 10px;
+    background: #8a8f98;
+}
+
+.habitat-ground {
+    background:
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.04) 0 44px, transparent 44px 88px),
+        linear-gradient(180deg, #E0A458 0%, #C98A3E 100%);
+    border-top: 6px solid #B5793A;
+}
+
+.build-area {
+    position: relative;
+    flex: 1 1 100%;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#playground {
+    position: relative;
+    width: 320px;
+    max-width: 100%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+#house-template {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 240px;
+}
+
+.dropzone {
+    position: absolute;
+    border: 2px dashed rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color 0.18s, background 0.18s;
+}
+
+.dropzone.hover { border-color: #2e7d32; background: rgba(144, 238, 144, 0.2); }
+.dropzone.filled { border: none; background: transparent; }
+.dropzone.wrong { border-color: #c94c4c; background: rgba(201, 76, 76, 0.2); }
+
+.dropzone[data-part="roof"] {
+    top: -35px; left: 7px; width: 175px; height: 95px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+.dropzone[data-part="wall"] { top: 60px; left: 15px; width: 160px; height: 135px; }
+.dropzone[data-part="door"] { top: 120px; left: 105px; width: 40px; height: 70px; }
+.dropzone[data-part="window"] { top: 75px; left: 30px; width: 60px; height: 60px; }
+
+.part-roof { width: 100px; height: 60px; }
+.part-wall { width: 90px; height: 70px; }
+.part-door { width: 50px; height: 75px; }
+.part-window { width: 80px; height: 70px; }
+
+.tray-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.tray-row img {
+    object-fit: contain;
+    cursor: grab;
+    user-select: none;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    transition: transform 0.15s;
+}
+
+.tray-row img:hover { transform: translateY(-3px) scale(1.04); }
+.tray-row img.dragging { opacity: 0.5; }
+
+@media (max-width: 760px) {
+    #playground { height: 260px; }
+    #house-template { width: 200px; height: 200px; top: 25px; }
+    .tray-row img { width: 56px !important; height: 56px !important; }
+}

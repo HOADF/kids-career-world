@@ -1,15 +1,19 @@
-import { assemblePet } from '../../pet-factory.js';
+import { createPetStage } from '../engine/game-shell.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let selectedColor = null;
     let selectedHex = null;
     let selectedId = null;
 
-    const bubble = document.getElementById('speech-bubble');
+    // Питомец собирается движком слоёв через общий game-shell.js (а не
+    // прямым вызовом assemblePet, как было раньше) — он же убирает
+    // цветную "медаль"-подложку позади панды, из-за которой она
+    // выглядела сидящей в кружке поверх бамбуковой сцены, а не в ней.
+    const pet = createPetStage('artist');
+    const bubble = pet.bubble;
     const colorItems = document.querySelectorAll('.color-item');
     const areas = document.querySelectorAll('.paint-area');
     const restartBtn = document.getElementById('restart');
-    const petVisual = document.getElementById('pet-visual');
     const canvasArea = document.querySelector('.canvas-area');
     const paletteBox = document.querySelector('.palette');
 
@@ -71,13 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 pandaSayLocationAware(activeLocationBubble);
             }
         });
-    }
-
-    // Питомец собирается движком слоёв (pet-factory.js), а не берётся
-    // из файла картинки — так он есть всегда, даже если SVG-арт
-    // конкретного зверька ещё не нарисован.
-    if (petVisual) {
-        petVisual.innerHTML = assemblePet('artist');
     }
 
     // Приветствие сразу выставляем из JS с учётом реальной ширины
