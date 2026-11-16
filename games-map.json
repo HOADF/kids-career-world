@@ -11,8 +11,8 @@
       "petName": "Щенок",
       "color": "#4A78C9",
       "requestText": "Ой-ой! Пока я патрулировал улицу, кто-то украл мою любимую косточку! Воришка в маске убежал — помоги мне его поймать!",
-      "status": "soon",
-      "gameUrl": null,
+      "status": "ready",
+      "gameUrl": "games/police/police-game.html",
       "layout": { "left": 7.1, "top": 13.4, "width": 5, "height": 8 }
     },
     {

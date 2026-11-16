@@ -1,0 +1,138 @@
+/* Игра "Найди воришку" — Щенок-полицейский.
+   Общий каркас страницы (сцена на весь экран, подставка питомца,
+   облачко, кнопки) подключён из ../engine/game-shell.css — здесь
+   только то, что относится именно к этой игре: сам двор с
+   подозреваемыми зверятами. */
+
+html, body {
+    background: #BFE3FB;
+}
+
+/* ===== Сцена двора — чистым CSS, без картинок-фонов =====
+   У полицейского участка пока не нарисован отдельный фон-биом (см.
+   план ПЛАН_2, раздел 12 — фоны для большинства профессий ещё не
+   нарисованы), поэтому сцена собрана градиентами: небо + газон с
+   лёгкой "клетчатой" текстурой, как подстриженный двор участка. Это
+   не временная заглушка-картинка, а полноценный лёгкий фон —
+   ничего не отвалится и не станет битой ссылкой. Небо слегка
+   подсвечено синим цветом участка (#4A78C9 из games-map.json), чтобы
+   сцена игры узнаваемо продолжала цвет здания на карте. */
+.habitat-layer-sky {
+    background: linear-gradient(180deg, #AFCBEE 0%, #E3F3FF 70%);
+}
+
+.habitat-ground {
+    background:
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.03) 0 40px, transparent 40px 80px),
+        linear-gradient(180deg, #9FD48C 0%, #7FBE6C 100%);
+    border-top: 6px solid #6CA85A;
+}
+
+/* Забор-рамка участка вдоль верхней границы газона — несколько
+   одинаковых "досок" через repeating-gradient, без отдельных тегов. */
+.habitat-ground::before {
+    content: '';
+    position: absolute;
+    top: -34px;
+    left: 0;
+    width: 100%;
+    height: 34px;
+    background: repeating-linear-gradient(
+        90deg,
+        #E0A458 0 10px,
+        #C98B3E 10px 14px
+    );
+    opacity: 0.85;
+}
+
+/* ===== Двор с подозреваемыми ===== */
+.yard-area {
+    position: relative;
+    flex: 1 1 100%;
+    min-width: 280px;
+    min-height: 360px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 18px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.yard-hint {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-weight: 700;
+    color: #35506b;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    z-index: 5;
+}
+
+/* Слот задаёт МЕСТО во дворе (в процентах от .yard-area, через
+   left/top) и центрируется относительно этой точки — его transform
+   никогда не анимируется. Сама картинка-зверёк внутри слота (.suspect)
+   занимает слот целиком и получает все анимации (наведение, тряска,
+   поймали) — так проценты-координаты и анимации не мешают друг
+   другу и зверёк не "подпрыгивает" в сторону при наведении. */
+.suspect-slot {
+    position: absolute;
+    width: 86px;
+    height: 86px;
+    transform: translate(-50%, -50%);
+}
+
+.suspect {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.15s;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+}
+
+.suspect:hover { transform: scale(1.08); }
+.suspect:active { transform: scale(0.96); }
+
+.suspect.wrong-shake {
+    animation: suspectShake 0.4s ease;
+}
+
+@keyframes suspectShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px) rotate(-4deg); }
+    75% { transform: translateX(6px) rotate(4deg); }
+}
+
+.suspect.caught {
+    animation: suspectCaught 0.5s ease forwards;
+}
+
+@keyframes suspectCaught {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3) rotate(10deg); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.round-counter {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 4px 12px;
+    font-weight: 700;
+    color: #2e4a2e;
+    font-size: 0.85rem;
+    z-index: 5;
+}
+
+@media (max-width: 760px) {
+    .yard-area { min-height: 300px; }
+    .suspect-slot { width: 70px; height: 70px; }
+}

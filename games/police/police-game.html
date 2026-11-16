@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уровень 1 — Щенок-полицейский</title>
+    <meta name="game-level" content="1">
+    <meta name="age-range" content="5–8">
+    <meta name="game-title" content="Найди воришку">
+    <meta name="game-description" content="Помоги Щенку найти воришку в маске среди зверят во дворе участка.">
+    <link rel="stylesheet" href="../../animations.css">
+    <link rel="stylesheet" href="../engine/game-shell.css">
+    <link rel="stylesheet" href="police-style.css">
+</head>
+<body>
+
+<!-- Фон-сцена двора участка — см. police-style.css: своих картинок
+     пока нет, сцена собрана градиентами, поэтому слоёв меньше, чем
+     у художника (там три картинки), а не потому что что-то забыто. -->
+<div class="habitat-scene">
+    <div class="habitat-layer habitat-layer-sky"></div>
+    <div class="habitat-ground"></div>
+</div>
+
+<!-- Сцена питомца — своей подставки-пенька у Щенка нет (он стоит на
+     газоне участка, не на бамбуковом пеньке), поэтому .no-perch. -->
+<div class="pet-stage no-perch">
+    <div id="pet-visual" class="character-pet"></div>
+    <div id="speech-bubble" class="bubble">У меня пропал любимый значок! Помоги найти воришку! 🐶</div>
+    <p class="pet-name-tag">Щенок</p>
+</div>
+
+<div class="ui-layer">
+    <section class="glass-card game-card">
+        <h1>🚓 Найди воришку</h1>
+
+        <div class="game-content">
+            <div class="yard-area" id="yard-area" aria-label="Двор участка с подозреваемыми">
+                <p class="yard-hint">Кто из них в маске? Нажми на него!</p>
+                <p class="round-counter" id="round-counter">Поймано: 0</p>
+                <!-- Подозреваемые вставляются сюда скриптом (police-game.js) —
+                     каждый раунд свой случайный набор цветов и расположения,
+                     ровно один из них в маске. -->
+            </div>
+        </div>
+
+        <div class="controls-row">
+            <button id="restart" class="nav-btn small">🔁 Новый двор</button>
+            <a href="../../pets-select.html" class="nav-btn small">🐾 Питомец</a>
+            <a href="../../city-map.html?done=police" class="nav-btn small">🏠 Домой</a>
+        </div>
+    </section>
+</div>
+
+<script type="module" src="police-game.js"></script>
+</body>
+</html>
