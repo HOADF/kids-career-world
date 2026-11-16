@@ -33,10 +33,14 @@
             <div class="clinic-area">
                 <div class="paw-area">
                     <svg id="paw-svg" viewBox="0 0 200 200">
-                        <ellipse cx="100" cy="120" rx="70" ry="60" fill="#F6DCE4" />
-                        <circle cx="55" cy="60" r="22" fill="#F6DCE4" />
-                        <circle cx="100" cy="42" r="22" fill="#F6DCE4" />
-                        <circle cx="145" cy="60" r="22" fill="#F6DCE4" />
+                        <!-- Серая шёрстка зайчонка (тот же цвет, что и сам
+                             питомец) с тёмным контуром — чтобы лапка чётко
+                             читалась на розовом фоне кабинета, а не сливалась
+                             с ним. -->
+                        <ellipse cx="100" cy="120" rx="70" ry="60" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="3" />
+                        <circle cx="55" cy="60" r="22" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="3" />
+                        <circle cx="100" cy="42" r="22" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="3" />
+                        <circle cx="145" cy="60" r="22" fill="#DCE0E3" stroke="#B9C0C4" stroke-width="3" />
 
                         <!-- Шаг 0: грязь и царапина (видны изначально) -->
                         <g id="step-dirty">

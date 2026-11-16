@@ -407,8 +407,8 @@ export const petAssets = {
             <circle cx="128" cy="110" r="6" fill="#FFC9C9" opacity="0.6" />
             <ellipse cx="100" cy="109" rx="5" ry="4" fill="#FF8FA3" />
             <path d="M92 117 Q100 123 108 117" stroke="#2B2B2B" stroke-width="2" fill="none" stroke-linecap="round" />
-            <rect x="96" y="119" width="3" height="6" rx="1" fill="#FFFFFF" stroke="#DADADA" stroke-width="0.6" />
-            <rect x="101" y="119" width="3" height="6" rx="1" fill="#FFFFFF" stroke="#DADADA" stroke-width="0.6" />
+            <rect x="93.5" y="118" width="6" height="7" rx="2" fill="#FFFFFF" stroke="#DADADA" stroke-width="0.8" />
+            <rect x="100.5" y="118" width="6" height="7" rx="2" fill="#FFFFFF" stroke="#DADADA" stroke-width="0.8" />
         `,
         // Щенок-полицейский: золотисто-песочное тело, тёмные висячие
         // уши, светлая "манишка". Уши теперь плотно прилегают к голове
